@@ -44,12 +44,15 @@ async function loadAvailableStories() {
     try {
         showLoading();
         
-        // Try to load from index.json first
+        // Try to load from index.json first (with cache busting)
         try {
-            const indexResponse = await fetch('stories/index.json');
+            const timestamp = Date.now();
+            const indexResponse = await fetch(`stories/index.json?v=${timestamp}`);
             if (indexResponse.ok) {
                 const storyIndex = await indexResponse.json();
                 availableStories = storyIndex.stories || [];
+                
+                console.log('Loaded stories from index.json:', availableStories);
                 
                 // Add raw support info
                 if (storyIndex.has_raw_support) {
@@ -61,7 +64,7 @@ async function loadAvailableStories() {
                 return;
             }
         } catch (error) {
-            console.log('No index.json found, scanning manually...');
+            console.log('No index.json found, scanning manually...', error);
         }
         
         // Fallback: Manual file detection
@@ -114,8 +117,12 @@ function updateStoryDropdown() {
     // Clear existing options except the first one
     elements.storySelect.innerHTML = '<option value="">Chọn truyện...</option>';
     
+    console.log('Updating dropdown with stories:', availableStories);
+    
     // Add available stories
     availableStories.forEach(story => {
+        console.log(`Story: ${story.title}, hasRaw: ${story.hasRaw}, isLarge: ${story.isLarge}`);
+        
         const option = document.createElement('option');
         option.value = story.fileName;
         
@@ -342,18 +349,34 @@ async function loadRawComparison() {
 }
 
 function addCompareButton() {
-    // Remove existing button
+    // Remove existing button first
     const existingBtn = document.querySelector('.compare-btn');
-    if (existingBtn) existingBtn.remove();
+    if (existingBtn) {
+        existingBtn.remove();
+        console.log('Removed existing compare button');
+    }
     
+    // Find current story data
     const story = availableStories.find(s => s.fileName === currentStory);
-    if (!story?.hasRaw) return;
+    console.log('Current story:', story);
+    console.log('Has raw:', story?.hasRaw);
     
+    if (!story?.hasRaw) {
+        console.log('No raw file available for this story');
+        return;
+    }
+    
+    console.log('Adding compare button...');
+    
+    // Create compare button
     const compareBtn = document.createElement('button');
     compareBtn.className = 'compare-btn btn-icon';
     compareBtn.innerHTML = '<i class="fas fa-columns"></i>';
     compareBtn.title = 'So sánh với raw';
+    compareBtn.style.display = 'flex'; // Ensure it's visible
+    
     compareBtn.addEventListener('click', () => {
+        console.log('Compare button clicked, isComparisonMode:', isComparisonMode);
         if (isComparisonMode) {
             exitComparisonMode();
         } else {
@@ -361,8 +384,14 @@ function addCompareButton() {
         }
     });
     
-    // Add to controls
-    elements.refreshBtn.parentNode.insertBefore(compareBtn, elements.refreshBtn);
+    // Insert before refresh button
+    const refreshBtn = document.getElementById('refreshBtn');
+    if (refreshBtn && refreshBtn.parentNode) {
+        refreshBtn.parentNode.insertBefore(compareBtn, refreshBtn);
+        console.log('Compare button added to DOM');
+    } else {
+        console.error('Could not find refresh button or its parent');
+    }
 }
 
 function exitComparisonMode() {
@@ -927,4 +956,4 @@ function clearStoryContent() {
     `;
     
     updateStoryInfo();
-} 
+}

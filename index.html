@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Game Story - Dark Reader</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-dice-d6"></i>
+                    <span>Board Game Story</span>
+                </div>
+                <div class="controls">
+                    <button id="themeToggle" class="btn-icon" title="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="fontSizeBtn" class="btn-icon" title="Font size">
+                        <i class="fas fa-text-height"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-content">
+                <h2><i class="fas fa-list"></i> Mục lục</h2>
+                <ul id="tableOfContents" class="toc-list">
+                    <!-- Dynamic content -->
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div id="storyContent" class="story-content">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Đang tải nội dung...</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Board Game Story Reader. Made with <i class="fas fa-heart"></i> for story lovers.</p>
+        </footer>
+    </div>
+
+    <!-- Font Size Modal -->
+    <div id="fontSizeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cỡ chữ</h3>
+                <button id="closeFontModal" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="font-size-controls">
+                    <button class="font-btn" data-size="small">Nhỏ</button>
+                    <button class="font-btn active" data-size="medium">Vừa</button>
+                    <button class="font-btn" data-size="large">Lớn</button>
+                    <button class="font-btn" data-size="xlarge">Rất lớn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

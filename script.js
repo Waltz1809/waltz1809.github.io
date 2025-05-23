@@ -1,5 +1,7 @@
 // ==================== GLOBAL VARIABLES ====================
 let storyData = [];
+let availableStories = [];
+let currentStory = '';
 let currentTheme = localStorage.getItem('theme') || 'dark';
 let currentFontSize = localStorage.getItem('fontSize') || 'medium';
 
@@ -8,8 +10,12 @@ const elements = {
     loadingSpinner: document.getElementById('loadingSpinner'),
     tableOfContents: document.getElementById('tableOfContents'),
     storyContent: document.getElementById('storyContent'),
+    storySelect: document.getElementById('storySelect'),
+    currentStoryTitle: document.getElementById('currentStoryTitle'),
+    currentStoryInfo: document.getElementById('currentStoryInfo'),
     themeToggle: document.getElementById('themeToggle'),
     fontSizeBtn: document.getElementById('fontSizeBtn'),
+    refreshBtn: document.getElementById('refreshBtn'),
     fontSizeModal: document.getElementById('fontSizeModal'),
     closeFontModal: document.getElementById('closeFontModal'),
     fontButtons: document.querySelectorAll('.font-btn')
@@ -20,8 +26,196 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
     initializeFontSize();
     initializeEventListeners();
-    loadStoryData();
+    loadAvailableStories();
+    
+    // Load last selected story from localStorage
+    const lastStory = localStorage.getItem('lastSelectedStory');
+    if (lastStory) {
+        elements.storySelect.value = lastStory;
+        loadSelectedStory(lastStory);
+    }
 });
+
+// ==================== STORY MANAGEMENT ====================
+async function loadAvailableStories() {
+    try {
+        showLoading();
+        
+        // List of potential story files to check
+        const potentialStories = [
+            'boardgame_1_edit.yaml',
+            'junna_edit.yaml',
+            'junna_1000_1.0_edit.yaml', 
+            'junna_gmn_edit.yaml',
+            'vol1_edit.yaml',
+            'vol1_2_edit.yaml',
+            'vol_2_gmn_edit.yaml',
+            'vol3_4_ds_r1_edit.yaml',
+            // Add more as needed...
+        ];
+        
+        availableStories = [];
+        
+        // Check each potential story file
+        for (const fileName of potentialStories) {
+            try {
+                const response = await fetch(`stories/${fileName}`, { method: 'HEAD' });
+                if (response.ok) {
+                    availableStories.push({
+                        id: fileName.replace('.yaml', '').replace('_edit', ''),
+                        title: formatStoryTitle(fileName),
+                        fileName: fileName
+                    });
+                }
+            } catch (error) {
+                // File doesn't exist, skip
+                continue;
+            }
+        }
+        
+        // Scan for any .yaml files in stories directory
+        try {
+            const indexResponse = await fetch('stories/index.json');
+            if (indexResponse.ok) {
+                const storyIndex = await indexResponse.json();
+                availableStories = storyIndex.stories || availableStories;
+            }
+        } catch (error) {
+            console.log('No index.json found, using default file list');
+        }
+        
+        updateStoryDropdown();
+        hideLoading();
+        
+    } catch (error) {
+        console.error('Error loading available stories:', error);
+        hideLoading();
+        showError('Không thể tải danh sách truyện');
+    }
+}
+
+function formatStoryTitle(fileName) {
+    return fileName
+        .replace('.yaml', '')
+        .replace('_edit', '')
+        .replace(/_/g, ' ')
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
+
+function updateStoryDropdown() {
+    // Clear existing options except the first one
+    elements.storySelect.innerHTML = '<option value="">Chọn truyện...</option>';
+    
+    // Add available stories
+    availableStories.forEach(story => {
+        const option = document.createElement('option');
+        option.value = story.fileName;
+        option.textContent = story.title;
+        elements.storySelect.appendChild(option);
+    });
+    
+    // Update story info
+    updateStoryInfo();
+}
+
+function updateStoryInfo() {
+    if (!currentStory) {
+        elements.currentStoryTitle.textContent = 'Chưa chọn truyện';
+        elements.currentStoryInfo.textContent = '';
+        return;
+    }
+    
+    const story = availableStories.find(s => s.fileName === currentStory);
+    if (story) {
+        elements.currentStoryTitle.textContent = story.title;
+        elements.currentStoryInfo.textContent = `${storyData.length} chương • Đang đọc`;
+    }
+}
+
+async function loadSelectedStory(fileName) {
+    if (!fileName) {
+        clearStoryContent();
+        return;
+    }
+    
+    try {
+        showLoading();
+        currentStory = fileName;
+        
+        // Save selection to localStorage
+        localStorage.setItem('lastSelectedStory', fileName);
+        
+        // Fetch YAML file
+        const response = await fetch(`stories/${fileName}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const yamlText = await response.text();
+        
+        // Parse YAML
+        storyData = jsyaml.load(yamlText);
+        
+        // Validate data
+        if (!Array.isArray(storyData)) {
+            throw new Error('Invalid YAML format: expected an array of chapters');
+        }
+        
+        // Render content
+        renderTableOfContents();
+        renderStoryContent();
+        updateStoryInfo();
+        
+        // Add scroll spy for TOC
+        initializeScrollSpy();
+        
+        hideLoading();
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+    } catch (error) {
+        console.error('Error loading story:', error);
+        showError(`Lỗi tải truyện: ${error.message}`);
+        currentStory = '';
+        updateStoryInfo();
+    }
+}
+
+function clearStoryContent() {
+    currentStory = '';
+    storyData = [];
+    
+    // Clear table of contents
+    elements.tableOfContents.innerHTML = '<li class="no-story">Vui lòng chọn một truyện để đọc</li>';
+    
+    // Show welcome message
+    elements.storyContent.innerHTML = `
+        <div class="welcome-message">
+            <i class="fas fa-book-reader"></i>
+            <h2>Chào mừng đến với Story Reader!</h2>
+            <p>Chọn một truyện từ dropdown menu ở trên để bắt đầu đọc.</p>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-folder-plus"></i>
+                    <p>Thả file YAML vào folder <code>stories/</code></p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-magic"></i>
+                    <p>Tự động detect và load truyện</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-palette"></i>
+                    <p>Dark/Light theme với nhiều tính năng</p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    updateStoryInfo();
+}
 
 // ==================== THEME MANAGEMENT ====================
 function initializeTheme() {
@@ -79,6 +273,24 @@ function hideFontSizeModal() {
 
 // ==================== EVENT LISTENERS ====================
 function initializeEventListeners() {
+    // Story selection
+    elements.storySelect.addEventListener('change', (e) => {
+        const selectedStory = e.target.value;
+        if (selectedStory) {
+            loadSelectedStory(selectedStory);
+        } else {
+            clearStoryContent();
+        }
+    });
+    
+    // Refresh stories
+    elements.refreshBtn.addEventListener('click', () => {
+        elements.refreshBtn.classList.add('loading');
+        loadAvailableStories().finally(() => {
+            elements.refreshBtn.classList.remove('loading');
+        });
+    });
+    
     // Theme toggle
     elements.themeToggle.addEventListener('click', toggleTheme);
     
@@ -113,6 +325,12 @@ function initializeEventListeners() {
             toggleTheme();
         }
         
+        // Ctrl+R to refresh stories
+        if (e.ctrlKey && e.key === 'r') {
+            e.preventDefault();
+            elements.refreshBtn.click();
+        }
+        
         // Ctrl+Plus/Minus for font size
         if (e.ctrlKey && (e.key === '+' || e.key === '=')) {
             e.preventDefault();
@@ -129,6 +347,22 @@ function initializeEventListeners() {
             const currentIndex = sizes.indexOf(currentFontSize);
             if (currentIndex > 0) {
                 changeFontSize(sizes[currentIndex - 1]);
+            }
+        }
+        
+        // Arrow keys for story navigation
+        if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+            e.preventDefault();
+            const currentIndex = Array.from(elements.storySelect.options).findIndex(
+                option => option.value === currentStory
+            );
+            
+            if (e.key === 'ArrowUp' && currentIndex > 1) {
+                elements.storySelect.selectedIndex = currentIndex - 1;
+                elements.storySelect.dispatchEvent(new Event('change'));
+            } else if (e.key === 'ArrowDown' && currentIndex < elements.storySelect.options.length - 1) {
+                elements.storySelect.selectedIndex = currentIndex + 1;
+                elements.storySelect.dispatchEvent(new Event('change'));
             }
         }
     });
@@ -157,42 +391,7 @@ function initializeEventListeners() {
     });
 }
 
-// ==================== DATA LOADING ====================
-async function loadStoryData() {
-    try {
-        showLoading();
-        
-        // Fetch YAML file
-        const response = await fetch('data.yaml');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const yamlText = await response.text();
-        
-        // Parse YAML
-        storyData = jsyaml.load(yamlText);
-        
-        // Validate data
-        if (!Array.isArray(storyData)) {
-            throw new Error('Invalid YAML format: expected an array of chapters');
-        }
-        
-        // Render content
-        renderTableOfContents();
-        renderStoryContent();
-        
-        // Add scroll spy for TOC
-        initializeScrollSpy();
-        
-        hideLoading();
-        
-    } catch (error) {
-        console.error('Error loading story data:', error);
-        showError(error.message);
-    }
-}
-
+// ==================== UI HELPERS ====================
 function showLoading() {
     elements.loadingSpinner.style.display = 'flex';
     elements.loadingSpinner.classList.remove('hidden');
@@ -215,6 +414,7 @@ function showError(message) {
             background-color: var(--bg-secondary);
             border-radius: var(--radius-lg);
             border: 1px solid var(--accent-danger);
+            animation: shake 0.5s ease-in-out;
         ">
             <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
             <h2 style="margin-bottom: 1rem;">Lỗi tải dữ liệu</h2>
@@ -227,7 +427,9 @@ function showError(message) {
                 border: none;
                 border-radius: var(--radius-md);
                 cursor: pointer;
-            ">Thử lại</button>
+                transition: all 0.3s ease;
+            " onmouseover="this.style.backgroundColor='var(--accent-secondary)'" 
+               onmouseout="this.style.backgroundColor='var(--accent-primary)'">Thử lại</button>
         </div>
     `;
 }
@@ -308,6 +510,8 @@ function initializeScrollSpy() {
     const chapters = document.querySelectorAll('.chapter');
     const tocLinks = document.querySelectorAll('.toc-link');
     
+    if (chapters.length === 0) return;
+    
     const observerOptions = {
         root: null,
         rootMargin: '-20% 0px -70% 0px',
@@ -335,8 +539,39 @@ function initializeScrollSpy() {
     });
 }
 
-// ==================== ADDITIONAL STYLES FOR CONTENT ====================
-// Add these styles dynamically
+// ==================== ADDITIONAL FEATURES ====================
+// Auto-save reading position
+function saveReadingPosition() {
+    if (!currentStory) return;
+    
+    const activeChapter = document.querySelector('.chapter:not([style*="display: none"])');
+    if (activeChapter) {
+        localStorage.setItem(`reading_position_${currentStory}`, activeChapter.id);
+    }
+}
+
+function restoreReadingPosition() {
+    if (!currentStory) return;
+    
+    const savedPosition = localStorage.getItem(`reading_position_${currentStory}`);
+    if (savedPosition) {
+        const targetElement = document.getElementById(savedPosition);
+        if (targetElement) {
+            setTimeout(() => {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 500);
+        }
+    }
+}
+
+// Save position on scroll
+let savePositionTimeout;
+window.addEventListener('scroll', () => {
+    clearTimeout(savePositionTimeout);
+    savePositionTimeout = setTimeout(saveReadingPosition, 1000);
+});
+
+// ==================== DYNAMIC STYLES ====================
 const additionalStyles = `
 <style>
 .dialogue {
@@ -357,17 +592,12 @@ const additionalStyles = `
     margin: var(--spacing-md) 0;
 }
 
-.error-message {
-    animation: shake 0.5s ease-in-out;
-}
-
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
 }
 
-/* Reading progress indicator */
 .reading-progress {
     position: fixed;
     top: 0;
@@ -379,12 +609,10 @@ const additionalStyles = `
     transition: width 0.3s ease;
 }
 
-/* Smooth animations for content */
 .chapter {
     scroll-margin-top: 100px;
 }
 
-/* Print styles */
 @media print {
     .header, .navigation, .footer, .controls {
         display: none !important;
@@ -412,7 +640,7 @@ const additionalStyles = `
 </style>
 `;
 
-// Add reading progress indicator
+// Initialize additional features
 document.addEventListener('DOMContentLoaded', function() {
     // Add additional styles
     document.head.insertAdjacentHTML('beforeend', additionalStyles);
@@ -423,16 +651,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(progressBar);
     
     // Update progress on scroll
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', debounce(() => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
         progressBar.style.width = scrolled + '%';
-    });
+    }, 10));
 });
 
-// ==================== PERFORMANCE OPTIMIZATIONS ====================
-// Debounce function for scroll events
+// Debounce function for performance
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -443,29 +670,4 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
-}
-
-// Optimize scroll events
-window.addEventListener('scroll', debounce(() => {
-    // Update reading progress
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    const progressBar = document.querySelector('.reading-progress');
-    if (progressBar) {
-        progressBar.style.width = scrolled + '%';
-    }
-}, 10));
-
-// Service Worker for offline support (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
 } 

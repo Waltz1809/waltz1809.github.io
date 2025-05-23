@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Board Game Story - Dark Reader</title>
+    <title>Story Reader - Dark Theme</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -14,10 +14,20 @@
         <header class="header">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-dice-d6"></i>
-                    <span>Board Game Story</span>
+                    <i class="fas fa-book-open"></i>
+                    <span>Story Reader</span>
+                </div>
+                <div class="header-middle">
+                    <div class="story-selector">
+                        <select id="storySelect" class="story-dropdown">
+                            <option value="">Chọn truyện...</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="controls">
+                    <button id="refreshBtn" class="btn-icon" title="Refresh stories">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
                     <button id="themeToggle" class="btn-icon" title="Toggle theme">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -31,9 +41,13 @@
         <!-- Navigation -->
         <nav class="navigation">
             <div class="nav-content">
+                <div class="story-info">
+                    <h3 id="currentStoryTitle">Chưa chọn truyện</h3>
+                    <p id="currentStoryInfo" class="story-meta"></p>
+                </div>
                 <h2><i class="fas fa-list"></i> Mục lục</h2>
                 <ul id="tableOfContents" class="toc-list">
-                    <!-- Dynamic content -->
+                    <li class="no-story">Vui lòng chọn một truyện để đọc</li>
                 </ul>
             </div>
         </nav>
@@ -42,7 +56,25 @@
         <main class="main-content">
             <div class="content-wrapper">
                 <div id="storyContent" class="story-content">
-                    <!-- Dynamic content -->
+                    <div class="welcome-message">
+                        <i class="fas fa-book-reader"></i>
+                        <h2>Chào mừng đến với Story Reader!</h2>
+                        <p>Chọn một truyện từ dropdown menu ở trên để bắt đầu đọc.</p>
+                        <div class="features">
+                            <div class="feature">
+                                <i class="fas fa-folder-plus"></i>
+                                <p>Thả file YAML vào folder <code>stories/</code></p>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-magic"></i>
+                                <p>Tự động detect và load truyện</p>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-palette"></i>
+                                <p>Dark/Light theme với nhiều tính năng</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -55,7 +87,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2024 Board Game Story Reader. Made with <i class="fas fa-heart"></i> for story lovers.</p>
+            <p>&copy; 2024 Story Reader. Made with <i class="fas fa-heart"></i> for story lovers.</p>
         </footer>
     </div>
 

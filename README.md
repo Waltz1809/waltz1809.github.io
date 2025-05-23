@@ -1,46 +1,35 @@
-# Board Game Story Reader
+# Story Reader - Dynamic Multi-Story Platform
 
-Một trang web đọc truyện với dark theme hiện đại, được tối ưu hóa để hiển thị nội dung từ file YAML.
+Một trang web đọc truyện với dark theme hiện đại, hỗ trợ **đa truyện động** từ file YAML.
 
 ## 🌟 Tính năng
 
 - ✨ **Dark/Light Theme**: Chuyển đổi dễ dàng giữa theme tối và sáng
+- 📚 **Multi-Story Support**: Hỗ trợ nhiều truyện cùng lúc
+- 🔄 **Dynamic Loading**: Tự động detect file YAML mới
 - 📱 **Responsive Design**: Tương thích hoàn hảo trên mọi thiết bị
 - 🔤 **Tùy chỉnh Font Size**: 4 cấp độ cỡ chữ khác nhau
 - 📖 **Mục lục tương tác**: Điều hướng nhanh chóng giữa các chương
 - 📊 **Thanh tiến độ đọc**: Theo dõi tiến độ đọc
-- ⚡ **Tải nhanh**: Tối ưu hiệu suất với lazy loading
-- 🎨 **Hiệu ứng mượt mà**: Animations và transitions đẹp mắt
-- 💾 **Lưu cài đặt**: Ghi nhớ theme và cỡ chữ
+- 💾 **Auto-save**: Tự động lưu vị trí đọc
+- ⚡ **GitHub Action**: Tự động build khi thêm file mới
 - ⌨️ **Phím tắt**: Hỗ trợ điều khiển bằng bàn phím
 
-## 🎯 Phím tắt
+## 🚀 Cách sử dụng
 
-- `Ctrl + T`: Chuyển đổi theme
-- `Ctrl + +`: Tăng cỡ chữ
-- `Ctrl + -`: Giảm cỡ chữ
-- `Esc`: Đóng modal
+### 1. **Thêm truyện mới (Siêu dễ!)**
 
-## 📁 Cấu trúc file
+```bash
+# Chỉ cần copy file YAML vào thư mục stories/
+cp your_story.yaml stories/
 
-```
-waltz1809.github.io/
-├── index.html          # File HTML chính
-├── style.css           # CSS với dark theme
-├── script.js           # JavaScript logic
-├── data.yaml           # Dữ liệu nội dung truyện
-└── README.md           # Tài liệu hướng dẫn
+# Chạy script build (hoặc GitHub Action tự động chạy)
+python build-stories.py
+
+# Website tự động update! 🎉
 ```
 
-## 🚀 Cách triển khai
-
-### 1. GitHub Pages (Tự động)
-
-Website sẽ tự động được triển khai tại: `https://waltz1809.github.io`
-
-### 2. Cập nhật nội dung
-
-Để thêm/sửa nội dung, chỉnh sửa file `data.yaml` theo format:
+### 2. **Format file YAML**
 
 ```yaml
 - id: Chapter_1_Segment_1
@@ -49,113 +38,206 @@ Website sẽ tự động được triển khai tại: `https://waltz1809.github
     Nội dung chương ở đây...
     
     Đoạn văn thứ hai...
+    
+    "Dialogue sẽ được format đặc biệt"
+    
+    (Thoughts sẽ được style khác)
 
 - id: Chapter_1_Segment_2
-  title: "Tiêu đề chương 2"
+  title: "Chương tiếp theo"
   content: |-
-    Nội dung chương 2...
+    Nội dung tiếp...
 ```
 
-## 🎨 Tùy chỉnh giao diện
+### 3. **Tự động với GitHub Action**
 
-### Màu sắc
+File sẽ được tự động build khi:
+- Push file `.yaml` vào thư mục `stories/`
+- GitHub Action chạy `build-stories.py`
+- Website tự động cập nhật danh sách truyện
 
-Chỉnh sửa CSS variables trong file `style.css`:
+## 🎯 Phím tắt
+
+- `Ctrl + T`: Chuyển đổi theme
+- `Ctrl + R`: Refresh danh sách truyện
+- `Ctrl + +`: Tăng cỡ chữ
+- `Ctrl + -`: Giảm cỡ chữ
+- `Alt + ↑/↓`: Chuyển truyện
+- `Esc`: Đóng modal
+
+## 📁 Cấu trúc dự án
+
+```
+waltz1809.github.io/
+├── index.html              # File HTML chính
+├── style.css               # CSS với dark theme
+├── script.js               # JavaScript logic
+├── build-stories.py        # Script build tự động
+├── stories/                # 📂 Thư mục chứa file YAML
+│   ├── index.json         #    (Auto-generated)
+│   ├── README.md          #    Hướng dẫn
+│   ├── story1.yaml        #    📖 Truyện 1
+│   ├── story2.yaml        #    📖 Truyện 2
+│   └── ...                #    📖 Các truyện khác
+├── .github/workflows/      # GitHub Actions
+│   └── build-stories.yml  #    Auto-build workflow
+└── README.md               # Tài liệu này
+```
+
+## 🔧 Hệ thống Dynamic Story
+
+### **Hoạt động như thế nào:**
+
+1. **Script scan** thư mục `stories/` tìm file `.yaml`
+2. **Parse metadata** từ mỗi file (số chương, kích thước, etc.)
+3. **Generate** file `stories/index.json` với thông tin tất cả truyện
+4. **Website load** index.json và tạo dropdown
+5. **User chọn** truyện → Load YAML → Hiển thị content
+
+### **Auto-categorization:**
+
+Script tự động phân loại truyện theo tên file:
+- `boardgame_*.yaml` → "Board Game"
+- `junna_*.yaml` → "Junna Series"  
+- `vol*.yaml` → "Noucome"
+- `genben_*.yaml` → "Genben"
+- etc...
+
+## 🎨 Tùy chỉnh
+
+### **Thêm series mới:**
+
+Chỉnh sửa function `categorize_stories()` trong `build-stories.py`:
+
+```python
+elif 'your_series' in filename.lower():
+    series = 'Your Series Name'
+```
+
+### **Custom title format:**
+
+Chỉnh sửa function `format_story_title()`:
+
+```python
+def format_story_title(filename):
+    # Your custom logic here
+    return formatted_title
+```
+
+### **Màu sắc theme:**
 
 ```css
 :root {
-    --bg-primary: #0d1117;      /* Màu nền chính */
-    --accent-primary: #58a6ff;   /* Màu accent */
-    --text-primary: #f0f6fc;     /* Màu chữ chính */
+    --bg-primary: #your-color;
+    --accent-primary: #your-accent;
 }
 ```
 
-### Typography
+## 🤖 GitHub Action Setup
 
-```css
-:root {
-    --font-family: 'Inter', sans-serif;
-    --font-size-base: 1rem;
-}
-```
-
-## 🔧 Tính năng kỹ thuật
-
-- **Responsive Grid Layout**: CSS Grid với breakpoints tối ưu
-- **Intersection Observer**: Scroll spy cho navigation
-- **Local Storage**: Lưu trữ cài đặt người dùng
-- **YAML Parser**: Sử dụng js-yaml để parse dữ liệu
-- **Performance Optimized**: Debounced scroll events
-- **Accessibility**: ARIA labels và keyboard navigation
-
-## 📱 Responsive Breakpoints
-
-- **Desktop**: > 768px - Full layout với sidebar
-- **Tablet**: ≤ 768px - Collapsed navigation
-- **Mobile**: ≤ 480px - Optimized mobile layout
-
-## 🎭 Theme System
-
-Website hỗ trợ 2 theme:
-
-### Dark Theme (Mặc định)
-- Background: GitHub Dark
-- Accent: Blue tones
-- High contrast cho dễ đọc
-
-### Light Theme
-- Background: Clean white
-- Accent: Consistent blue
-- Eye-friendly cho ban ngày
-
-## 📊 Cấu trúc dữ liệu YAML
+Action sẽ tự động chạy khi:
 
 ```yaml
-- id: unique_chapter_id       # ID duy nhất cho chapter
-  title: "Chapter Title"      # Tiêu đề hiển thị
-  content: |-                 # Nội dung (multiline)
-    Paragraph 1
-    
-    Paragraph 2
-    
-    "Dialogue text"           # Tự động format italic
-    
-    (Internal thoughts)       # Tự động format as thoughts
+on:
+  push:
+    paths:
+      - 'stories/*.yaml'      # File YAML mới
+      - 'build-stories.py'    # Script thay đổi
+  workflow_dispatch:          # Manual trigger
 ```
 
-## 🚀 Tối ưu hóa
+**Permissions cần thiết:**
+- `contents: write` (để commit file index.json)
 
-- **CSS**: Minified và optimized
-- **JavaScript**: ES6+ với polyfills
-- **Images**: Lazy loading (nếu có)
-- **Fonts**: Preload critical fonts
-- **Caching**: Browser caching headers
+## 📊 Tính năng nâng cao
 
-## 🐛 Troubleshooting
+### **Auto-save Reading Position**
+- Tự động lưu vị trí đọc cho mỗi truyện
+- Restore khi quay lại truyện
 
-### Website không tải
-- Kiểm tra file `data.yaml` có đúng format
-- Mở Developer Console để xem lỗi
+### **Smart Caching**
+- LocalStorage cache cho cài đặt
+- Browser cache cho file YAML
 
-### Theme không chuyển đổi
-- Clear browser cache
-- Kiểm tra Local Storage
+### **Reading Progress**
+- Progress bar theo scroll
+- Chapter highlight trong TOC
 
-### Mobile không responsive
-- Kiểm tra viewport meta tag
-- Test trên nhiều thiết bị
+### **Responsive Design**
+- Desktop: Full sidebar layout
+- Tablet: Collapsed navigation  
+- Mobile: Stack layout
 
-## 📝 License
+## 🚀 Triển khai
 
-MIT License - Tự do sử dụng và chỉnh sửa.
+### **GitHub Pages (Recommend):**
 
-## 🤝 Contributing
+1. Push code lên repository `username.github.io`
+2. Enable GitHub Pages trong Settings
+3. Website tự động deploy tại `https://username.github.io`
+
+### **Local Development:**
+
+```bash
+# Clone repo
+git clone https://github.com/username/username.github.io.git
+cd username.github.io
+
+# Add stories
+cp your_stories/*.yaml stories/
+
+# Build index
+python build-stories.py
+
+# Serve locally (Python)
+python -m http.server 8000
+
+# Hoặc (Node.js)
+npx serve .
+```
+
+## 🔍 Troubleshooting
+
+### **Truyện không hiện trong dropdown:**
+1. Kiểm tra file YAML có đúng format
+2. Chạy `python build-stories.py` để rebuild
+3. Check `stories/index.json` có được tạo
+
+### **Lỗi load truyện:**
+1. Mở Developer Console (F12)
+2. Check lỗi CORS (cần serve qua HTTP)
+3. Kiểm tra path file trong `index.json`
+
+### **GitHub Action không chạy:**
+1. Check workflow permissions
+2. Verify Python dependencies
+3. Check file paths trong trigger
+
+## 📝 Contributing
 
 1. Fork repository
-2. Tạo feature branch
-3. Commit changes
-4. Push và tạo Pull Request
+2. Create feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open Pull Request
+
+## 🎉 Example Usage
+
+```bash
+# Thêm truyện mới
+echo "- id: test
+  title: Test Chapter
+  content: Hello World!" > stories/test.yaml
+
+# Build và deploy
+python build-stories.py
+git add . && git commit -m "Add new story" && git push
+
+# Website tự động update! 🚀
+```
 
 ---
 
-Được tạo bởi AI Assistant với ❤️ cho cộng đồng đọc truyện Việt Nam. 
+**Made with ❤️ for Vietnamese story readers**
+
+*Hỗ trợ unlimited stories, unlimited possibilities!* ✨ 

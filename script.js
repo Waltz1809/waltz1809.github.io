@@ -24,6 +24,7 @@ const elements = {
     fontButtons: document.querySelectorAll('.font-btn'),
     navigation: document.getElementById('navigation'),
     toggleSidebar: document.getElementById('toggleSidebar'),
+    toggleSidebarMain: document.getElementById('toggleSidebarMain'),
     singleViewBtn: document.getElementById('singleViewBtn'),
     splitViewBtn: document.getElementById('splitViewBtn'),
     container: document.querySelector('.container')
@@ -355,25 +356,44 @@ async function loadRawComparison() {
 }
 
 function renderComparisonView() {
-    // Render comparison TOC
-    renderTableOfContents();
+    // Create a map of raw data by ID for efficient lookup
+    const rawDataMap = new Map();
+    rawData.forEach(segment => {
+        if (segment.id) {
+            rawDataMap.set(segment.id, segment);
+        }
+    });
+    
+    console.log(`Raw data map created with ${rawDataMap.size} segments`);
     
     // Render comparison content
     const contentHtml = storyData.map((chapter, index) => {
         const chapterId = generateChapterId(chapter.id);
-        const rawChapter = rawData[index];
+        const rawChapter = rawDataMap.get(chapter.id); // Match by ID instead of index
         
         return `
             <div class="chapter comparison-chapter" id="${chapterId}">
-                <h1 class="chapter-title">${escapeHtml(chapter.title)}</h1>
+                <h1 class="chapter-title">
+                    ${escapeHtml(chapter.title)}
+                    <span class="chapter-id">ID: ${escapeHtml(chapter.id)}</span>
+                </h1>
                 <div class="comparison-container">
                     <div class="comparison-panel edited-panel">
                         <h3><i class="fas fa-edit"></i> Đã chỉnh sửa</h3>
                         <div class="chapter-content">${formatContent(chapter.content)}</div>
                     </div>
                     <div class="comparison-panel raw-panel">
-                        <h3><i class="fas fa-file-alt"></i> Raw ${rawChapter ? '' : '(Không có)'}</h3>
-                        <div class="chapter-content">${rawChapter ? formatContent(rawChapter.content) : '<p class="no-raw">Không có dữ liệu raw cho chương này</p>'}</div>
+                        <h3>
+                            <i class="fas fa-file-alt"></i> Raw 
+                            ${rawChapter ? `<span class="match-status match-found">✓ Found</span>` : `<span class="match-status match-missing">✗ Missing</span>`}
+                        </h3>
+                        <div class="chapter-content">
+                            ${rawChapter ? 
+                                `<div class="raw-id">Raw ID: ${escapeHtml(rawChapter.id)}</div>
+                                 ${formatContent(rawChapter.content)}` : 
+                                '<p class="no-raw">Không tìm thấy segment raw với ID tương ứng</p>'
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -451,6 +471,7 @@ function initializeEventListeners() {
     
     // Sidebar toggle
     elements.toggleSidebar.addEventListener('click', toggleSidebar);
+    elements.toggleSidebarMain.addEventListener('click', toggleSidebar);
     
     // View controls
     elements.singleViewBtn.addEventListener('click', switchToSingleView);
@@ -660,7 +681,10 @@ function renderStoryContent() {
         
         return `
             <div class="chapter" id="${chapterId}">
-                <h1 class="chapter-title">${escapeHtml(chapter.title)}</h1>
+                <h1 class="chapter-title">
+                    ${escapeHtml(chapter.title)}
+                    <span class="chapter-id">ID: ${escapeHtml(chapter.id)}</span>
+                </h1>
                 <div class="chapter-content">${formatContent(chapter.content)}</div>
             </div>
         `;

@@ -5,17 +5,18 @@
       "title": "Test Genben Vol3",
       "fileName": "test_genben_vol3_edit.yaml",
       "size": "1678KB",
-      "hasRaw": false,
+      "hasRaw": true,
+      "rawFileName": "test_genben_vol3.yaml",
       "chapters": 277,
       "isLarge": false,
       "description": "277 chương • 1678KB • 1.6MB"
     }
   ],
   "total_count": 1,
-  "raw_count": 0,
-  "has_raw_support": false,
-  "last_updated": "2025-05-23 15:47:21",
-  "build_date": "2025-05-23T15:47:21.397819",
+  "raw_count": 1,
+  "has_raw_support": true,
+  "last_updated": "2025-05-23 15:50:28",
+  "build_date": "2025-05-23T15:50:28.305265",
   "version": "2.0",
   "generator": "build-stories.py"
 }

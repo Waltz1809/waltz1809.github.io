@@ -1,9 +1,12 @@
 // ==================== GLOBAL VARIABLES ====================
 let storyData = [];
+let rawData = [];
 let availableStories = [];
 let currentStory = '';
 let currentTheme = localStorage.getItem('theme') || 'dark';
 let currentFontSize = localStorage.getItem('fontSize') || 'medium';
+let isComparisonMode = false;
+let isLazyLoading = false;
 
 // ==================== DOM ELEMENTS ====================
 const elements = {
@@ -41,22 +44,36 @@ async function loadAvailableStories() {
     try {
         showLoading();
         
-        // List of potential story files to check
+        // Try to load from index.json first
+        try {
+            const indexResponse = await fetch('stories/index.json');
+            if (indexResponse.ok) {
+                const storyIndex = await indexResponse.json();
+                availableStories = storyIndex.stories || [];
+                
+                // Add raw support info
+                if (storyIndex.has_raw_support) {
+                    console.log(`📄 Raw support enabled: ${storyIndex.raw_count} raw files`);
+                }
+                
+                updateStoryDropdown();
+                hideLoading();
+                return;
+            }
+        } catch (error) {
+            console.log('No index.json found, scanning manually...');
+        }
+        
+        // Fallback: Manual file detection
         const potentialStories = [
             'boardgame_1_edit.yaml',
             'junna_edit.yaml',
-            'junna_1000_1.0_edit.yaml', 
-            'junna_gmn_edit.yaml',
-            'vol1_edit.yaml',
-            'vol1_2_edit.yaml',
-            'vol_2_gmn_edit.yaml',
-            'vol3_4_ds_r1_edit.yaml',
+            'test_genben_vol3_edit.yaml',
             // Add more as needed...
         ];
         
         availableStories = [];
         
-        // Check each potential story file
         for (const fileName of potentialStories) {
             try {
                 const response = await fetch(`stories/${fileName}`, { method: 'HEAD' });
@@ -64,24 +81,13 @@ async function loadAvailableStories() {
                     availableStories.push({
                         id: fileName.replace('.yaml', '').replace('_edit', ''),
                         title: formatStoryTitle(fileName),
-                        fileName: fileName
+                        fileName: fileName,
+                        hasRaw: false
                     });
                 }
             } catch (error) {
-                // File doesn't exist, skip
                 continue;
             }
-        }
-        
-        // Scan for any .yaml files in stories directory
-        try {
-            const indexResponse = await fetch('stories/index.json');
-            if (indexResponse.ok) {
-                const storyIndex = await indexResponse.json();
-                availableStories = storyIndex.stories || availableStories;
-            }
-        } catch (error) {
-            console.log('No index.json found, using default file list');
         }
         
         updateStoryDropdown();
@@ -112,11 +118,19 @@ function updateStoryDropdown() {
     availableStories.forEach(story => {
         const option = document.createElement('option');
         option.value = story.fileName;
-        option.textContent = story.title;
+        
+        // Add indicators for large files and raw support
+        let title = story.title;
+        if (story.isLarge) title += ' ⚠️';
+        if (story.hasRaw) title += ' 🔄';
+        
+        option.textContent = title;
+        option.dataset.hasRaw = story.hasRaw || false;
+        option.dataset.isLarge = story.isLarge || false;
+        
         elements.storySelect.appendChild(option);
     });
     
-    // Update story info
     updateStoryInfo();
 }
 
@@ -129,12 +143,24 @@ function updateStoryInfo() {
     
     const story = availableStories.find(s => s.fileName === currentStory);
     if (story) {
-        elements.currentStoryTitle.textContent = story.title;
-        elements.currentStoryInfo.textContent = `${storyData.length} chương • Đang đọc`;
+        let title = story.title;
+        let info = `${storyData.length} chương`;
+        
+        if (story.description) {
+            info = story.description;
+        }
+        
+        if (isComparisonMode) {
+            title += ' (So sánh)';
+            info += ' • Raw vs Edited';
+        }
+        
+        elements.currentStoryTitle.textContent = title;
+        elements.currentStoryInfo.textContent = info;
     }
 }
 
-async function loadSelectedStory(fileName) {
+async function loadSelectedStory(fileName, forceReload = false) {
     if (!fileName) {
         clearStoryContent();
         return;
@@ -143,37 +169,25 @@ async function loadSelectedStory(fileName) {
     try {
         showLoading();
         currentStory = fileName;
+        isComparisonMode = false;
         
         // Save selection to localStorage
         localStorage.setItem('lastSelectedStory', fileName);
         
-        // Fetch YAML file
-        const response = await fetch(`stories/${fileName}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        // Check if it's a large file
+        const story = availableStories.find(s => s.fileName === fileName);
+        const isLarge = story?.isLarge || false;
+        
+        if (isLarge && !forceReload) {
+            await loadStoryWithLazyLoading(fileName);
+        } else {
+            await loadStoryNormal(fileName);
         }
         
-        const yamlText = await response.text();
-        
-        // Parse YAML
-        storyData = jsyaml.load(yamlText);
-        
-        // Validate data
-        if (!Array.isArray(storyData)) {
-            throw new Error('Invalid YAML format: expected an array of chapters');
-        }
-        
-        // Render content
-        renderTableOfContents();
-        renderStoryContent();
         updateStoryInfo();
-        
-        // Add scroll spy for TOC
-        initializeScrollSpy();
+        addCompareButton();
         
         hideLoading();
-        
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
     } catch (error) {
@@ -184,37 +198,223 @@ async function loadSelectedStory(fileName) {
     }
 }
 
-function clearStoryContent() {
-    currentStory = '';
-    storyData = [];
+async function loadStoryNormal(fileName) {
+    // Fetch YAML file
+    const response = await fetch(`stories/${fileName}`);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
     
-    // Clear table of contents
-    elements.tableOfContents.innerHTML = '<li class="no-story">Vui lòng chọn một truyện để đọc</li>';
+    const yamlText = await response.text();
     
-    // Show welcome message
-    elements.storyContent.innerHTML = `
-        <div class="welcome-message">
-            <i class="fas fa-book-reader"></i>
-            <h2>Chào mừng đến với Story Reader!</h2>
-            <p>Chọn một truyện từ dropdown menu ở trên để bắt đầu đọc.</p>
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-folder-plus"></i>
-                    <p>Thả file YAML vào folder <code>stories/</code></p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-magic"></i>
-                    <p>Tự động detect và load truyện</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-palette"></i>
-                    <p>Dark/Light theme với nhiều tính năng</p>
-                </div>
-            </div>
+    // Parse YAML
+    storyData = jsyaml.load(yamlText);
+    
+    // Validate data
+    if (!Array.isArray(storyData)) {
+        throw new Error('Invalid YAML format: expected an array of chapters');
+    }
+    
+    // Render content
+    renderTableOfContents();
+    renderStoryContent();
+    initializeScrollSpy();
+}
+
+async function loadStoryWithLazyLoading(fileName) {
+    isLazyLoading = true;
+    
+    // Show warning for large files
+    showLargeFileWarning();
+    
+    // Load first 50 chapters only
+    const response = await fetch(`stories/${fileName}`);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const yamlText = await response.text();
+    const fullData = jsyaml.load(yamlText);
+    
+    if (!Array.isArray(fullData)) {
+        throw new Error('Invalid YAML format: expected an array of chapters');
+    }
+    
+    // Load first batch
+    storyData = fullData.slice(0, 50);
+    
+    // Store full data for lazy loading
+    window.fullStoryData = fullData;
+    
+    renderTableOfContents(true); // Indicate more content available
+    renderStoryContent();
+    initializeScrollSpy();
+    
+    // Add load more button
+    addLoadMoreButton();
+}
+
+function showLargeFileWarning() {
+    const warning = document.createElement('div');
+    warning.className = 'large-file-warning';
+    warning.innerHTML = `
+        <div class="warning-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>File lớn được phát hiện</h3>
+            <p>Truyện này có nhiều chương. Chúng tôi sẽ tải từng phần để tăng hiệu suất.</p>
         </div>
     `;
     
+    elements.storyContent.appendChild(warning);
+    
+    setTimeout(() => warning.remove(), 3000);
+}
+
+function addLoadMoreButton() {
+    if (!window.fullStoryData || storyData.length >= window.fullStoryData.length) {
+        return;
+    }
+    
+    const loadMoreBtn = document.createElement('button');
+    loadMoreBtn.className = 'load-more-btn';
+    loadMoreBtn.innerHTML = `
+        <i class="fas fa-plus"></i>
+        Tải thêm chương (${storyData.length}/${window.fullStoryData.length})
+    `;
+    
+    loadMoreBtn.addEventListener('click', loadMoreChapters);
+    
+    elements.storyContent.appendChild(loadMoreBtn);
+}
+
+function loadMoreChapters() {
+    if (!window.fullStoryData) return;
+    
+    const currentLength = storyData.length;
+    const nextBatch = window.fullStoryData.slice(currentLength, currentLength + 50);
+    
+    storyData = storyData.concat(nextBatch);
+    
+    // Re-render
+    renderTableOfContents(storyData.length < window.fullStoryData.length);
+    renderStoryContent();
+    initializeScrollSpy();
+    
+    // Update load more button
+    const existingBtn = document.querySelector('.load-more-btn');
+    if (existingBtn) existingBtn.remove();
+    addLoadMoreButton();
+    
     updateStoryInfo();
+}
+
+async function loadRawComparison() {
+    const story = availableStories.find(s => s.fileName === currentStory);
+    if (!story?.hasRaw) return;
+    
+    try {
+        showLoading();
+        
+        // Load raw data
+        const rawResponse = await fetch(`raw/${story.rawFileName}`);
+        if (!rawResponse.ok) {
+            throw new Error('Không thể tải file raw');
+        }
+        
+        const rawYamlText = await rawResponse.text();
+        rawData = jsyaml.load(rawYamlText);
+        
+        if (!Array.isArray(rawData)) {
+            throw new Error('Invalid raw YAML format');
+        }
+        
+        isComparisonMode = true;
+        renderComparisonView();
+        updateStoryInfo();
+        
+        hideLoading();
+        
+    } catch (error) {
+        console.error('Error loading raw data:', error);
+        showError(`Lỗi tải raw data: ${error.message}`);
+        hideLoading();
+    }
+}
+
+function addCompareButton() {
+    // Remove existing button
+    const existingBtn = document.querySelector('.compare-btn');
+    if (existingBtn) existingBtn.remove();
+    
+    const story = availableStories.find(s => s.fileName === currentStory);
+    if (!story?.hasRaw) return;
+    
+    const compareBtn = document.createElement('button');
+    compareBtn.className = 'compare-btn btn-icon';
+    compareBtn.innerHTML = '<i class="fas fa-columns"></i>';
+    compareBtn.title = 'So sánh với raw';
+    compareBtn.addEventListener('click', () => {
+        if (isComparisonMode) {
+            exitComparisonMode();
+        } else {
+            loadRawComparison();
+        }
+    });
+    
+    // Add to controls
+    elements.refreshBtn.parentNode.insertBefore(compareBtn, elements.refreshBtn);
+}
+
+function exitComparisonMode() {
+    isComparisonMode = false;
+    rawData = [];
+    
+    renderTableOfContents();
+    renderStoryContent();
+    updateStoryInfo();
+    
+    // Update button
+    const compareBtn = document.querySelector('.compare-btn');
+    if (compareBtn) {
+        compareBtn.innerHTML = '<i class="fas fa-columns"></i>';
+        compareBtn.title = 'So sánh với raw';
+    }
+}
+
+function renderComparisonView() {
+    // Render comparison TOC
+    renderTableOfContents();
+    
+    // Render comparison content
+    const contentHtml = storyData.map((chapter, index) => {
+        const chapterId = generateChapterId(chapter.id);
+        const rawChapter = rawData[index];
+        
+        return `
+            <div class="chapter comparison-chapter" id="${chapterId}">
+                <h1 class="chapter-title">${escapeHtml(chapter.title)}</h1>
+                <div class="comparison-container">
+                    <div class="comparison-panel edited-panel">
+                        <h3><i class="fas fa-edit"></i> Đã chỉnh sửa</h3>
+                        <div class="chapter-content">${formatContent(chapter.content)}</div>
+                    </div>
+                    <div class="comparison-panel raw-panel">
+                        <h3><i class="fas fa-file-alt"></i> Raw ${rawChapter ? '' : '(Không có)'}</h3>
+                        <div class="chapter-content">${rawChapter ? formatContent(rawChapter.content) : '<p class="no-raw">Không có dữ liệu raw cho chương này</p>'}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    elements.storyContent.innerHTML = contentHtml;
+    
+    // Update compare button
+    const compareBtn = document.querySelector('.compare-btn');
+    if (compareBtn) {
+        compareBtn.innerHTML = '<i class="fas fa-times"></i>';
+        compareBtn.title = 'Thoát so sánh';
+    }
 }
 
 // ==================== THEME MANAGEMENT ====================
@@ -435,7 +635,7 @@ function showError(message) {
 }
 
 // ==================== CONTENT RENDERING ====================
-function renderTableOfContents() {
+function renderTableOfContents(hasMoreContent = false) {
     const tocHtml = storyData.map(chapter => {
         const chapterId = generateChapterId(chapter.id);
         const shortTitle = truncateTitle(chapter.title, 30);
@@ -449,7 +649,19 @@ function renderTableOfContents() {
         `;
     }).join('');
     
-    elements.tableOfContents.innerHTML = tocHtml;
+    let finalHtml = tocHtml;
+    
+    if (hasMoreContent) {
+        finalHtml += `
+            <li class="toc-item more-content">
+                <span class="toc-more">
+                    <i class="fas fa-ellipsis-h"></i> Còn nhiều chương khác...
+                </span>
+            </li>
+        `;
+    }
+    
+    elements.tableOfContents.innerHTML = finalHtml;
 }
 
 function renderStoryContent() {
@@ -670,4 +882,49 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+function clearStoryContent() {
+    currentStory = '';
+    storyData = [];
+    rawData = [];
+    isComparisonMode = false;
+    isLazyLoading = false;
+    
+    // Clear any existing data
+    if (window.fullStoryData) {
+        delete window.fullStoryData;
+    }
+    
+    // Remove compare button
+    const existingBtn = document.querySelector('.compare-btn');
+    if (existingBtn) existingBtn.remove();
+    
+    // Clear table of contents
+    elements.tableOfContents.innerHTML = '<li class="no-story">Vui lòng chọn một truyện để đọc</li>';
+    
+    // Show welcome message
+    elements.storyContent.innerHTML = `
+        <div class="welcome-message">
+            <i class="fas fa-book-reader"></i>
+            <h2>Chào mừng đến với Story Reader!</h2>
+            <p>Chọn một truyện từ dropdown menu ở trên để bắt đầu đọc.</p>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-folder-plus"></i>
+                    <p>Thả file YAML vào folder <code>stories/</code></p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-magic"></i>
+                    <p>Tự động detect và load truyện</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-columns"></i>
+                    <p>So sánh raw vs edited với folder <code>raw/</code></p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    updateStoryInfo();
 } 

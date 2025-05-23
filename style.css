@@ -305,18 +305,14 @@ body {
     min-width: 0;
     white-space: nowrap;
     overflow: hidden;
+    transition: all var(--transition-normal);
 }
 
 .sidebar-toggle::after {
     content: "Ẩn mục lục";
     font-size: var(--font-size-sm);
     opacity: 1;
-    transition: opacity var(--transition-fast);
-}
-
-.container.sidebar-collapsed .sidebar-toggle::after {
-    content: "Hiện mục lục";
-    opacity: 0;
+    transition: opacity var(--transition-normal);
 }
 
 .container.sidebar-collapsed .sidebar-toggle {
@@ -324,6 +320,11 @@ body {
     padding: 0 !important;
     opacity: 0;
     pointer-events: none;
+    transform: scale(0);
+}
+
+.container.sidebar-collapsed .sidebar-toggle::after {
+    opacity: 0;
 }
 
 .nav-content {
@@ -428,12 +429,52 @@ body {
 .sidebar-toggle-main {
     display: none;
     opacity: 0;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-normal);
+    transform: translateX(-10px);
+    background: var(--accent-primary) !important;
+    color: white !important;
+    border-color: var(--accent-primary) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-toggle-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.sidebar-toggle-main:hover::before {
+    left: 100%;
+}
+
+.sidebar-toggle-main:hover {
+    background: var(--accent-secondary) !important;
+    transform: translateX(0) scale(1.05);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
 }
 
 .container.sidebar-collapsed .sidebar-toggle-main {
     display: flex;
     opacity: 1;
+    transform: translateX(0);
+    animation: slideInFromLeft 0.3s ease-out;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .view-controls {
@@ -832,6 +873,26 @@ body {
         left: -100%;
     }
     
+    /* Mobile backup button always visible */
+    .sidebar-toggle-main {
+        display: flex !important;
+        opacity: 1 !important;
+        position: relative;
+    }
+    
+    .container.sidebar-collapsed .sidebar-toggle-main {
+        background: var(--accent-primary) !important;
+        animation: none;
+    }
+    
+    /* Mobile tooltip adjustment */
+    .sidebar-toggle-main[data-tooltip]::after {
+        left: 45px;
+        white-space: normal;
+        max-width: 150px;
+        text-align: center;
+    }
+    
     .header-content {
         padding: var(--spacing-md);
         flex-direction: column;
@@ -1211,26 +1272,151 @@ body {
     border-radius: var(--radius-sm);
     font-weight: 600;
     margin-left: var(--spacing-sm);
+    border: 1px solid;
 }
 
 .match-found {
     background-color: var(--accent-success);
     color: white;
+    border-color: var(--accent-success);
 }
 
 .match-missing {
     background-color: var(--accent-danger);
     color: white;
+    border-color: var(--accent-danger);
 }
 
-.raw-id {
-    font-size: var(--font-size-sm);
-    color: var(--text-secondary);
-    font-family: 'Courier New', monospace;
+.match-found[title*="Normalized"] {
+    background-color: var(--accent-warning);
+    border-color: var(--accent-warning);
+    color: var(--bg-primary);
+}
+
+.match-found[title*="Partial"] {
+    background-color: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+    color: white;
+}
+
+.no-raw code {
     background-color: var(--bg-primary);
-    padding: 0.25rem 0.5rem;
+    color: var(--accent-danger);
+    padding: 0.2em 0.4em;
     border-radius: var(--radius-sm);
-    border: 1px solid var(--border-secondary);
+    font-family: 'Courier New', monospace;
+    border: 1px solid var(--accent-danger);
+}
+
+/* ==================== RAW LOADING PROGRESS ==================== */
+.raw-loading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 17, 23, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.progress-content {
+    background-color: var(--bg-secondary);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-xl);
+}
+
+.progress-content i {
+    font-size: 3rem;
+    color: var(--accent-primary);
+    margin-bottom: var(--spacing-lg);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.progress-content h3 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-md);
-    font-weight: 500;
+}
+
+.progress-content p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: var(--bg-hover);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: var(--radius-md);
+    animation: progressWave 2s ease-in-out infinite;
+}
+
+@keyframes progressWave {
+    0% { width: 0%; transform: translateX(-100%); }
+    50% { width: 100%; transform: translateX(0%); }
+    100% { width: 100%; transform: translateX(100%); }
+}
+
+/* ==================== TOOLTIP FOR BACKUP BUTTON ==================== */
+.sidebar-toggle-main[data-tooltip] {
+    position: relative;
+}
+
+.sidebar-toggle-main[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+}
+
+.sidebar-toggle-main[data-tooltip]:hover::after {
+    opacity: 1;
+    animation: tooltipSlide 0.3s ease-out;
+}
+
+@keyframes tooltipSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
 } 

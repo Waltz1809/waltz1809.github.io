@@ -322,25 +322,85 @@ function loadMoreChapters() {
     updateStoryInfo();
 }
 
-async function loadRawComparison() {
+async function loadRawComparisonOptimized() {
     const story = availableStories.find(s => s.fileName === currentStory);
     if (!story?.hasRaw) return;
     
     try {
         showLoading();
         
-        // Load raw data
-        const rawResponse = await fetch(`raw/${story.rawFileName}`);
+        console.log(`🔄 Loading raw file with optimization: ${story.rawFileName}`);
+        
+        // Get unique IDs from current story to reduce search space
+        const currentStoryIds = new Set(storyData.map(item => item.id).filter(Boolean));
+        console.log(`🎯 Looking for ${currentStoryIds.size} specific IDs`);
+        
+        // Show progress for large files
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'raw-loading-progress';
+        progressContainer.innerHTML = `
+            <div class="progress-content">
+                <i class="fas fa-search"></i>
+                <h3>Đang tìm kiếm segments...</h3>
+                <p>Filtering ${currentStoryIds.size} IDs từ file raw lớn</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div id="progressText">Đang tải...</div>
+            </div>
+        `;
+        document.body.appendChild(progressContainer);
+        
+        // Load and parse raw data with streaming approach
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout for large files
+        
+        const rawResponse = await fetch(`raw/${story.rawFileName}`, {
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        
         if (!rawResponse.ok) {
-            throw new Error('Không thể tải file raw');
+            throw new Error(`HTTP error! status: ${rawResponse.status}`);
         }
+        
+        const fileSize = rawResponse.headers.get('content-length');
+        console.log(`📦 Raw file size: ${fileSize ? (fileSize / 1024 / 1024).toFixed(1) : 'Unknown'} MB`);
+        
+        // Update progress
+        const progressText = document.getElementById('progressText');
+        if (progressText) progressText.textContent = 'Đang tải raw data...';
         
         const rawYamlText = await rawResponse.text();
-        rawData = jsyaml.load(rawYamlText);
+        console.log(`📝 Raw YAML text length: ${(rawYamlText.length / 1024 / 1024).toFixed(1)} MB`);
         
-        if (!Array.isArray(rawData)) {
-            throw new Error('Invalid raw YAML format');
+        // Update progress
+        if (progressText) progressText.textContent = 'Đang parse YAML...';
+        
+        // Parse in chunks to avoid blocking UI
+        const fullRawData = await parseYamlInChunks(rawYamlText, progressText);
+        
+        if (!Array.isArray(fullRawData)) {
+            throw new Error('Invalid raw YAML format - not an array');
         }
+        
+        console.log(`📊 Full raw data: ${fullRawData.length} segments`);
+        
+        // Filter only needed segments
+        if (progressText) progressText.textContent = 'Đang filter segments...';
+        
+        rawData = fullRawData.filter(segment => currentStoryIds.has(segment.id));
+        
+        console.log(`✅ Filtered raw data: ${rawData.length}/${fullRawData.length} segments`);
+        
+        // Log matching statistics
+        const matchCount = rawData.length;
+        const totalNeeded = currentStoryIds.size;
+        console.log(`🎯 Match rate: ${matchCount}/${totalNeeded} (${(matchCount/totalNeeded*100).toFixed(1)}%)`);
+        
+        // Remove progress indicator
+        progressContainer.remove();
         
         isComparisonMode = true;
         renderComparisonView();
@@ -349,27 +409,123 @@ async function loadRawComparison() {
         hideLoading();
         
     } catch (error) {
-        console.error('Error loading raw data:', error);
-        showError(`Lỗi tải raw data: ${error.message}`);
+        console.error('❌ Error loading optimized raw data:', error);
+        
+        // Remove progress indicator if exists
+        const progressContainer = document.querySelector('.raw-loading-progress');
+        if (progressContainer) progressContainer.remove();
+        
+        if (error.name === 'AbortError') {
+            showError('⏱️ Timeout: File raw quá lớn, vui lòng thử lại sau hoặc liên hệ admin');
+        } else {
+            showError(`Lỗi tải raw data: ${error.message}`);
+        }
         hideLoading();
     }
+}
+
+async function parseYamlInChunks(yamlText, progressElement) {
+    return new Promise((resolve, reject) => {
+        // Use setTimeout to yield control and update UI
+        setTimeout(() => {
+            try {
+                if (progressElement) progressElement.textContent = 'Parsing YAML (có thể mất vài giây)...';
+                
+                const result = jsyaml.load(yamlText);
+                resolve(result);
+            } catch (error) {
+                reject(error);
+            }
+        }, 100);
+    });
+}
+
+function normalizeId(id) {
+    if (!id) return '';
+    
+    // Normalize common patterns
+    return id
+        .toLowerCase()
+        .replace(/[_\-\s]+/g, '_')  // Standardize separators
+        .replace(/^volume_?/i, 'vol_')  // volume -> vol
+        .replace(/chapter_?/i, 'ch_')   // chapter -> ch  
+        .replace(/segment_?/i, 'seg_')  // segment -> seg
+        .trim();
+}
+
+function findBestMatch(targetId, rawData) {
+    const normalizedTarget = normalizeId(targetId);
+    
+    // 1. Exact match
+    let match = rawData.find(item => item.id === targetId);
+    if (match) return { match, type: 'exact' };
+    
+    // 2. Normalized match
+    match = rawData.find(item => normalizeId(item.id) === normalizedTarget);
+    if (match) return { match, type: 'normalized' };
+    
+    // 3. Partial match (for volume/chapter patterns)
+    const targetParts = normalizedTarget.split('_');
+    if (targetParts.length >= 3) {
+        const partialPattern = targetParts.slice(0, 3).join('_'); // vol_x_ch_y
+        match = rawData.find(item => {
+            const itemNormalized = normalizeId(item.id);
+            return itemNormalized.startsWith(partialPattern);
+        });
+        if (match) return { match, type: 'partial' };
+    }
+    
+    return { match: null, type: 'none' };
 }
 
 function renderComparisonView() {
     // Create a map of raw data by ID for efficient lookup
     const rawDataMap = new Map();
+    const normalizedRawMap = new Map();
+    
     rawData.forEach(segment => {
         if (segment.id) {
             rawDataMap.set(segment.id, segment);
+            normalizedRawMap.set(normalizeId(segment.id), segment);
         }
     });
     
     console.log(`Raw data map created with ${rawDataMap.size} segments`);
     
+    let exactMatches = 0;
+    let normalizedMatches = 0;
+    let partialMatches = 0;
+    let noMatches = 0;
+    
     // Render comparison content
     const contentHtml = storyData.map((chapter, index) => {
         const chapterId = generateChapterId(chapter.id);
-        const rawChapter = rawDataMap.get(chapter.id); // Match by ID instead of index
+        
+        // Try different matching strategies
+        const matchResult = findBestMatch(chapter.id, rawData);
+        const rawChapter = matchResult.match;
+        const matchType = matchResult.type;
+        
+        // Count match types
+        switch(matchType) {
+            case 'exact': exactMatches++; break;
+            case 'normalized': normalizedMatches++; break;
+            case 'partial': partialMatches++; break;
+            default: noMatches++; break;
+        }
+        
+        let matchStatusHtml = '';
+        if (rawChapter) {
+            const matchTypeText = {
+                'exact': '✓ Exact',
+                'normalized': '≈ Normalized', 
+                'partial': '~ Partial'
+            }[matchType] || '?';
+            
+            matchStatusHtml = `<span class="match-status match-found">${matchTypeText}</span>`;
+        } else {
+            matchStatusHtml = `<span class="match-status match-missing">✗ Missing</span>`;
+        }
         
         return `
             <div class="chapter comparison-chapter" id="${chapterId}">
@@ -385,13 +541,13 @@ function renderComparisonView() {
                     <div class="comparison-panel raw-panel">
                         <h3>
                             <i class="fas fa-file-alt"></i> Raw 
-                            ${rawChapter ? `<span class="match-status match-found">✓ Found</span>` : `<span class="match-status match-missing">✗ Missing</span>`}
+                            ${matchStatusHtml}
                         </h3>
                         <div class="chapter-content">
                             ${rawChapter ? 
                                 `<div class="raw-id">Raw ID: ${escapeHtml(rawChapter.id)}</div>
                                  ${formatContent(rawChapter.content)}` : 
-                                '<p class="no-raw">Không tìm thấy segment raw với ID tương ứng</p>'
+                                `<p class="no-raw">Không tìm thấy segment raw với ID: <code>${escapeHtml(chapter.id)}</code></p>`
                             }
                         </div>
                     </div>
@@ -399,6 +555,14 @@ function renderComparisonView() {
             </div>
         `;
     }).join('');
+    
+    // Log match statistics
+    console.log(`📊 Match Statistics:
+        ✓ Exact: ${exactMatches}
+        ≈ Normalized: ${normalizedMatches}  
+        ~ Partial: ${partialMatches}
+        ✗ Missing: ${noMatches}
+        Total: ${storyData.length}`);
     
     elements.storyContent.innerHTML = contentHtml;
 }
@@ -469,9 +633,16 @@ function initializeEventListeners() {
         }
     });
     
-    // Sidebar toggle
-    elements.toggleSidebar.addEventListener('click', toggleSidebar);
-    elements.toggleSidebarMain.addEventListener('click', toggleSidebar);
+    // Sidebar toggle - cả hai nút
+    elements.toggleSidebar.addEventListener('click', (e) => {
+        console.log('🔘 Main sidebar toggle clicked');
+        toggleSidebar();
+    });
+    
+    elements.toggleSidebarMain.addEventListener('click', (e) => {
+        console.log('🔘 Backup sidebar toggle clicked');
+        toggleSidebar();
+    });
     
     // View controls
     elements.singleViewBtn.addEventListener('click', switchToSingleView);
@@ -522,6 +693,7 @@ function initializeEventListeners() {
         // Ctrl+B to toggle sidebar
         if (e.ctrlKey && e.key === 'b') {
             e.preventDefault();
+            console.log('⌨️ Keyboard shortcut: Ctrl+B sidebar toggle');
             toggleSidebar();
         }
         
@@ -949,6 +1121,7 @@ function initializeSidebar() {
     const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
     if (sidebarCollapsed) {
         elements.container.classList.add('sidebar-collapsed');
+        updateSidebarToggleState(true);
     }
 }
 
@@ -956,9 +1129,42 @@ function toggleSidebar() {
     const isCollapsed = elements.container.classList.toggle('sidebar-collapsed');
     localStorage.setItem('sidebarCollapsed', isCollapsed);
     
-    // Update icon
-    const icon = elements.toggleSidebar.querySelector('i');
-    icon.className = isCollapsed ? 'fas fa-chevron-right' : 'fas fa-bars';
+    updateSidebarToggleState(isCollapsed);
+    
+    // Add some visual feedback
+    if (isCollapsed) {
+        console.log('📱 Sidebar collapsed - nút backup xuất hiện');
+    } else {
+        console.log('📱 Sidebar expanded - nút backup ẩn đi');
+    }
+}
+
+function updateSidebarToggleState(isCollapsed) {
+    // Update main sidebar toggle button
+    const mainIcon = elements.toggleSidebar.querySelector('i');
+    const mainButton = elements.toggleSidebar;
+    
+    // Update backup sidebar toggle button  
+    const backupIcon = elements.toggleSidebarMain.querySelector('i');
+    const backupButton = elements.toggleSidebarMain;
+    
+    if (isCollapsed) {
+        // Sidebar ẩn - cập nhật nút backup
+        mainIcon.className = 'fas fa-chevron-right';
+        mainButton.title = 'Hiện mục lục';
+        
+        backupIcon.className = 'fas fa-chevron-right';
+        backupButton.title = 'Hiện mục lục';
+        backupButton.setAttribute('data-tooltip', 'Click để hiện sidebar');
+    } else {
+        // Sidebar hiện - cập nhật nút chính
+        mainIcon.className = 'fas fa-bars';
+        mainButton.title = 'Ẩn mục lục';
+        
+        backupIcon.className = 'fas fa-chevron-right';
+        backupButton.title = 'Hiện mục lục';
+        backupButton.removeAttribute('data-tooltip');
+    }
 }
 
 // ==================== VIEW MANAGEMENT ====================
@@ -1003,7 +1209,8 @@ function switchToSplitView() {
     elements.singleViewBtn.classList.remove('active');
     elements.splitViewBtn.classList.add('active');
     
-    loadRawComparison();
+    // Use optimized loading
+    loadRawComparisonOptimized();
     
-    console.log('Switching to split view');
+    console.log('Switching to split view with optimization');
 }

@@ -1,0 +1,29 @@
+{
+  "stories": [
+    {
+      "id": "test_genben_vol3",
+      "title": "Test Genben Vol3",
+      "fileName": "test_genben_vol3_edit.yaml",
+      "size": "1678KB",
+      "chapters": 277,
+      "description": "277 chương • 1678KB"
+    }
+  ],
+  "categories": {
+    "Noucome": [
+      {
+        "id": "test_genben_vol3",
+        "title": "Test Genben Vol3",
+        "fileName": "test_genben_vol3_edit.yaml",
+        "size": "1678KB",
+        "chapters": 277,
+        "description": "277 chương • 1678KB"
+      }
+    ]
+  },
+  "total_count": 1,
+  "last_updated": "2025-05-23 15:38:41",
+  "build_date": "2025-05-23T15:38:41.955332",
+  "version": "1.0",
+  "generator": "build-stories.py"
+}

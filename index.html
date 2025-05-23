@@ -39,7 +39,12 @@
         </header>
 
         <!-- Navigation -->
-        <nav class="navigation">
+        <nav class="navigation" id="navigation">
+            <div class="nav-header">
+                <button id="toggleSidebar" class="btn-icon sidebar-toggle" title="Ẩn/Hiện mục lục">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
             <div class="nav-content">
                 <div class="story-info">
                     <h3 id="currentStoryTitle">Chưa chọn truyện</h3>
@@ -54,6 +59,18 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            <div class="content-header">
+                <div class="view-controls">
+                    <button id="singleViewBtn" class="view-btn active" title="Xem đơn">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Đã chỉnh sửa</span>
+                    </button>
+                    <button id="splitViewBtn" class="view-btn" title="So sánh split" style="display: none;">
+                        <i class="fas fa-columns"></i>
+                        <span>So sánh</span>
+                    </button>
+                </div>
+            </div>
             <div class="content-wrapper">
                 <div id="storyContent" class="story-content">
                     <div class="welcome-message">

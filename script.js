@@ -21,7 +21,12 @@ const elements = {
     refreshBtn: document.getElementById('refreshBtn'),
     fontSizeModal: document.getElementById('fontSizeModal'),
     closeFontModal: document.getElementById('closeFontModal'),
-    fontButtons: document.querySelectorAll('.font-btn')
+    fontButtons: document.querySelectorAll('.font-btn'),
+    navigation: document.getElementById('navigation'),
+    toggleSidebar: document.getElementById('toggleSidebar'),
+    singleViewBtn: document.getElementById('singleViewBtn'),
+    splitViewBtn: document.getElementById('splitViewBtn'),
+    container: document.querySelector('.container')
 };
 
 // ==================== INITIALIZATION ====================
@@ -29,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
     initializeFontSize();
     initializeEventListeners();
+    initializeSidebar();
     loadAvailableStories();
     
     // Load last selected story from localStorage
@@ -192,7 +198,7 @@ async function loadSelectedStory(fileName, forceReload = false) {
         }
         
         updateStoryInfo();
-        addCompareButton();
+        updateViewControls();
         
         hideLoading();
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -348,68 +354,6 @@ async function loadRawComparison() {
     }
 }
 
-function addCompareButton() {
-    // Remove existing button first
-    const existingBtn = document.querySelector('.compare-btn');
-    if (existingBtn) {
-        existingBtn.remove();
-        console.log('Removed existing compare button');
-    }
-    
-    // Find current story data
-    const story = availableStories.find(s => s.fileName === currentStory);
-    console.log('Current story:', story);
-    console.log('Has raw:', story?.hasRaw);
-    
-    if (!story?.hasRaw) {
-        console.log('No raw file available for this story');
-        return;
-    }
-    
-    console.log('Adding compare button...');
-    
-    // Create compare button
-    const compareBtn = document.createElement('button');
-    compareBtn.className = 'compare-btn btn-icon';
-    compareBtn.innerHTML = '<i class="fas fa-columns"></i>';
-    compareBtn.title = 'So sánh với raw';
-    compareBtn.style.display = 'flex'; // Ensure it's visible
-    
-    compareBtn.addEventListener('click', () => {
-        console.log('Compare button clicked, isComparisonMode:', isComparisonMode);
-        if (isComparisonMode) {
-            exitComparisonMode();
-        } else {
-            loadRawComparison();
-        }
-    });
-    
-    // Insert before refresh button
-    const refreshBtn = document.getElementById('refreshBtn');
-    if (refreshBtn && refreshBtn.parentNode) {
-        refreshBtn.parentNode.insertBefore(compareBtn, refreshBtn);
-        console.log('Compare button added to DOM');
-    } else {
-        console.error('Could not find refresh button or its parent');
-    }
-}
-
-function exitComparisonMode() {
-    isComparisonMode = false;
-    rawData = [];
-    
-    renderTableOfContents();
-    renderStoryContent();
-    updateStoryInfo();
-    
-    // Update button
-    const compareBtn = document.querySelector('.compare-btn');
-    if (compareBtn) {
-        compareBtn.innerHTML = '<i class="fas fa-columns"></i>';
-        compareBtn.title = 'So sánh với raw';
-    }
-}
-
 function renderComparisonView() {
     // Render comparison TOC
     renderTableOfContents();
@@ -437,13 +381,6 @@ function renderComparisonView() {
     }).join('');
     
     elements.storyContent.innerHTML = contentHtml;
-    
-    // Update compare button
-    const compareBtn = document.querySelector('.compare-btn');
-    if (compareBtn) {
-        compareBtn.innerHTML = '<i class="fas fa-times"></i>';
-        compareBtn.title = 'Thoát so sánh';
-    }
 }
 
 // ==================== THEME MANAGEMENT ====================
@@ -512,6 +449,13 @@ function initializeEventListeners() {
         }
     });
     
+    // Sidebar toggle
+    elements.toggleSidebar.addEventListener('click', toggleSidebar);
+    
+    // View controls
+    elements.singleViewBtn.addEventListener('click', switchToSingleView);
+    elements.splitViewBtn.addEventListener('click', switchToSplitView);
+    
     // Refresh stories
     elements.refreshBtn.addEventListener('click', () => {
         elements.refreshBtn.classList.add('loading');
@@ -554,6 +498,12 @@ function initializeEventListeners() {
             toggleTheme();
         }
         
+        // Ctrl+B to toggle sidebar
+        if (e.ctrlKey && e.key === 'b') {
+            e.preventDefault();
+            toggleSidebar();
+        }
+        
         // Ctrl+R to refresh stories
         if (e.ctrlKey && e.key === 'r') {
             e.preventDefault();
@@ -593,6 +543,17 @@ function initializeEventListeners() {
                 elements.storySelect.selectedIndex = currentIndex + 1;
                 elements.storySelect.dispatchEvent(new Event('change'));
             }
+        }
+        
+        // Ctrl+1/2 for view switching
+        if (e.ctrlKey && e.key === '1') {
+            e.preventDefault();
+            switchToSingleView();
+        }
+        
+        if (e.ctrlKey && e.key === '2') {
+            e.preventDefault();
+            switchToSplitView();
         }
     });
     
@@ -925,9 +886,10 @@ function clearStoryContent() {
         delete window.fullStoryData;
     }
     
-    // Remove compare button
-    const existingBtn = document.querySelector('.compare-btn');
-    if (existingBtn) existingBtn.remove();
+    // Reset view controls
+    elements.singleViewBtn.classList.add('active');
+    elements.splitViewBtn.classList.remove('active');
+    elements.splitViewBtn.style.display = 'none';
     
     // Clear table of contents
     elements.tableOfContents.innerHTML = '<li class="no-story">Vui lòng chọn một truyện để đọc</li>';
@@ -956,4 +918,68 @@ function clearStoryContent() {
     `;
     
     updateStoryInfo();
+}
+
+// ==================== SIDEBAR MANAGEMENT ====================
+function initializeSidebar() {
+    const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+    if (sidebarCollapsed) {
+        elements.container.classList.add('sidebar-collapsed');
+    }
+}
+
+function toggleSidebar() {
+    const isCollapsed = elements.container.classList.toggle('sidebar-collapsed');
+    localStorage.setItem('sidebarCollapsed', isCollapsed);
+    
+    // Update icon
+    const icon = elements.toggleSidebar.querySelector('i');
+    icon.className = isCollapsed ? 'fas fa-chevron-right' : 'fas fa-bars';
+}
+
+// ==================== VIEW MANAGEMENT ====================
+function updateViewControls() {
+    const story = availableStories.find(s => s.fileName === currentStory);
+    const hasRaw = story?.hasRaw || false;
+    
+    console.log('Updating view controls, hasRaw:', hasRaw);
+    
+    if (hasRaw) {
+        elements.splitViewBtn.style.display = 'flex';
+    } else {
+        elements.splitViewBtn.style.display = 'none';
+        // Switch back to single view if no raw
+        if (isComparisonMode) {
+            switchToSingleView();
+        }
+    }
+}
+
+function switchToSingleView() {
+    isComparisonMode = false;
+    rawData = [];
+    
+    elements.singleViewBtn.classList.add('active');
+    elements.splitViewBtn.classList.remove('active');
+    
+    renderTableOfContents();
+    renderStoryContent();
+    updateStoryInfo();
+    
+    console.log('Switched to single view');
+}
+
+function switchToSplitView() {
+    const story = availableStories.find(s => s.fileName === currentStory);
+    if (!story?.hasRaw) {
+        console.log('No raw file available for split view');
+        return;
+    }
+    
+    elements.singleViewBtn.classList.remove('active');
+    elements.splitViewBtn.classList.add('active');
+    
+    loadRawComparison();
+    
+    console.log('Switching to split view');
 }

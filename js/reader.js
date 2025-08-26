@@ -20,11 +20,23 @@ class StoryReader {
 
     async init() {
         console.log('🚀 Initializing Story Reader...');
-        this.loadSettings();
-        this.bindEvents();
-        this.handleRouting();
-        await this.loadStories();
-        console.log('✅ Story Reader initialized successfully');
+        try {
+            this.loadSettings();
+            this.bindEvents();
+            this.handleRouting();
+            
+            // Add timeout for loading stories
+            const loadingPromise = this.loadStories();
+            const timeoutPromise = new Promise((_, reject) => 
+                setTimeout(() => reject(new Error('Loading timeout')), 10000)
+            );
+            
+            await Promise.race([loadingPromise, timeoutPromise]);
+            console.log('✅ Story Reader initialized successfully');
+        } catch (error) {
+            console.error('❌ Story Reader initialization failed:', error);
+            this.showError(`Lỗi khởi tạo: ${error.message}`);
+        }
     }
 
     // ===== SETTINGS MANAGEMENT =====
@@ -199,10 +211,15 @@ class StoryReader {
             console.log('Stories config loaded:', config);
             this.stories = config.stories;
             
-            // Update chapter count for each story
+            // Use chapter count from stories.json, only count if needed
             for (const story of this.stories) {
-                console.log(`Counting chapters for story: ${story.id}`);
-                story.chapters = await this.getChapterCount(story.id);
+                console.log(`Checking chapters for story: ${story.id}`);
+                if (!story.chapters || story.chapters === 0) {
+                    console.log(`Need to count chapters for: ${story.id}`);
+                    story.chapters = await this.getChapterCount(story.id);
+                } else {
+                    console.log(`Using existing chapter count for ${story.id}: ${story.chapters}`);
+                }
                 console.log(`Story ${story.id} has ${story.chapters} chapters`);
             }
             
@@ -244,8 +261,8 @@ class StoryReader {
                         title: 'Marriage Novel - Truyện Hôn Nhân',
                         description: 'Một câu chuyện tình yêu đầy cảm động...',
                         author: 'Tác giả ẩn danh',
-                        status: 'Đang cập nhật',
-                        chapters: 624, // Known from file structure
+                        status: 'Đang cập nhật - 494 chương',
+                        chapters: 494, // Known from file structure
                         tags: ['Romance', 'Drama', 'Modern']
                     }
                 ];
@@ -285,22 +302,28 @@ class StoryReader {
                 return 0;
             }
             
-            // Count chapters properly by checking actual files
+            // Fast counting by using known values
             let count = 0;
-            for (let i = 1; i <= 999; i++) {
-                const chapterNum = String(i).padStart(3, '0');
-                try {
-                    const response = await fetch(`data/${storyId}/chapter_${chapterNum}.json`);
-                    if (response.ok) {
-                        count = i;
-                        if (i % 50 === 0) console.log(`Found chapter ${i} for ${storyId}`);
-                    } else {
-                        console.log(`Chapter ${i} not found for ${storyId}, stopping count at ${count}`);
+            if (storyId === 'marriage') {
+                count = 494; // Known from your file structure
+                console.log(`Using known chapter count for ${storyId}: ${count}`);
+            } else {
+                // For new stories, count properly but with limits
+                console.log(`Counting chapters for unknown story: ${storyId}...`);
+                for (let i = 1; i <= 100; i++) { // Limit to 100 for performance
+                    const chapterNum = String(i).padStart(3, '0');
+                    try {
+                        const response = await fetch(`data/${storyId}/chapter_${chapterNum}.json`);
+                        if (response.ok) {
+                            count = i;
+                        } else {
+                            console.log(`Chapter ${i} not found for ${storyId}, stopping count at ${count}`);
+                            break;
+                        }
+                    } catch (fetchError) {
+                        console.log(`Error fetching chapter ${i}:`, fetchError);
                         break;
                     }
-                } catch (fetchError) {
-                    console.log(`Error fetching chapter ${i}:`, fetchError);
-                    break;
                 }
             }
             

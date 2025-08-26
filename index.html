@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Reader - Dark Mode</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <!-- Story Selection Screen -->
+    <div id="story-selection" class="screen active">
+        <div class="container">
+            <h1 class="app-title">📚 Story Reader</h1>
+            <div class="story-grid" id="story-list">
+                <!-- Stories will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Chapter Selection Screen -->
+    <div id="chapter-selection" class="screen">
+        <div class="container">
+            <div class="header">
+                <button class="btn-back" id="back-to-stories">← Về danh sách truyện</button>
+                <h2 id="selected-story-title">Story Title</h2>
+            </div>
+            <div class="chapter-grid" id="chapter-list">
+                <!-- Chapters will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Reader Screen -->
+    <div id="reader" class="screen">
+        <div class="reader-header">
+            <button class="btn-back" id="back-to-chapters">← Danh sách chương</button>
+            <div class="reader-info">
+                <span id="chapter-title">Chapter Title</span>
+                <span class="page-indicator" id="page-indicator">1/10</span>
+            </div>
+            <button class="btn-settings" id="settings-toggle">⚙️</button>
+        </div>
+
+        <div class="reader-content">
+            <div class="content-wrapper" id="content-wrapper">
+                <div class="chapter-content" id="chapter-content">
+                    <!-- Chapter content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="reader-controls">
+            <button class="nav-btn" id="prev-page" disabled>← Trước</button>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <button class="nav-btn" id="next-page">Tiếp →</button>
+        </div>
+
+        <!-- Touch zones for mobile navigation -->
+        <div class="touch-zone touch-left" id="touch-left"></div>
+        <div class="touch-zone touch-right" id="touch-right"></div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings-panel">
+        <div class="settings-content">
+            <h3>Cài đặt đọc truyện</h3>
+            
+            <div class="setting-group">
+                <label>Cỡ chữ:</label>
+                <div class="font-size-controls">
+                    <button class="btn-font-size" data-size="14">Nhỏ</button>
+                    <button class="btn-font-size active" data-size="16">Vừa</button>
+                    <button class="btn-font-size" data-size="18">Lớn</button>
+                    <button class="btn-font-size" data-size="20">Rất lớn</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>Chế độ màu:</label>
+                <div class="theme-controls">
+                    <button class="btn-theme active" data-theme="dark">🌙 Tối</button>
+                    <button class="btn-theme" data-theme="light">☀️ Sáng</button>
+                    <button class="btn-theme" data-theme="sepia">📖 Sepia</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>Chiều cao trang:</label>
+                <div class="page-height-controls">
+                    <button class="btn-page-height" data-height="80">Ngắn</button>
+                    <button class="btn-page-height active" data-height="90">Vừa</button>
+                    <button class="btn-page-height" data-height="95">Dài</button>
+                </div>
+            </div>
+
+            <button class="btn-close-settings" id="close-settings">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Đang tải...</p>
+    </div>
+
+    <script src="js/reader.js"></script>
+</body>
+</html>

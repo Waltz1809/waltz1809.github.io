@@ -282,26 +282,43 @@ class StoryReader {
     }
 
     async loadChapter(chapterNumber) {
+        console.log(`=== Loading Chapter ${chapterNumber} ===`);
+        console.log('Current story:', this.currentStory);
+        
         this.showLoading(true);
         try {
             const chapterNum = String(chapterNumber).padStart(3, '0');
-            const response = await fetch(`data/${this.currentStory}/chapter_${chapterNum}.json`);
+            const url = `data/${this.currentStory}/chapter_${chapterNum}.json`;
+            console.log('Fetching URL:', url);
+            
+            const response = await fetch(url);
+            console.log('Fetch response:', response.status, response.ok);
             
             if (!response.ok) {
-                throw new Error(`Chapter ${chapterNumber} not found`);
+                throw new Error(`Chapter ${chapterNumber} not found (HTTP ${response.status})`);
             }
             
             this.chapterData = await response.json();
+            console.log('Chapter data loaded:', this.chapterData);
+            console.log('Segments:', this.chapterData.segments?.length);
+            
             this.currentChapter = chapterNumber;
             this.currentPage = 1;
             
+            console.log('Calling calculatePagination...');
             this.calculatePagination();
+            
+            console.log('Calling renderChapter...');
             this.renderChapter();
+            
+            console.log('Updating URL...');
             this.updateUrl();
+            
+            console.log('=== Chapter Loading Completed ===');
             
         } catch (error) {
             console.error('Error loading chapter:', error);
-            this.showError(`Không thể tải chương ${chapterNumber}`);
+            this.showError(`Không thể tải chương ${chapterNumber}: ${error.message}`);
         } finally {
             this.showLoading(false);
         }
@@ -323,11 +340,21 @@ class StoryReader {
 
     // ===== PAGINATION =====
     calculatePagination() {
-        if (!this.chapterData) return;
+        if (!this.chapterData) {
+            console.error('No chapterData available for pagination');
+            return;
+        }
         
-        const content = this.chapterData.segments.map(segment => 
-            segment.content.split('\n\n').map(p => `<p>${p.trim()}</p>`).join('')
-        ).join('');
+        console.log('Calculating pagination for:', this.chapterData);
+        console.log('Segments count:', this.chapterData.segments?.length);
+        
+        const content = this.chapterData.segments.map(segment => {
+            console.log('Processing segment:', segment.id, 'content length:', segment.content?.length);
+            return segment.content.split('\n\n').map(p => `<p>${p.trim()}</p>`).join('');
+        }).join('');
+        
+        console.log('Full content created, length:', content.length);
+        console.log('Content preview:', content.substring(0, 200));
         
         // Create temporary element to measure content
         const temp = document.createElement('div');
@@ -347,10 +374,17 @@ class StoryReader {
         const contentHeight = temp.scrollHeight;
         this.totalPages = Math.max(1, Math.ceil(contentHeight / pageHeight));
         
+        console.log('Pagination calculated:', {
+            pageHeight,
+            contentHeight,
+            totalPages: this.totalPages
+        });
+        
         document.body.removeChild(temp);
         
         // Store content for pagination
         this.fullContent = content;
+        console.log('fullContent stored, length:', this.fullContent.length);
     }
 
     // ===== RENDERING =====
@@ -401,48 +435,60 @@ class StoryReader {
     }
 
     renderChapter() {
-        if (!this.chapterData) return;
+        console.log('renderChapter called');
+        
+        if (!this.chapterData) {
+            console.error('No chapterData in renderChapter');
+            return;
+        }
+        
+        console.log('Rendering chapter:', this.chapterData.chapter_title);
+        console.log('fullContent available:', !!this.fullContent, 'length:', this.fullContent?.length);
         
         const titleElement = document.getElementById('chapter-title');
         const contentElement = document.getElementById('chapter-content');
         const pageIndicator = document.getElementById('page-indicator');
         const progressFill = document.getElementById('progress-fill');
         
+        if (!titleElement || !contentElement) {
+            console.error('Required DOM elements not found:', {
+                titleElement: !!titleElement,
+                contentElement: !!contentElement
+            });
+            return;
+        }
+        
         titleElement.textContent = this.chapterData.chapter_title;
+        console.log('Title set:', this.chapterData.chapter_title);
         
         // Calculate content for current page
         const pageHeight = window.innerHeight * (this.settings.pageHeight / 100);
         const startPosition = (this.currentPage - 1) * pageHeight;
         
-        // Create a scrollable div to find the right content
-        const temp = document.createElement('div');
-        temp.style.cssText = `
-            position: absolute;
-            visibility: hidden;
-            width: 700px;
-            height: ${pageHeight}px;
-            overflow: hidden;
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: ${this.settings.fontSize}px;
-            line-height: 1.8;
-        `;
-        temp.innerHTML = this.fullContent;
-        temp.scrollTop = startPosition;
-        document.body.appendChild(temp);
+        console.log('Rendering page:', this.currentPage, 'startPosition:', startPosition);
         
         // Get visible content
         contentElement.innerHTML = this.fullContent;
         contentElement.style.transform = `translateY(-${startPosition}px)`;
         
-        document.body.removeChild(temp);
+        console.log('Content set in DOM, innerHTML length:', contentElement.innerHTML.length);
         
         // Update UI
-        pageIndicator.textContent = `${this.currentPage}/${this.totalPages}`;
-        progressFill.style.width = `${(this.currentPage / this.totalPages) * 100}%`;
+        if (pageIndicator) {
+            pageIndicator.textContent = `${this.currentPage}/${this.totalPages}`;
+        }
+        if (progressFill) {
+            progressFill.style.width = `${(this.currentPage / this.totalPages) * 100}%`;
+        }
         
         // Update navigation buttons
-        document.getElementById('prev-page').disabled = this.currentPage === 1;
-        document.getElementById('next-page').disabled = this.currentPage === this.totalPages && this.isLastChapter();
+        const prevBtn = document.getElementById('prev-page');
+        const nextBtn = document.getElementById('next-page');
+        
+        if (prevBtn) prevBtn.disabled = this.currentPage === 1;
+        if (nextBtn) nextBtn.disabled = this.currentPage === this.totalPages && this.isLastChapter();
+        
+        console.log('Chapter rendering completed');
     }
 
     // ===== NAVIGATION =====

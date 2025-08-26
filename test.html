@@ -105,7 +105,24 @@
                         
                         if (response.ok) {
                             const data = await response.json();
-                            result.innerHTML = `<strong>SUCCESS with ${path}:</strong><br>Chapter: ${data.chapter_title}<br>Segments: ${data.total_segments}`;
+                            console.log('Chapter data loaded:', data);
+                            
+                            // Extract content from segments
+                            let fullContent = '';
+                            if (data.segments && data.segments.length > 0) {
+                                fullContent = data.segments.map(segment => segment.content).join('\n\n');
+                            }
+                            
+                            result.innerHTML = `
+                                <strong>SUCCESS with ${path}:</strong><br>
+                                Chapter: ${data.chapter_title}<br>
+                                Segments: ${data.total_segments}<br>
+                                <strong>Content Preview:</strong><br>
+                                <div style="background: #21262d; padding: 10px; border-radius: 6px; margin-top: 10px; max-height: 200px; overflow-y: auto; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6;">
+                                    ${fullContent.substring(0, 500)}${fullContent.length > 500 ? '...' : ''}
+                                </div>
+                                <br><strong>Total Content Length:</strong> ${fullContent.length} characters
+                            `;
                             return;
                         }
                     } catch (e) {

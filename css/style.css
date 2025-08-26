@@ -294,6 +294,8 @@ body.sepia-theme {
     height: 100%;
     padding: 2rem;
     overflow: hidden;
+    display: flex;
+    align-items: flex-start;
 }
 
 .chapter-content {
@@ -304,8 +306,8 @@ body.sepia-theme {
     max-width: 700px;
     margin: 0 auto;
     text-align: justify;
-    height: var(--page-width);
-    overflow: hidden;
+    min-height: 70vh;
+    overflow: visible;
 }
 
 .chapter-content p {
@@ -368,9 +370,10 @@ body.sepia-theme {
     position: absolute;
     top: 60px;
     bottom: 80px;
-    width: 30%;
+    width: 35%;
     z-index: 10;
     cursor: pointer;
+    transition: background-color 0.1s ease;
 }
 
 .touch-left {
@@ -382,7 +385,18 @@ body.sepia-theme {
 }
 
 .touch-zone:active {
-    background: rgba(88, 166, 255, 0.1);
+    background: rgba(88, 166, 255, 0.15);
+}
+
+/* Visual feedback for touch areas on mobile */
+@media (max-width: 768px) {
+    .touch-zone {
+        width: 40%;
+    }
+    
+    .touch-zone:active {
+        background: rgba(88, 166, 255, 0.2);
+    }
 }
 
 /* ===== SETTINGS PANEL ===== */
@@ -427,7 +441,7 @@ body.sepia-theme {
 
 .font-size-controls,
 .theme-controls,
-.page-height-controls {
+.words-per-page-controls {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     gap: 0.5rem;
@@ -435,7 +449,7 @@ body.sepia-theme {
 
 .btn-font-size,
 .btn-theme,
-.btn-page-height {
+.btn-words-per-page {
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
     color: var(--text-primary);
@@ -448,14 +462,14 @@ body.sepia-theme {
 
 .btn-font-size:hover,
 .btn-theme:hover,
-.btn-page-height:hover {
+.btn-words-per-page:hover {
     background: var(--accent);
     border-color: var(--accent);
 }
 
 .btn-font-size.active,
 .btn-theme.active,
-.btn-page-height.active {
+.btn-words-per-page.active {
     background: var(--accent);
     border-color: var(--accent);
 }

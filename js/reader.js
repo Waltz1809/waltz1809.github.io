@@ -6,12 +6,13 @@ class StoryReader {
         this.currentPage = 1;
         this.totalPages = 1;
         this.chapterData = null;
+        this.pageContent = []; // Store content split into pages
         this.stories = [];
         this.chapters = [];
         this.settings = {
             fontSize: 16,
             theme: 'dark',
-            pageHeight: 90
+            wordsPerPage: 800 // Approximately words per page
         };
         
         this.init();
@@ -40,7 +41,6 @@ class StoryReader {
     applySettings() {
         document.body.className = `${this.settings.theme}-theme`;
         document.documentElement.style.setProperty('--reading-font-size', `${this.settings.fontSize}px`);
-        document.documentElement.style.setProperty('--page-width', `${this.settings.pageHeight}vh`);
         
         // Update active buttons
         document.querySelectorAll('.btn-font-size').forEach(btn => {
@@ -49,8 +49,8 @@ class StoryReader {
         document.querySelectorAll('.btn-theme').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.theme === this.settings.theme);
         });
-        document.querySelectorAll('.btn-page-height').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.height == this.settings.pageHeight);
+        document.querySelectorAll('.btn-words-per-page').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.words == this.settings.wordsPerPage);
         });
     }
 
@@ -79,8 +79,8 @@ class StoryReader {
             btn.addEventListener('click', () => this.changeTheme(btn.dataset.theme));
         });
         
-        document.querySelectorAll('.btn-page-height').forEach(btn => {
-            btn.addEventListener('click', () => this.changePageHeight(parseInt(btn.dataset.height)));
+        document.querySelectorAll('.btn-words-per-page').forEach(btn => {
+            btn.addEventListener('click', () => this.changeWordsPerPage(parseInt(btn.dataset.words)));
         });
 
         // Keyboard navigation
@@ -107,24 +107,31 @@ class StoryReader {
 
         // Touch events for mobile
         let touchStartX = 0;
+        let touchStartY = 0;
+        
         document.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
-        });
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
 
         document.addEventListener('touchend', (e) => {
             if (!this.isReaderActive()) return;
             
             const touchEndX = e.changedTouches[0].clientX;
-            const diff = touchStartX - touchEndX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
             
-            if (Math.abs(diff) > 50) { // Minimum swipe distance
-                if (diff > 0) {
+            // Only process horizontal swipes (ignore vertical scrolling)
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                e.preventDefault();
+                if (diffX > 0) {
                     this.nextPage(); // Swipe left = next page
                 } else {
                     this.previousPage(); // Swipe right = previous page
                 }
             }
-        });
+        }, { passive: false });
     }
 
     // ===== ROUTING =====
@@ -348,43 +355,43 @@ class StoryReader {
         console.log('Calculating pagination for:', this.chapterData);
         console.log('Segments count:', this.chapterData.segments?.length);
         
-        const content = this.chapterData.segments.map(segment => {
-            console.log('Processing segment:', segment.id, 'content length:', segment.content?.length);
-            return segment.content.split('\n\n').map(p => `<p>${p.trim()}</p>`).join('');
-        }).join('');
+        // Extract all text content
+        const fullText = this.chapterData.segments.map(segment => segment.content).join('\n\n');
         
-        console.log('Full content created, length:', content.length);
-        console.log('Content preview:', content.substring(0, 200));
+        // Split content into paragraphs
+        const paragraphs = fullText.split('\n\n').filter(p => p.trim().length > 0);
         
-        // Create temporary element to measure content
-        const temp = document.createElement('div');
-        temp.style.cssText = `
-            position: absolute;
-            visibility: hidden;
-            width: 700px;
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: ${this.settings.fontSize}px;
-            line-height: 1.8;
-            padding: 2rem;
-        `;
-        temp.innerHTML = content;
-        document.body.appendChild(temp);
+        // Split into pages based on word count
+        this.pageContent = [];
+        let currentPage = [];
+        let currentWordCount = 0;
         
-        const pageHeight = window.innerHeight * (this.settings.pageHeight / 100);
-        const contentHeight = temp.scrollHeight;
-        this.totalPages = Math.max(1, Math.ceil(contentHeight / pageHeight));
+        for (const paragraph of paragraphs) {
+            const wordCount = paragraph.trim().split(/\s+/).length;
+            
+            if (currentWordCount + wordCount > this.settings.wordsPerPage && currentPage.length > 0) {
+                // Start new page
+                this.pageContent.push(currentPage.join('\n\n'));
+                currentPage = [paragraph];
+                currentWordCount = wordCount;
+            } else {
+                currentPage.push(paragraph);
+                currentWordCount += wordCount;
+            }
+        }
+        
+        // Add last page if it has content
+        if (currentPage.length > 0) {
+            this.pageContent.push(currentPage.join('\n\n'));
+        }
+        
+        this.totalPages = Math.max(1, this.pageContent.length);
         
         console.log('Pagination calculated:', {
-            pageHeight,
-            contentHeight,
-            totalPages: this.totalPages
+            totalPages: this.totalPages,
+            wordsPerPage: this.settings.wordsPerPage,
+            pagesGenerated: this.pageContent.length
         });
-        
-        document.body.removeChild(temp);
-        
-        // Store content for pagination
-        this.fullContent = content;
-        console.log('fullContent stored, length:', this.fullContent.length);
     }
 
     // ===== RENDERING =====
@@ -403,7 +410,7 @@ class StoryReader {
         container.querySelectorAll('.story-card').forEach(card => {
             card.addEventListener('click', () => {
                 console.log('Story card clicked:', card.dataset.story);
-                // Skip chapter selection, go directly to chapter 1
+                // Go directly to chapter 1
                 this.currentStory = card.dataset.story;
                 this.loadChapter(1);
                 this.showReader();
@@ -437,13 +444,13 @@ class StoryReader {
     renderChapter() {
         console.log('renderChapter called');
         
-        if (!this.chapterData) {
-            console.error('No chapterData in renderChapter');
+        if (!this.chapterData || !this.pageContent.length) {
+            console.error('No chapterData or pageContent in renderChapter');
             return;
         }
         
         console.log('Rendering chapter:', this.chapterData.chapter_title);
-        console.log('fullContent available:', !!this.fullContent, 'length:', this.fullContent?.length);
+        console.log('Page content available:', this.pageContent.length, 'pages');
         
         const titleElement = document.getElementById('chapter-title');
         const contentElement = document.getElementById('chapter-content');
@@ -461,17 +468,16 @@ class StoryReader {
         titleElement.textContent = this.chapterData.chapter_title;
         console.log('Title set:', this.chapterData.chapter_title);
         
-        // Calculate content for current page
-        const pageHeight = window.innerHeight * (this.settings.pageHeight / 100);
-        const startPosition = (this.currentPage - 1) * pageHeight;
+        // Display current page content
+        const currentPageContent = this.pageContent[this.currentPage - 1] || '';
+        const formattedContent = currentPageContent.split('\n\n')
+            .map(p => `<p>${p.trim()}</p>`)
+            .join('');
         
-        console.log('Rendering page:', this.currentPage, 'startPosition:', startPosition);
+        contentElement.innerHTML = formattedContent;
+        contentElement.style.transform = 'none'; // Remove any previous transforms
         
-        // Get visible content
-        contentElement.innerHTML = this.fullContent;
-        contentElement.style.transform = `translateY(-${startPosition}px)`;
-        
-        console.log('Content set in DOM, innerHTML length:', contentElement.innerHTML.length);
+        console.log('Content set for page:', this.currentPage);
         
         // Update UI
         if (pageIndicator) {
@@ -485,7 +491,7 @@ class StoryReader {
         const prevBtn = document.getElementById('prev-page');
         const nextBtn = document.getElementById('next-page');
         
-        if (prevBtn) prevBtn.disabled = this.currentPage === 1;
+        if (prevBtn) prevBtn.disabled = this.currentPage === 1 && this.isFirstChapter();
         if (nextBtn) nextBtn.disabled = this.currentPage === this.totalPages && this.isLastChapter();
         
         console.log('Chapter rendering completed');
@@ -499,9 +505,13 @@ class StoryReader {
             this.updateUrl();
         } else if (!this.isFirstChapter()) {
             // Go to previous chapter, last page
+            this.showLoading(true);
             this.loadChapter(this.currentChapter - 1).then(() => {
                 this.currentPage = this.totalPages;
                 this.renderChapter();
+                this.showLoading(false);
+            }).catch(() => {
+                this.showLoading(false);
             });
         }
     }
@@ -513,7 +523,14 @@ class StoryReader {
             this.updateUrl();
         } else if (!this.isLastChapter()) {
             // Go to next chapter, first page
-            await this.loadChapter(this.currentChapter + 1);
+            this.showLoading(true);
+            try {
+                await this.loadChapter(this.currentChapter + 1);
+                this.showLoading(false);
+            } catch (error) {
+                this.showLoading(false);
+                console.error('Error loading next chapter:', error);
+            }
         }
     }
 
@@ -522,7 +539,9 @@ class StoryReader {
     }
 
     isLastChapter() {
-        return this.currentChapter === this.chapters.length;
+        // Check if we've reached the last available chapter by trying to load the next one
+        const story = this.stories.find(s => s.id === this.currentStory);
+        return story ? this.currentChapter >= story.chapters : true;
     }
 
     isReaderActive() {
@@ -546,8 +565,8 @@ class StoryReader {
         this.saveSettings();
     }
 
-    changePageHeight(height) {
-        this.settings.pageHeight = height;
+    changeWordsPerPage(words) {
+        this.settings.wordsPerPage = words;
         this.applySettings();
         this.saveSettings();
         if (this.chapterData) {

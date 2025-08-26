@@ -5,14 +5,13 @@ class StoryReader {
         this.currentPage = 1;
         this.totalPages = 1;
         this.pageContent = [];
-        this.wordsPerPage = 800;
+        this.wordsPerPage = 1200; // Increase for mobile
         
         this.init();
     }
 
     async init() {
         console.log('🚀 Initializing Simple Reader...');
-        this.bindEvents();
         
         // Get chapter from URL or start from chapter 1
         const hash = window.location.hash;
@@ -22,6 +21,9 @@ class StoryReader {
                 this.currentChapter = chapterNum;
             }
         }
+        
+        // Bind events after DOM is ready
+        setTimeout(() => this.bindEvents(), 100);
         
         console.log('✅ Simple Reader ready!');
     }
@@ -173,6 +175,8 @@ class StoryReader {
     }
 
     bindEvents() {
+        console.log('🎮 Binding events...');
+        
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const reader = document.getElementById('reader');
@@ -200,13 +204,49 @@ class StoryReader {
         const touchRight = document.getElementById('touch-right');
         const backToChapters = document.getElementById('back-to-chapters');
         const backToStories = document.getElementById('back-to-stories');
+        const settingsToggle = document.getElementById('settings-toggle');
+        const closeSettings = document.getElementById('close-settings');
 
-        if (prevBtn) prevBtn.addEventListener('click', () => this.previousPage());
-        if (nextBtn) nextBtn.addEventListener('click', () => this.nextPage());
-        if (touchLeft) touchLeft.addEventListener('click', () => this.previousPage());
-        if (touchRight) touchRight.addEventListener('click', () => this.nextPage());
-        if (backToChapters) backToChapters.addEventListener('click', () => this.showChapterList());
-        if (backToStories) backToStories.addEventListener('click', () => this.showStoryList());
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.previousPage());
+            console.log('✅ Prev button bound');
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.nextPage());
+            console.log('✅ Next button bound');
+        }
+        if (touchLeft) {
+            touchLeft.addEventListener('click', () => this.previousPage());
+            console.log('✅ Touch left bound');
+        }
+        if (touchRight) {
+            touchRight.addEventListener('click', () => this.nextPage());
+            console.log('✅ Touch right bound');
+        }
+        if (backToChapters) {
+            backToChapters.addEventListener('click', () => this.showChapterList());
+            console.log('✅ Back to chapters button bound');
+        } else {
+            console.log('❌ Back to chapters button NOT found');
+        }
+        if (backToStories) {
+            backToStories.addEventListener('click', () => this.showStoryList());
+            console.log('✅ Back to stories button bound');
+        } else {
+            console.log('❌ Back to stories button NOT found');
+        }
+        if (settingsToggle) {
+            settingsToggle.addEventListener('click', () => this.toggleSettings());
+            console.log('✅ Settings toggle bound');
+        } else {
+            console.log('❌ Settings toggle NOT found');
+        }
+        if (closeSettings) {
+            closeSettings.addEventListener('click', () => this.toggleSettings());
+            console.log('✅ Close settings bound');
+        } else {
+            console.log('❌ Close settings NOT found');
+        }
 
         // Touch/swipe events
         let touchStartX = 0;
@@ -294,6 +334,13 @@ class StoryReader {
         
         // Clear URL hash
         window.location.hash = '';
+    }
+
+    toggleSettings() {
+        const settingsPanel = document.getElementById('settings-panel');
+        if (settingsPanel) {
+            settingsPanel.classList.toggle('active');
+        }
     }
 
     showLoading(show) {

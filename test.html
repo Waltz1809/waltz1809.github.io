@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Reader Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #0d1117; 
+            color: #f0f6fc; 
+        }
+        .debug { 
+            background: #161b22; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 6px; 
+            border: 1px solid #30363d;
+        }
+        button { 
+            background: #238636; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Story Reader Debug Test</h1>
+    
+    <div class="debug">
+        <h3>Test 1: Load Stories JSON</h3>
+        <button onclick="testStoriesJSON()">Test Stories.json</button>
+        <div id="stories-result"></div>
+    </div>
+    
+    <div class="debug">
+        <h3>Test 2: Load Chapter JSON</h3>
+        <button onclick="testChapterJSON()">Test Chapter 001</button>
+        <div id="chapter-result"></div>
+    </div>
+    
+    <div class="debug">
+        <h3>Test 3: Direct Data Test</h3>
+        <button onclick="testDirectData()">Test Direct Data</button>
+        <div id="direct-result"></div>
+    </div>
+
+    <script>
+        // Test 1: Load stories.json
+        async function testStoriesJSON() {
+            const result = document.getElementById('stories-result');
+            try {
+                console.log('Testing stories.json...');
+                
+                // Try different paths
+                const paths = [
+                    'data/stories.json',
+                    './data/stories.json',
+                    '/data/stories.json'
+                ];
+                
+                for (const path of paths) {
+                    try {
+                        console.log(`Trying path: ${path}`);
+                        const response = await fetch(path);
+                        console.log(`Response for ${path}:`, response.status);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            result.innerHTML = `<strong>SUCCESS with ${path}:</strong><br><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                            return;
+                        }
+                    } catch (e) {
+                        console.log(`Error with ${path}:`, e);
+                    }
+                }
+                
+                result.innerHTML = '<strong>FAILED:</strong> Could not load stories.json from any path';
+            } catch (error) {
+                result.innerHTML = `<strong>ERROR:</strong> ${error.message}`;
+            }
+        }
+
+        // Test 2: Load chapter JSON
+        async function testChapterJSON() {
+            const result = document.getElementById('chapter-result');
+            try {
+                console.log('Testing chapter_001.json...');
+                
+                const paths = [
+                    'data/marriage/chapter_001.json',
+                    './data/marriage/chapter_001.json'
+                ];
+                
+                for (const path of paths) {
+                    try {
+                        console.log(`Trying chapter path: ${path}`);
+                        const response = await fetch(path);
+                        console.log(`Chapter response for ${path}:`, response.status);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            result.innerHTML = `<strong>SUCCESS with ${path}:</strong><br>Chapter: ${data.chapter_title}<br>Segments: ${data.total_segments}`;
+                            return;
+                        }
+                    } catch (e) {
+                        console.log(`Error with chapter ${path}:`, e);
+                    }
+                }
+                
+                result.innerHTML = '<strong>FAILED:</strong> Could not load chapter_001.json';
+            } catch (error) {
+                result.innerHTML = `<strong>ERROR:</strong> ${error.message}`;
+            }
+        }
+
+        // Test 3: Direct data without server
+        function testDirectData() {
+            const result = document.getElementById('direct-result');
+            
+            // Create test story data
+            const testStory = {
+                id: 'marriage',
+                title: 'Marriage Novel - Test',
+                description: 'Test description...',
+                chapters: 1
+            };
+            
+            const testChapter = {
+                chapter_number: 1,
+                chapter_title: 'Test Chapter',
+                total_segments: 1,
+                segments: [
+                    {
+                        id: 'test_segment',
+                        title: 'Test Segment',
+                        content: 'This is test content for the chapter. It should display properly in the reader interface.'
+                    }
+                ]
+            };
+            
+            result.innerHTML = `
+                <strong>DIRECT DATA TEST:</strong><br>
+                Story: ${testStory.title}<br>
+                Chapter: ${testChapter.chapter_title}<br>
+                Content length: ${testChapter.segments[0].content.length} characters
+            `;
+            
+            // Also test localStorage
+            try {
+                localStorage.setItem('test', 'working');
+                const test = localStorage.getItem('test');
+                result.innerHTML += '<br><strong>LocalStorage:</strong> Working';
+            } catch (e) {
+                result.innerHTML += '<br><strong>LocalStorage:</strong> Error - ' + e.message;
+            }
+        }
+
+        // Auto-run tests on load
+        window.addEventListener('load', () => {
+            console.log('Test page loaded, running auto-tests...');
+            testDirectData();
+        });
+    </script>
+</body>
+</html>

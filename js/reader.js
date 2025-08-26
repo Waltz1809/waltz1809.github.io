@@ -151,34 +151,76 @@ class StoryReader {
 
     // ===== DATA LOADING =====
     async loadStories() {
+        console.log('Loading stories...');
         this.showLoading(true);
         try {
             // Load stories from configuration file
+            console.log('Fetching stories.json...');
             const response = await fetch('data/stories.json');
+            console.log('Response status:', response.status);
+            
             if (!response.ok) {
-                throw new Error('Cannot load stories configuration');
+                throw new Error(`HTTP ${response.status}: Cannot load stories configuration`);
             }
             
             const config = await response.json();
+            console.log('Stories config loaded:', config);
             this.stories = config.stories;
             
             // Update chapter count for each story
             for (const story of this.stories) {
+                console.log(`Counting chapters for story: ${story.id}`);
                 story.chapters = await this.getChapterCount(story.id);
+                console.log(`Story ${story.id} has ${story.chapters} chapters`);
             }
             
+            console.log('Rendering story list...');
             this.renderStoryList();
         } catch (error) {
             console.error('Error loading stories:', error);
-            this.showError('Không thể tải danh sách truyện');
+            console.log('Trying fallback data...');
+            
+            // Fallback: create default story data
+            try {
+                this.stories = [
+                    {
+                        id: 'marriage',
+                        title: 'Marriage Novel - Truyện Hôn Nhân',
+                        description: 'Một câu chuyện tình yêu đầy cảm động về hành trình tìm lại bản thân và tình yêu đích thực...',
+                        author: 'Tác giả ẩn danh',
+                        status: 'Đang cập nhật',
+                        chapters: 1,
+                        tags: ['Romance', 'Drama', 'Modern']
+                    }
+                ];
+                
+                // Update chapter count
+                for (const story of this.stories) {
+                    story.chapters = await this.getChapterCount(story.id);
+                }
+                
+                this.renderStoryList();
+                console.log('Fallback data loaded successfully');
+            } catch (fallbackError) {
+                console.error('Fallback also failed:', fallbackError);
+                this.showError(`Không thể tải danh sách truyện: ${error.message}`);
+            }
         } finally {
             this.showLoading(false);
         }
     }
 
     async getChapterCount(storyId) {
+        console.log(`Checking chapters for story: ${storyId}`);
         try {
-            // Try to load chapters sequentially until we hit 404
+            // For performance, first check if chapter_001.json exists
+            const testResponse = await fetch(`data/${storyId}/chapter_001.json`);
+            if (!testResponse.ok) {
+                console.log(`No chapters found for story: ${storyId}`);
+                return 0;
+            }
+            
+            // If chapter 1 exists, count sequentially
             let count = 0;
             for (let i = 1; i <= 999; i++) {
                 const chapterNum = String(i).padStart(3, '0');
@@ -186,13 +228,18 @@ class StoryReader {
                     const response = await fetch(`data/${storyId}/chapter_${chapterNum}.json`);
                     if (response.ok) {
                         count = i;
+                        console.log(`Found chapter ${i} for ${storyId}`);
                     } else {
+                        console.log(`Chapter ${i} not found for ${storyId}, stopping count`);
                         break;
                     }
-                } catch {
+                } catch (fetchError) {
+                    console.log(`Error fetching chapter ${i}:`, fetchError);
                     break;
                 }
             }
+            
+            console.log(`Total chapters for ${storyId}: ${count}`);
             return count;
         } catch (error) {
             console.error('Error counting chapters:', error);
@@ -321,8 +368,11 @@ class StoryReader {
         // Bind click events
         container.querySelectorAll('.story-card').forEach(card => {
             card.addEventListener('click', () => {
-                this.loadChapterList(card.dataset.story);
-                this.showChapterSelection();
+                console.log('Story card clicked:', card.dataset.story);
+                // Skip chapter selection, go directly to chapter 1
+                this.currentStory = card.dataset.story;
+                this.loadChapter(1);
+                this.showReader();
             });
         });
     }
@@ -490,7 +540,54 @@ class StoryReader {
     }
 
     showError(message) {
-        alert(message); // Replace with better error UI later
+        console.error('Showing error:', message);
+        
+        // Create error overlay if not exists
+        let errorDiv = document.getElementById('error-overlay');
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.id = 'error-overlay';
+            errorDiv.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(13, 17, 23, 0.9);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+                color: #f0f6fc;
+                font-family: Inter, sans-serif;
+            `;
+            document.body.appendChild(errorDiv);
+        }
+        
+        errorDiv.innerHTML = `
+            <div style="
+                background: #161b22;
+                border: 1px solid #f85149;
+                border-radius: 12px;
+                padding: 2rem;
+                max-width: 500px;
+                text-align: center;
+            ">
+                <h3 style="color: #f85149; margin-bottom: 1rem;">❌ Lỗi</h3>
+                <p style="margin-bottom: 1.5rem; line-height: 1.6;">${message}</p>
+                <button onclick="document.getElementById('error-overlay').remove()" style="
+                    background: #238636;
+                    color: white;
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                ">Đóng</button>
+            </div>
+        `;
+        
+        errorDiv.style.display = 'flex';
     }
 }
 

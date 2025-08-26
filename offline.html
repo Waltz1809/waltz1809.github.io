@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Reader - Offline Version</title>
+    <style>
+        /* Copy CSS từ style.css */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            background: #0d1117;
+            color: #f0f6fc;
+        }
+
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --accent: #58a6ff;
+            --accent-hover: #1f6feb;
+            --border: #30363d;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --reading-bg: #0d1117;
+            --reading-text: #e6edf3;
+            --reading-line-height: 1.8;
+            --reading-font-size: 16px;
+            --page-width: 90vh;
+        }
+
+        .screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-primary);
+            display: none;
+            overflow: hidden;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .app-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .story-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            background: var(--bg-tertiary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .story-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .story-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .story-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .btn-back {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--bg-tertiary);
+        }
+
+        #reader {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reader-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            min-height: 60px;
+        }
+
+        .reader-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            margin: 0 1rem;
+        }
+
+        #chapter-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 0.25rem;
+        }
+
+        .page-indicator {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .reader-content {
+            flex: 1;
+            background: var(--reading-bg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content-wrapper {
+            height: 100%;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .chapter-content {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: var(--reading-font-size);
+            line-height: var(--reading-line-height);
+            color: var(--reading-text);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: justify;
+            height: var(--page-width);
+            overflow: hidden;
+        }
+
+        .chapter-content p {
+            margin-bottom: 1.5rem;
+            text-indent: 2rem;
+        }
+
+        .chapter-content p:first-child {
+            text-indent: 0;
+        }
+
+        .reader-controls {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            min-width: 100px;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .touch-zone {
+            position: absolute;
+            top: 60px;
+            bottom: 80px;
+            width: 30%;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .touch-left {
+            left: 0;
+        }
+
+        .touch-right {
+            right: 0;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(13, 17, 23, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .app-title {
+                font-size: 2rem;
+            }
+            
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .content-wrapper {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Story Selection Screen -->
+    <div id="story-selection" class="screen active">
+        <div class="container">
+            <h1 class="app-title">📚 Story Reader (Offline)</h1>
+            <div class="story-grid" id="story-list">
+                <!-- Stories will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Reader Screen -->
+    <div id="reader" class="screen">
+        <div class="reader-header">
+            <button class="btn-back" id="back-to-stories">← Về danh sách</button>
+            <div class="reader-info">
+                <span id="chapter-title">Chapter Title</span>
+                <span class="page-indicator" id="page-indicator">1/10</span>
+            </div>
+        </div>
+
+        <div class="reader-content">
+            <div class="content-wrapper" id="content-wrapper">
+                <div class="chapter-content" id="chapter-content">
+                    <!-- Chapter content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="reader-controls">
+            <button class="nav-btn" id="prev-page" disabled>← Trước</button>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <button class="nav-btn" id="next-page">Tiếp →</button>
+        </div>
+
+        <!-- Touch zones for mobile navigation -->
+        <div class="touch-zone touch-left" id="touch-left"></div>
+        <div class="touch-zone touch-right" id="touch-right"></div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Đang tải...</p>
+    </div>
+
+    <script>
+        // EMBEDDED DATA - Copy from your JSON files
+        const STORY_DATA = {
+            stories: [
+                {
+                    id: 'marriage',
+                    title: 'Marriage Novel - Truyện Hôn Nhân',
+                    description: 'Một câu chuyện tình yêu đầy cảm động về hành trình tìm lại bản thân và tình yêu đích thực...',
+                    author: 'Tác giả ẩn danh',
+                    status: 'Đang cập nhật',
+                    chapters: 1,
+                    tags: ['Romance', 'Drama', 'Modern']
+                }
+            ],
+            chapters: {
+                marriage: {
+                    1: {
+                        chapter_number: 1,
+                        chapter_title: "Vừa về nhà, An Niên đã thấy sương trắng tỏa ra từ tủ lạnh.",
+                        total_segments: 1,
+                        segments: [
+                            {
+                                id: "Chapter_1_Segment_1",
+                                title: "Vừa về nhà, An Niên đã thấy sương trắng tỏa ra từ tủ lạnh.",
+                                content: `Cậu tìm kiếm một hồi, cuối cùng tìm ra mấy lát bánh mì còn thừa từ sáng, ăn qua loa vài miếng. Bụng có chút thức ăn, cậu mới lấy lại được sức lực.
+
+Một tiếng "ùm", điện thoại rung lên, có người gọi đến cho cậu.
+
+Lạc Trị, ủy viên đời sống của lớp, tên khoe mẽ mặt đầy mụn trứng cá, tên này đã kết bạn QQ với tất cả mọi người trong lớp. Nói hay là để đoàn kết bạn học, thực chất là chỉ muốn mon men gần gũi mấy cô gái xung quanh.
+
+"Giang Niên, Chu Ngọc Đình đang rủ người đi chơi, bảo tôi hỏi cậu có đi không?" Giọng Lạc Trị có vẻ rủ rê, cậu ta từng nói rằng cậu ta thích Chu Ngọc Đình.
+
+Nói đúng ra, trong lớp không mấy đứa con trai không thích Chu Ngọc Đình, bao gồm cả Giang Niên.
+
+Chu Ngọc Đình mặt trái xoan, mày lá liễu, eo thon chân dài, dưới bộ đồng phục mùa hè là đôi gò bồng đảo mềm mại như đường sườn núi mùa xuân. Thông minh, giàu có, là ủy viên học tập của lớp.
+
+"Không đi."
+
+"Thật sự không đi à? Cậu vẫn còn nhớ chuyện bữa tiệc sinh nhật của Chu Ngọc Đình sao?" Lạc Trị khuyên nhủ, "Có cần phải thế không, người ta cũng đâu cố ý, chỉ là đùa thôi mà."
+
+Cứ nhắc đến bữa tiệc sinh nhật là Giang Niên lại tức.
+
+Cách đây không lâu, Chu Ngọc Đình tổ chức sinh nhật, sáu bảy người cùng đi ăn.
+
+Giang Niên vì lòng tốt, chủ động đi đến cửa hàng tiện lợi gần đó mua nước Watsons c100, khi trở về thì nghe thấy Lưu Phi Bằng và mấy cô gái khác đang cười nhạo cậu.
+
+"Hắn ta sẽ không lấy cớ bỏ trốn đấy chứ, bàn này chúng ta gọi cũng hơi đắt thật. Chắc hắn ta tưởng là chia tiền, không biết tối nay đều là Đại Bằng trả tiền."
+
+"Đúng đó, còn nói cái đồ uống dở tệ đó ngon, thiếu hắn mấy đồng bạc đó à."
+
+"Ha ha, người ta là trai ấm áp, đứng sau chó luôn."
+
+Cả đám cười ầm lên, khiến Giang Niên đứng bên ngoài phòng riêng không dễ chịu chút nào. Cậu nghe thấy tiếng cười của Chu Ngọc Đình, rõ ràng bình thường chơi rất thân, vậy mà cũng chẳng nói một lời nào giúp cậu.
+
+Từ đó về sau, Giang Niên đã nhìn thấu mọi chuyện.
+
+Cái gì mà trí tuệ tựa ngựa, rồi ý nghĩa hoàng hôn, lại còn bình minh rực rỡ.
+
+Nếu không phải tiệc sinh nhật của Chu Ngọc Đình, cậu căn bản cũng chẳng muốn đi. Thời buổi này yêu đương thuần khiết chẳng bằng tiền bạc rủng rỉnh, có tiền thì giỏi lắm sao, có mua được mẹ không?
+
+Nếu mình có tiền rồi, loại người như Chu Ngọc Đình cậu sẽ chẳng thèm liếc mắt một cái, trước đây đúng là nhìn nhầm người rồi.
+
+Mẹ kiếp, hóa ra bọn chúng nhìn mình như thế à!
+
+"Không đi, bảo bọn họ tự chơi đi." Giang Niên cười lạnh.
+
+Lạc Trị trả lời, "Được thôi, tôi sẽ nói với đại mỹ nhân Chu một tiếng."
+
+Giang Niên đặt điện thoại xuống, dựa vào ghế sofa thở dài một tiếng. Cái thế giới này thật sự đã thay đổi rồi, bao giờ thì lòng tốt cũng bị coi là trò hề chứ!
+
+Ngực cậu phập phồng lên xuống, không có tiền thì bị người ta ức hiếp, có tiền thì làm gì cũng đúng.`
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        // OFFLINE STORY READER CLASS
+        class OfflineStoryReader {
+            constructor() {
+                this.currentStory = null;
+                this.currentPage = 1;
+                this.totalPages = 1;
+                this.chapterData = null;
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.renderStoryList();
+            }
+
+            bindEvents() {
+                document.getElementById('back-to-stories').addEventListener('click', () => this.showStorySelection());
+                document.getElementById('prev-page').addEventListener('click', () => this.previousPage());
+                document.getElementById('next-page').addEventListener('click', () => this.nextPage());
+                document.getElementById('touch-left').addEventListener('click', () => this.previousPage());
+                document.getElementById('touch-right').addEventListener('click', () => this.nextPage());
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (this.isReaderActive()) {
+                        switch(e.key) {
+                            case 'ArrowLeft':
+                            case 'ArrowUp':
+                                e.preventDefault();
+                                this.previousPage();
+                                break;
+                            case 'ArrowRight':
+                            case 'ArrowDown':
+                            case ' ':
+                                e.preventDefault();
+                                this.nextPage();
+                                break;
+                        }
+                    }
+                });
+            }
+
+            renderStoryList() {
+                const container = document.getElementById('story-list');
+                container.innerHTML = STORY_DATA.stories.map(story => `
+                    <div class="story-card" data-story="${story.id}">
+                        <h3>${story.title}</h3>
+                        <div class="story-meta">${story.chapters} chương • ${story.status}</div>
+                        <div class="story-description">${story.description}</div>
+                    </div>
+                `).join('');
+                
+                container.querySelectorAll('.story-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        this.loadChapter(card.dataset.story, 1);
+                        this.showReader();
+                    });
+                });
+            }
+
+            loadChapter(storyId, chapterNumber) {
+                this.currentStory = storyId;
+                this.chapterData = STORY_DATA.chapters[storyId][chapterNumber];
+                this.currentPage = 1;
+                
+                this.calculatePagination();
+                this.renderChapter();
+            }
+
+            calculatePagination() {
+                if (!this.chapterData) return;
+                
+                const content = this.chapterData.segments.map(segment => 
+                    segment.content.split('\n\n').map(p => `<p>${p.trim()}</p>`).join('')
+                ).join('');
+                
+                // Simple pagination - estimate based on content length
+                const avgWordsPerPage = 300;
+                const wordCount = content.length / 5; // rough estimate
+                this.totalPages = Math.max(1, Math.ceil(wordCount / avgWordsPerPage));
+                
+                this.fullContent = content;
+            }
+
+            renderChapter() {
+                if (!this.chapterData) return;
+                
+                const titleElement = document.getElementById('chapter-title');
+                const contentElement = document.getElementById('chapter-content');
+                const pageIndicator = document.getElementById('page-indicator');
+                const progressFill = document.getElementById('progress-fill');
+                
+                titleElement.textContent = this.chapterData.chapter_title;
+                
+                // For demo, show all content (in real version would be paginated)
+                contentElement.innerHTML = this.fullContent;
+                
+                pageIndicator.textContent = `${this.currentPage}/${this.totalPages}`;
+                progressFill.style.width = `${(this.currentPage / this.totalPages) * 100}%`;
+                
+                document.getElementById('prev-page').disabled = this.currentPage === 1;
+                document.getElementById('next-page').disabled = this.currentPage === this.totalPages;
+            }
+
+            previousPage() {
+                if (this.currentPage > 1) {
+                    this.currentPage--;
+                    this.renderChapter();
+                }
+            }
+
+            nextPage() {
+                if (this.currentPage < this.totalPages) {
+                    this.currentPage++;
+                    this.renderChapter();
+                }
+            }
+
+            isReaderActive() {
+                return document.getElementById('reader').classList.contains('active');
+            }
+
+            showScreen(screenId) {
+                document.querySelectorAll('.screen').forEach(screen => {
+                    screen.classList.remove('active');
+                });
+                document.getElementById(screenId).classList.add('active');
+            }
+
+            showStorySelection() {
+                this.showScreen('story-selection');
+            }
+
+            showReader() {
+                this.showScreen('reader');
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.offlineReader = new OfflineStoryReader();
+        });
+    </script>
+</body>
+</html>

@@ -10,6 +10,16 @@
       "cover": "",
       "tags": ["Romance", "Drama", "Modern"],
       "lastUpdate": "2025-08-27"
+    },
+    {
+      "id": "your-new-story",
+      "title": "Tên Truyện Mới",
+      "description": "Mô tả ngắn về truyện...",
+      "author": "Tên tác giả",
+      "status": "Hoàn thành",
+      "chapters": 651,
+      "tags": ["Action", "Adventure"],
+      "lastUpdate": "2025-01-15"
     }
   ]
 }

@@ -40,13 +40,13 @@ class StoryReader {
             if (!response.ok) {
                 throw new Error(`Chapter ${chapterNumber} not found (${response.status})`);
             }
-
+            
             const data = await response.json();
             console.log(`✅ Chapter loaded: ${data.chapter_title}`);
-
+            
             this.currentChapter = chapterNumber;
             this.currentPage = 1;
-
+            
             // Update chapter title
             const titleElement = document.getElementById('chapter-title');
             if (titleElement) {
@@ -65,7 +65,7 @@ class StoryReader {
 
             // Show reader
             this.showReader();
-
+            
         } catch (error) {
             console.error('❌ Failed to load chapter:', error);
             this.showError(`Không thể tải chương ${chapterNumber}: ${error.message}`);
@@ -132,14 +132,14 @@ class StoryReader {
             const progress = (this.currentPage / this.totalPages) * 100;
             progressFill.style.width = `${progress}%`;
         }
-
+        
         // Update buttons
         const prevBtn = document.getElementById('prev-page');
         const nextBtn = document.getElementById('next-page');
         
         if (prevBtn) prevBtn.disabled = this.currentPage === 1 && this.currentChapter === 1;
         if (nextBtn) nextBtn.disabled = false; // Always allow next
-
+        
         console.log(`📖 Showing page ${this.currentPage}/${this.totalPages} of chapter ${this.currentChapter}`);
     }
 
@@ -151,7 +151,7 @@ class StoryReader {
             // Go to previous chapter, last page
             console.log('Going to previous chapter...');
             await this.loadChapter(this.currentChapter - 1);
-            this.currentPage = this.totalPages;
+                this.currentPage = this.totalPages;
             this.renderCurrentPage();
         }
     }
@@ -164,7 +164,7 @@ class StoryReader {
             // Try to load next chapter
             console.log('Trying to load next chapter...');
             try {
-                await this.loadChapter(this.currentChapter + 1);
+            await this.loadChapter(this.currentChapter + 1);
             } catch (error) {
                 console.log('Cannot load next chapter, probably reached end');
                 this.showError('Đã đến cuối truyện! 🎉');
@@ -175,7 +175,8 @@ class StoryReader {
     bindEvents() {
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (this.isReaderActive()) {
+            const reader = document.getElementById('reader');
+            if (reader && reader.classList.contains('active')) {
                 switch(e.key) {
                     case 'ArrowLeft':
                     case 'ArrowUp':
@@ -197,11 +198,15 @@ class StoryReader {
         const nextBtn = document.getElementById('next-page');
         const touchLeft = document.getElementById('touch-left');
         const touchRight = document.getElementById('touch-right');
+        const backToChapters = document.getElementById('back-to-chapters');
+        const backToStories = document.getElementById('back-to-stories');
 
         if (prevBtn) prevBtn.addEventListener('click', () => this.previousPage());
         if (nextBtn) nextBtn.addEventListener('click', () => this.nextPage());
         if (touchLeft) touchLeft.addEventListener('click', () => this.previousPage());
         if (touchRight) touchRight.addEventListener('click', () => this.nextPage());
+        if (backToChapters) backToChapters.addEventListener('click', () => this.showChapterList());
+        if (backToStories) backToStories.addEventListener('click', () => this.showStoryList());
 
         // Touch/swipe events
         let touchStartX = 0;
@@ -210,7 +215,8 @@ class StoryReader {
         }, { passive: true });
 
         document.addEventListener('touchend', (e) => {
-            if (!this.isReaderActive()) return;
+            const reader = document.getElementById('reader');
+            if (!reader || !reader.classList.contains('active')) return;
             
             const touchEndX = e.changedTouches[0].clientX;
             const diff = touchStartX - touchEndX;
@@ -232,10 +238,62 @@ class StoryReader {
 
     showReader() {
         const storySelection = document.getElementById('story-selection');
+        const chapterSelection = document.getElementById('chapter-selection');
         const reader = document.getElementById('reader');
         
         if (storySelection) storySelection.classList.remove('active');
+        if (chapterSelection) chapterSelection.classList.remove('active');
         if (reader) reader.classList.add('active');
+    }
+
+    showChapterList() {
+        console.log('Showing chapter list...');
+        
+        // Generate chapter list dynamically
+        const chapterList = document.getElementById('chapter-list');
+        const storyTitle = document.getElementById('selected-story-title');
+        
+        if (storyTitle) {
+            storyTitle.textContent = 'Marriage Novel - Truyện Hôn Nhân';
+        }
+        
+        if (chapterList) {
+            let chaptersHTML = '';
+            for (let i = 1; i <= 494; i++) {
+                chaptersHTML += `
+                    <div class="chapter-card" onclick="jumpToChapter(${i})">
+                        <div class="chapter-number">Chương ${i}</div>
+                        <div class="chapter-title">Chapter ${i}</div>
+                    </div>
+                `;
+            }
+            chapterList.innerHTML = chaptersHTML;
+        }
+        
+        // Show chapter selection screen
+        const storySelection = document.getElementById('story-selection');
+        const chapterSelection = document.getElementById('chapter-selection');
+        const reader = document.getElementById('reader');
+        
+        if (storySelection) storySelection.classList.remove('active');
+        if (reader) reader.classList.remove('active');
+        if (chapterSelection) chapterSelection.classList.add('active');
+    }
+
+    showStoryList() {
+        console.log('Showing story list...');
+        
+        // Show story selection screen
+        const storySelection = document.getElementById('story-selection');
+        const chapterSelection = document.getElementById('chapter-selection');
+        const reader = document.getElementById('reader');
+        
+        if (chapterSelection) chapterSelection.classList.remove('active');
+        if (reader) reader.classList.remove('active');
+        if (storySelection) storySelection.classList.add('active');
+        
+        // Clear URL hash
+        window.location.hash = '';
     }
 
     showLoading(show) {
@@ -280,6 +338,13 @@ function testChapter() {
             console.error('❌ Test failed:', error);
             alert(`❌ Test failed: ${error.message}`);
         });
+}
+
+function jumpToChapter(chapterNumber) {
+    console.log(`Jumping to chapter ${chapterNumber}...`);
+    if (window.storyReader) {
+        window.storyReader.loadChapter(chapterNumber);
+    }
 }
 
 // ===== INITIALIZE =====

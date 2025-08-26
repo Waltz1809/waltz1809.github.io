@@ -285,10 +285,24 @@ class StoryReader {
                 return 0;
             }
             
-            // Since we know files exist, let's use a faster approach
-            // Based on your file structure, there are 624 chapters
-            console.log(`Setting chapter count to 624 for ${storyId} (known from file structure)`);
-            let count = 624;
+            // Count chapters properly by checking actual files
+            let count = 0;
+            for (let i = 1; i <= 999; i++) {
+                const chapterNum = String(i).padStart(3, '0');
+                try {
+                    const response = await fetch(`data/${storyId}/chapter_${chapterNum}.json`);
+                    if (response.ok) {
+                        count = i;
+                        if (i % 50 === 0) console.log(`Found chapter ${i} for ${storyId}`);
+                    } else {
+                        console.log(`Chapter ${i} not found for ${storyId}, stopping count at ${count}`);
+                        break;
+                    }
+                } catch (fetchError) {
+                    console.log(`Error fetching chapter ${i}:`, fetchError);
+                    break;
+                }
+            }
             
             console.log(`Total chapters for ${storyId}: ${count}`);
             return count;
@@ -616,7 +630,19 @@ class StoryReader {
             } catch (error) {
                 this.showLoading(false);
                 console.error('Error loading next chapter:', error);
+                
+                // If can't load next chapter, we've reached the end
+                this.showError(`Đã đến cuối truyện! Không thể tải chương ${this.currentChapter + 1}`);
+                
+                // Update story chapters count to current chapter
+                const story = this.stories.find(s => s.id === this.currentStory);
+                if (story) {
+                    story.chapters = this.currentChapter;
+                }
             }
+        } else {
+            // Already at last chapter and last page
+            this.showError('Bạn đã đọc hết truyện! 🎉');
         }
     }
 

@@ -230,6 +230,17 @@ body.sepia-theme {
     line-height: 1.4;
 }
 
+.chapter-card.current {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.chapter-card.current .chapter-number,
+.chapter-card.current .chapter-title {
+    color: white;
+}
+
 /* ===== READER ===== */
 #reader {
     display: flex;
@@ -293,9 +304,8 @@ body.sepia-theme {
 .content-wrapper {
     height: 100%;
     padding: 2rem;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .chapter-content {
@@ -306,8 +316,7 @@ body.sepia-theme {
     max-width: 700px;
     margin: 0 auto;
     text-align: justify;
-    min-height: 70vh;
-    overflow: visible;
+    padding-bottom: 2rem;
 }
 
 .chapter-content p {
@@ -322,6 +331,7 @@ body.sepia-theme {
 .reader-controls {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem;
     background: var(--bg-secondary);
     border-top: 1px solid var(--border);

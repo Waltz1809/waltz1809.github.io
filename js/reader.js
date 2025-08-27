@@ -218,16 +218,20 @@ class StoryReader {
         `;
         document.body.appendChild(tempDiv);
 
-        // Get available height (viewport height minus header/footer)
+        // Get available height (viewport height minus header/footer/controls)
         const viewportHeight = window.innerHeight;
         const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-        const footerHeight = document.querySelector('.page-navigation')?.offsetHeight || 0;
-        const availableHeight = viewportHeight - headerHeight - footerHeight - 80; // Increase margin for safety
+        const controlsHeight = document.querySelector('.reader-controls-section')?.offsetHeight || 0;
+        const pageNavHeight = document.querySelector('.page-navigation')?.offsetHeight || 0;
+        const totalFixedHeight = headerHeight + controlsHeight + pageNavHeight;
+        const availableHeight = Math.max(200, viewportHeight - totalFixedHeight - 40); // Minimum 200px height
 
         console.log('📏 Pagination Debug:', {
             viewportHeight,
             headerHeight,
-            footerHeight,
+            controlsHeight,
+            pageNavHeight,
+            totalFixedHeight,
             availableHeight,
             contentWidth: contentElement.offsetWidth
         });
@@ -454,6 +458,9 @@ class StoryReader {
         // Reading mode controls
         this.bindReadingModeEvents();
 
+        // Touch zones for mobile
+        this.bindTouchZones();
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const reader = document.getElementById('reader');
@@ -476,6 +483,35 @@ class StoryReader {
         });
 
         console.log('✅ Đã gắn kết tất cả sự kiện');
+    }
+
+    bindTouchZones() {
+        const touchLeft = document.getElementById('touch-left');
+        const touchRight = document.getElementById('touch-right');
+
+        if (touchLeft) {
+            touchLeft.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (this.settings.readingMode === 'page') {
+                    this.previousPage();
+                } else {
+                    this.previousChapter();
+                }
+            });
+        }
+
+        if (touchRight) {
+            touchRight.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (this.settings.readingMode === 'page') {
+                    this.nextPage();
+                } else {
+                    this.nextChapter();
+                }
+            });
+        }
+
+        console.log('✅ Touch zones bound');
     }
 
     bindSettingsEvents() {

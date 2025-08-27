@@ -56,12 +56,37 @@
             </div>
         </div>
 
-        <div class="reader-controls">
-            <button class="nav-btn" id="prev-page" disabled>← Chương trước</button>
-            <div style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
-                Cuộn để đọc • Phím ←/→ để chuyển chương
+        <!-- Combined Controls Section -->
+        <div class="reader-controls-section">
+            <div class="reader-controls">
+                <button class="nav-btn" id="prev-page" disabled>← Chương trước</button>
+                <button class="nav-btn" id="next-page">Chương tiếp →</button>
             </div>
-            <button class="nav-btn" id="next-page">Chương tiếp →</button>
+
+            <div class="reading-mode-toggle">
+                <button class="mode-btn active" id="scroll-mode" data-mode="scroll">
+                    📜 Cuộn
+                </button>
+                <button class="mode-btn" id="page-mode" data-mode="page">
+                    📖 Trang
+                </button>
+            </div>
+        </div>
+
+        <!-- Page Navigation (hidden by default) -->
+        <div class="page-navigation" id="page-navigation" style="display: none;">
+            <button class="nav-btn" id="prev-page-btn" disabled>← Trang trước</button>
+
+            <div class="page-info">
+                <span class="page-number" id="current-page-number">1</span>
+                <span>/</span>
+                <span id="total-pages">1</span>
+                <div class="page-progress">
+                    <div class="page-progress-bar" id="page-progress-bar"></div>
+                </div>
+            </div>
+
+            <button class="nav-btn" id="next-page-btn">Trang tiếp →</button>
         </div>
 
         <!-- Touch zones for mobile navigation -->

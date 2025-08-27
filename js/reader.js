@@ -7,7 +7,16 @@ class StoryReader {
         this.settings = {
             theme: 'dark',
             fontSize: 16,
-            fontFamily: 'Bookerly'
+            fontFamily: 'Bookerly',
+            readingMode: 'scroll' // 'scroll' or 'page'
+        };
+
+        // Pagination state
+        this.pagination = {
+            currentPage: 1,
+            totalPages: 1,
+            pages: [],
+            wordsPerPage: 300
         };
         this.init();
     }
@@ -170,17 +179,189 @@ class StoryReader {
         const contentElement = document.getElementById('chapter-content');
         if (!contentElement) return;
 
-        // Split into paragraphs and format
+        // Split into paragraphs and format - KEEP ORIGINAL WORKING VERSION
+        console.log('🔍 Raw text preview:', text.substring(0, 200) + '...');
+        console.log('🔍 Contains \\n\\n?', text.includes('\n\n'));
+
         const paragraphs = text.split('\n\n')
             .filter(p => p.trim())
             .map(p => `<p>${p.trim().replace(/\n/g, '<br>')}</p>`);
 
+        console.log('📝 Split into', paragraphs.length, 'paragraphs');
         contentElement.innerHTML = paragraphs.join('');
 
         // Scroll to top
         contentElement.scrollTop = 0;
 
         console.log(`📖 Đã hiển thị chương với ${paragraphs.length} đoạn văn`);
+
+        // Apply current reading mode
+        this.applyReadingMode();
+    }
+
+    // ===== PAGINATION METHODS =====
+    splitTextIntoPages(text) {
+        const contentElement = document.getElementById('chapter-content');
+        if (!contentElement) return [text];
+
+        // Create temporary element to measure content height
+        const tempDiv = document.createElement('div');
+        tempDiv.style.cssText = `
+            position: absolute;
+            visibility: hidden;
+            width: ${contentElement.offsetWidth}px;
+            font-size: ${this.settings.fontSize}px;
+            font-family: ${this.settings.fontFamily};
+            line-height: 1.6;
+            padding: 20px;
+            box-sizing: border-box;
+        `;
+        document.body.appendChild(tempDiv);
+
+        // Get available height (viewport height minus header/footer)
+        const viewportHeight = window.innerHeight;
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+        const footerHeight = document.querySelector('.page-navigation')?.offsetHeight || 0;
+        const availableHeight = viewportHeight - headerHeight - footerHeight - 80; // Increase margin for safety
+
+        console.log('📏 Pagination Debug:', {
+            viewportHeight,
+            headerHeight,
+            footerHeight,
+            availableHeight,
+            contentWidth: contentElement.offsetWidth
+        });
+
+        // Split HTML into paragraphs - extract text from <p> tags
+        const tempParser = document.createElement('div');
+        tempParser.innerHTML = text;
+        const paragraphElements = tempParser.querySelectorAll('p');
+        const paragraphs = Array.from(paragraphElements).map(p => p.innerHTML).filter(p => p.trim());
+        const pages = [];
+        let currentPage = [];
+        let currentHeight = 0;
+
+        for (const paragraph of paragraphs) {
+            // Test adding this paragraph
+            const testContent = [...currentPage, paragraph];
+            tempDiv.innerHTML = testContent.map(p => `<p style="margin-bottom: 1em;">${p}</p>`).join('');
+
+            const testHeight = tempDiv.offsetHeight;
+
+            if (testHeight > availableHeight && currentPage.length > 0) {
+                // Current page is full, start new page
+                pages.push([...currentPage]);
+                currentPage = [paragraph];
+                currentHeight = 0;
+            } else {
+                // Add paragraph to current page
+                currentPage.push(paragraph);
+                currentHeight = testHeight;
+            }
+        }
+
+        // Add last page if it has content
+        if (currentPage.length > 0) {
+            pages.push(currentPage);
+        }
+
+        // Cleanup
+        document.body.removeChild(tempDiv);
+
+        console.log('📖 Pages created:', pages.length, 'pages');
+        return pages.length > 0 ? pages : [paragraphs];
+    }
+
+    applyReadingMode() {
+        const contentElement = document.getElementById('chapter-content');
+        const pageNavigation = document.getElementById('page-navigation');
+
+        if (!contentElement) return;
+
+        if (this.settings.readingMode === 'page') {
+            // Switch to page mode
+            contentElement.classList.add('page-mode');
+            if (pageNavigation) pageNavigation.style.display = 'flex';
+
+            // Get current text and split into pages - FIX: Use innerHTML to preserve formatting
+            const fullText = contentElement.innerHTML;
+            this.pagination.pages = this.splitTextIntoPages(fullText);
+            this.pagination.totalPages = this.pagination.pages.length;
+            this.pagination.currentPage = 1;
+
+            this.renderCurrentPage();
+            this.updatePageNavigation();
+
+        } else {
+            // Switch to scroll mode
+            contentElement.classList.remove('page-mode');
+            if (pageNavigation) pageNavigation.style.display = 'none';
+        }
+    }
+
+    renderCurrentPage() {
+        const contentElement = document.getElementById('chapter-content');
+        if (!contentElement || this.pagination.pages.length === 0) return;
+
+        const currentPageContent = this.pagination.pages[this.pagination.currentPage - 1];
+        if (!currentPageContent) return;
+
+        // Render current page with proper line breaks
+        const pageHTML = currentPageContent
+            .map(paragraph => {
+                // Convert \n to <br> for line breaks within paragraphs
+                const formattedParagraph = paragraph.replace(/\n/g, '<br>');
+                return `<p>${formattedParagraph}</p>`;
+            })
+            .join('');
+
+        contentElement.innerHTML = pageHTML;
+
+        console.log('📄 Rendered page:', this.pagination.currentPage, 'of', this.pagination.totalPages);
+    }
+
+    updatePageNavigation() {
+        const currentPageEl = document.getElementById('current-page-number');
+        const totalPagesEl = document.getElementById('total-pages');
+        const progressBar = document.getElementById('page-progress-bar');
+        const prevBtn = document.getElementById('prev-page-btn');
+        const nextBtn = document.getElementById('next-page-btn');
+
+        if (currentPageEl) currentPageEl.textContent = this.pagination.currentPage;
+        if (totalPagesEl) totalPagesEl.textContent = this.pagination.totalPages;
+
+        // Update progress bar
+        if (progressBar) {
+            const progress = (this.pagination.currentPage / this.pagination.totalPages) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Update navigation buttons
+        if (prevBtn) prevBtn.disabled = this.pagination.currentPage === 1;
+        if (nextBtn) nextBtn.disabled = this.pagination.currentPage >= this.pagination.totalPages;
+    }
+
+    nextPage() {
+        if (this.pagination.currentPage < this.pagination.totalPages) {
+            this.pagination.currentPage++;
+            this.renderCurrentPage();
+            this.updatePageNavigation();
+        }
+    }
+
+    previousPage() {
+        if (this.pagination.currentPage > 1) {
+            this.pagination.currentPage--;
+            this.renderCurrentPage();
+            this.updatePageNavigation();
+        }
+    }
+
+    jumpToPage(pageNumber) {
+        const page = Math.max(1, Math.min(pageNumber, this.pagination.totalPages));
+        this.pagination.currentPage = page;
+        this.renderCurrentPage();
+        this.updatePageNavigation();
     }
 
     updateNavButtons() {
@@ -270,6 +451,9 @@ class StoryReader {
         // Settings controls
         this.bindSettingsEvents();
 
+        // Reading mode controls
+        this.bindReadingModeEvents();
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const reader = document.getElementById('reader');
@@ -321,6 +505,48 @@ class StoryReader {
                 this.saveSettings();
             });
         });
+    }
+
+    bindReadingModeEvents() {
+        // Mode toggle buttons
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mode = btn.dataset.mode;
+                this.settings.readingMode = mode;
+
+                // Update button states
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Apply mode
+                this.applyReadingMode();
+                this.saveSettings();
+
+                console.log(`📖 Switched to ${mode} mode`);
+            });
+        });
+
+        // Page navigation buttons
+        const prevPageBtn = document.getElementById('prev-page-btn');
+        const nextPageBtn = document.getElementById('next-page-btn');
+        const currentPageEl = document.getElementById('current-page-number');
+
+        if (prevPageBtn) {
+            prevPageBtn.addEventListener('click', () => this.previousPage());
+        }
+        if (nextPageBtn) {
+            nextPageBtn.addEventListener('click', () => this.nextPage());
+        }
+
+        // Click on page number to jump
+        if (currentPageEl) {
+            currentPageEl.addEventListener('click', () => {
+                const pageNum = prompt(`Nhảy đến trang (1-${this.pagination.totalPages}):`);
+                if (pageNum && !isNaN(pageNum)) {
+                    this.jumpToPage(parseInt(pageNum));
+                }
+            });
+        }
     }
 
     selectStory(storyId) {

@@ -33,6 +33,14 @@ body {
     --reading-font-size: 16px;
     --reading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --page-width: 100vh;
+
+    /* Pagination specific */
+    --page-height: calc(100vh - 280px);
+    --page-height-ios: calc(100vh - 320px);
+    --page-padding: 2rem;
+    --words-per-page: 300;
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .github-theme {
@@ -257,6 +265,7 @@ body.sepia-theme {
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border);
     min-height: 60px;
+    gap: 0.5rem;
 }
 
 .reader-info {
@@ -305,9 +314,12 @@ body.sepia-theme {
 
 .content-wrapper {
     height: 100%;
-    padding: 2rem;
+    padding: 2rem 2rem 240px 2rem; /* INCREASED for combined controls section */
     overflow-y: auto;
     overflow-x: hidden;
+    /* iOS Safari specific */
+    padding-top: calc(2rem + var(--safe-area-top));
+    padding-bottom: calc(240px + var(--safe-area-bottom));
 }
 
 .chapter-content {
@@ -318,7 +330,7 @@ body.sepia-theme {
     max-width: 700px;
     margin: 0 auto;
     text-align: left;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem; /* INCREASED padding bottom */
 }
 
 .chapter-content p {
@@ -338,6 +350,113 @@ body.sepia-theme {
     background: var(--bg-secondary);
     border-top: 1px solid var(--border);
     gap: 1rem;
+}
+
+.reading-mode-toggle {
+    display: flex;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Combined controls section */
+.reader-controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+}
+
+.reader-controls-section .reading-mode-toggle {
+    justify-content: center;
+}
+
+.mode-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mode-btn.active {
+    background: var(--accent);
+    color: white;
+}
+
+.mode-btn:hover:not(.active) {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* ===== PAGE MODE ===== */
+.chapter-content.page-mode {
+    height: var(--page-height);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.page-content {
+    flex: 1;
+    overflow: hidden;
+    padding: var(--page-padding);
+}
+
+.page-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-bottom: calc(1rem + var(--safe-area-bottom));
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+.page-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.page-progress {
+    width: 100px;
+    height: 4px;
+    background: var(--bg-primary);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.page-progress-bar {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.page-number {
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.page-number:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .nav-btn {
@@ -572,7 +691,9 @@ body.sepia-theme {
     }
     
     .content-wrapper {
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 1rem 220px 1rem; /* INCREASED for combined controls */
+        padding-top: calc(1.5rem + var(--safe-area-top));
+        padding-bottom: calc(220px + var(--safe-area-bottom));
     }
     
     .chapter-content {
@@ -609,7 +730,9 @@ body.sepia-theme {
     }
     
     .content-wrapper {
-        padding: 1rem 0.75rem;
+        padding: 1rem 0.75rem 160px 0.75rem; /* INCREASED small mobile padding */
+        padding-top: calc(1rem + var(--safe-area-top));
+        padding-bottom: calc(160px + var(--safe-area-bottom));
     }
     
     .chapter-content {
@@ -618,5 +741,42 @@ body.sepia-theme {
 
     .chapter-content p {
         text-indent: 0;
+    }
+}
+
+/* Safari iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .reading-container {
+        height: calc(100vh - var(--safe-area-top) - var(--safe-area-bottom));
+        height: calc(100dvh - var(--safe-area-top) - var(--safe-area-bottom));
+    }
+
+    .content-wrapper {
+        /* Use dynamic viewport height for better Safari support */
+        height: calc(100dvh - 200px);
+        padding-bottom: calc(200px + var(--safe-area-bottom) + 20px); /* INCREASED iOS padding */
+    }
+
+    .page-navigation {
+        /* Ensure navigation is always visible */
+        position: fixed;
+        bottom: var(--safe-area-bottom);
+        left: 0;
+        right: 0;
+        background: var(--bg-tertiary);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+
+/* iPhone 13 Pro Max specific (428px width) */
+@media screen and (max-width: 428px) and (-webkit-device-pixel-ratio: 3) {
+    .content-wrapper {
+        padding-bottom: calc(180px + var(--safe-area-bottom) + 30px); /* INCREASED iPhone padding */
+    }
+
+    .page-navigation {
+        padding: 0.75rem;
+        padding-bottom: calc(0.75rem + var(--safe-area-bottom));
     }
 }

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Merriweather:wght@300;400&family=Poppins:wght@300;400;500&family=Nunito:wght@300;400;500&family=Roboto:wght@300;400;500&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/bookerly" rel="stylesheet">
 </head>
 <body class="dark-theme">
     <!-- Story Selection Screen -->
@@ -15,20 +16,7 @@
         <div class="container">
             <h1 class="app-title">📚 Story Reader</h1>
             <div class="story-grid">
-                <div class="story-card" onclick="startReading()">
-                    <h3>Marriage Novel - Truyện Hôn Nhân</h3>
-                    <div class="story-meta">494 chương • Đang cập nhật</div>
-                    <div class="story-description">Một câu chuyện tình yêu đầy cảm động về hành trình tìm lại bản thân và tình yêu đích thực...</div>
-                    <div class="story-tags">
-                        <span class="tag">Romance</span>
-                        <span class="tag">Drama</span>
-                        <span class="tag">Modern</span>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <button onclick="testChapter()" style="background: #f79708; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; margin-right: 0.5rem;">🧪 Test Chapter</button>
-                        <button onclick="startReading()" style="background: #238636; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">🚀 Bắt đầu đọc</button>
-                    </div>
-                </div>
+                <!-- Stories will be loaded dynamically by JavaScript -->
             </div>
         </div>
     </div>
@@ -97,17 +85,20 @@
                 <label>Chế độ màu:</label>
                 <div class="theme-controls">
                     <button class="btn-theme active" data-theme="dark">🌙 Tối</button>
-                    <button class="btn-theme" data-theme="light">☀️ Sáng</button>
+                    <button class="btn-theme" data-theme="github">🐙 GitHub</button>
                     <button class="btn-theme" data-theme="sepia">📖 Sepia</button>
                 </div>
             </div>
 
             <div class="setting-group">
-                <label>Số từ mỗi trang:</label>
-                <div class="words-per-page-controls">
-                    <button class="btn-words-per-page" data-words="500">Ít</button>
-                    <button class="btn-words-per-page active" data-words="800">Vừa</button>
-                    <button class="btn-words-per-page" data-words="1200">Nhiều</button>
+                <label>Font chữ:</label>
+                <div class="font-family-controls">
+                    <button class="btn-font-family" data-font="Bookerly">📖 Bookerly</button>
+                    <button class="btn-font-family active" data-font="Inter">Inter</button>
+                    <button class="btn-font-family" data-font="Poppins">Poppins</button>
+                    <button class="btn-font-family" data-font="Nunito">Nunito</button>
+                    <button class="btn-font-family" data-font="Roboto">Roboto</button>
+                    <button class="btn-font-family" data-font="Comic">🎨 Comic</button>
                 </div>
             </div>
 

@@ -79,7 +79,7 @@ class StoryReader {
 
     async loadStories() {
         try {
-            const response = await fetch('./data/stories.json');
+            const response = await fetch(`./data/stories.json?v=${Date.now()}`);
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
@@ -126,7 +126,7 @@ class StoryReader {
 
         try {
             const chapterNum = String(chapterNumber).padStart(3, '0');
-            const url = `./data/${this.currentStory.id}/chapter_${chapterNum}.json`;
+            const url = `./data/${this.currentStory.id}/chapter_${chapterNum}.json?v=${Date.now()}`;
 
             const response = await fetch(url);
 

@@ -192,9 +192,15 @@ class StoryReader {
             prevBtn.textContent = '← Chương trước';
         }
         if (nextBtn) {
-            const maxChapter = this.currentStory ? this.currentStory.chapters : 494;
+            if (!this.currentStory) {
+                console.warn('⚠️ currentStory chưa được load, không thể cập nhật nav buttons');
+                nextBtn.disabled = true;
+                nextBtn.textContent = 'Chương tiếp →';
+                return;
+            }
+            const maxChapter = this.currentStory.chapters;
             nextBtn.disabled = this.currentChapter >= maxChapter;
-            nextBtn.textContent = 'Chương tiếp →';
+            nextBtn.textContent = `Chương tiếp → (${this.currentChapter}/${maxChapter})`;
         }
     }
 
@@ -205,11 +211,18 @@ class StoryReader {
     }
 
     async nextChapter() {
-        const maxChapter = this.currentStory ? this.currentStory.chapters : 494;
+        if (!this.currentStory) {
+            console.error('❌ Không thể chuyển chương: chưa chọn truyện');
+            return;
+        }
+
+        const maxChapter = this.currentStory.chapters;
+        console.log(`📖 Next chapter: ${this.currentChapter}/${maxChapter}`);
+
         if (this.currentChapter < maxChapter) {
             await this.loadChapter(this.currentChapter + 1);
         } else {
-            this.showError('Đã đến cuối truyện! 🎉');
+            this.showError(`Đã đến cuối truyện! 🎉 (${maxChapter} chương)`);
         }
     }
 

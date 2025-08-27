@@ -1,24 +1,24 @@
 {
   "stories": [
     {
-      "id": "marriage",
-      "title": "Marriage Novel - Truyện Hôn Nhân",
-      "description": "Một câu chuyện tình yêu đầy cảm động về hành trình tìm lại bản thân và tình yêu đích thực...",
-      "author": "Tác giả ẩn danh",
-      "status": "Đang cập nhật - 494 chương",
-      "chapters": 494,
+      "id": "A",
+      "title": "A",
+      "description": "Lorem",
+      "author": "a",
+      "status": "Đang cập nhật - 627+ chương",
+      "chapters": 627,
       "cover": "",
       "tags": ["Romance", "Drama", "Modern"],
       "lastUpdate": "2025-08-27"
     },
     {
-      "id": "weekly_power",
-      "title": "Tên Truyện Mới",
-      "description": "Mô tả ngắn về truyện...",
-      "author": "Tên tác giả",
+      "id": "B",
+      "title": "B",
+      "description": "LoremB",
+      "author": "BLão",
       "status": "Hoàn thành",
-      "chapters": 651,
-      "tags": ["Action", "Adventure"],
+      "chapters": 650,
+      "tags": ["qq", "thích nhìn không"],
       "lastUpdate": "2025-01-15"
     }
   ]

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test</title>
+</head>
+<body>
+    <h1>Debug Test</h1>
+    <div id="output"></div>
+    
+    <script>
+        console.log('✅ Basic script loading works');
+        document.getElementById('output').innerHTML = '✅ JavaScript is working!';
+        
+        // Test fetch
+        fetch('data/stories.json')
+            .then(response => {
+                console.log('✅ Fetch response:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('✅ Data loaded:', data);
+                document.getElementById('output').innerHTML += '<br>✅ Data fetch works!';
+            })
+            .catch(error => {
+                console.error('❌ Fetch error:', error);
+                document.getElementById('output').innerHTML += '<br>❌ Fetch failed: ' + error.message;
+            });
+    </script>
+</body>
+</html>

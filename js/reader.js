@@ -79,7 +79,7 @@ class StoryReader {
 
     async loadStories() {
         try {
-            const response = await fetch('data/stories.json');
+            const response = await fetch('./data/stories.json');
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
@@ -126,7 +126,7 @@ class StoryReader {
 
         try {
             const chapterNum = String(chapterNumber).padStart(3, '0');
-            const url = `data/${this.currentStory.id}/chapter_${chapterNum}.json`;
+            const url = `./data/${this.currentStory.id}/chapter_${chapterNum}.json`;
 
             const response = await fetch(url);
 
@@ -512,7 +512,7 @@ function startReading(storyId) {
 function testStory(storyId) {
     console.log('Test truyện:', storyId);
 
-    fetch(`data/${storyId}/chapter_001.json`)
+    fetch(`./data/${storyId}/chapter_001.json`)
         .then(response => {
             console.log('Test fetch response:', response.status, response.ok);
             if (response.ok) {

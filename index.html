@@ -112,6 +112,13 @@
         <p>Đang tải...</p>
     </div>
 
+    <script>
+        // Debug info
+        console.log('🔧 Loading reader.js...');
+        window.addEventListener('error', function(e) {
+            console.error('❌ Global error:', e.error, e.filename, e.lineno);
+        });
+    </script>
     <script src="js/reader.js"></script>
 </body>
 </html>

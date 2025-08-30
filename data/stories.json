@@ -20,6 +20,16 @@
       "chapters": 650,
       "tags": ["qq", "thích nhìn không"],
       "lastUpdate": "2025-01-15"
+    },
+    {
+      "id": "C",
+      "title": "C",
+      "description": "LoremC",
+      "author": "CLão",
+      "status": "Hoàn thành",
+      "chapters": 650,
+      "tags": ["qq", "thích nhìn không"],
+      "lastUpdate": "2025-01-15"
     }
   ]
 }

@@ -1,0 +1,607 @@
+{
+  "source_file": "060925_1332_gmn_corpse_piaotia_context.yaml",
+  "total_chapters": 100,
+  "total_segments": 137,
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "filename": "chapter_001.json",
+      "segments_count": 1,
+      "title": "Chương 1: 第一章"
+    },
+    {
+      "chapter_number": 2,
+      "filename": "chapter_002.json",
+      "segments_count": 1,
+      "title": "Chương 2: 第二章"
+    },
+    {
+      "chapter_number": 3,
+      "filename": "chapter_003.json",
+      "segments_count": 1,
+      "title": "Chương 3: 第三章"
+    },
+    {
+      "chapter_number": 4,
+      "filename": "chapter_004.json",
+      "segments_count": 2,
+      "title": "Chương 4: 第四章"
+    },
+    {
+      "chapter_number": 5,
+      "filename": "chapter_005.json",
+      "segments_count": 1,
+      "title": "Chương 5: 第五章"
+    },
+    {
+      "chapter_number": 6,
+      "filename": "chapter_006.json",
+      "segments_count": 1,
+      "title": "Chương 6: 第六章"
+    },
+    {
+      "chapter_number": 7,
+      "filename": "chapter_007.json",
+      "segments_count": 1,
+      "title": "Chương 7: 第七章"
+    },
+    {
+      "chapter_number": 8,
+      "filename": "chapter_008.json",
+      "segments_count": 1,
+      "title": "Chương 8: 第八章"
+    },
+    {
+      "chapter_number": 9,
+      "filename": "chapter_009.json",
+      "segments_count": 1,
+      "title": "Chương 9: 第九章"
+    },
+    {
+      "chapter_number": 10,
+      "filename": "chapter_010.json",
+      "segments_count": 1,
+      "title": "Chương 10: 第十章"
+    },
+    {
+      "chapter_number": 11,
+      "filename": "chapter_011.json",
+      "segments_count": 1,
+      "title": "Chương 11: 第十一章"
+    },
+    {
+      "chapter_number": 12,
+      "filename": "chapter_012.json",
+      "segments_count": 2,
+      "title": "Chương 12: 第十二章"
+    },
+    {
+      "chapter_number": 13,
+      "filename": "chapter_013.json",
+      "segments_count": 1,
+      "title": "Chương 13: 第十三章"
+    },
+    {
+      "chapter_number": 14,
+      "filename": "chapter_014.json",
+      "segments_count": 2,
+      "title": "Chương 14: 第十四章"
+    },
+    {
+      "chapter_number": 15,
+      "filename": "chapter_015.json",
+      "segments_count": 1,
+      "title": "Chương 15: 第十五章"
+    },
+    {
+      "chapter_number": 16,
+      "filename": "chapter_016.json",
+      "segments_count": 2,
+      "title": "Chương 16: 第十六章"
+    },
+    {
+      "chapter_number": 17,
+      "filename": "chapter_017.json",
+      "segments_count": 2,
+      "title": "Chương 17: 第十七章"
+    },
+    {
+      "chapter_number": 18,
+      "filename": "chapter_018.json",
+      "segments_count": 2,
+      "title": "Chương 18: 第十八章"
+    },
+    {
+      "chapter_number": 19,
+      "filename": "chapter_019.json",
+      "segments_count": 1,
+      "title": "Chương 19: 第十九章"
+    },
+    {
+      "chapter_number": 20,
+      "filename": "chapter_020.json",
+      "segments_count": 2,
+      "title": "Chương 20: 第二十章"
+    },
+    {
+      "chapter_number": 21,
+      "filename": "chapter_021.json",
+      "segments_count": 1,
+      "title": "Chương 21: 第二十一章"
+    },
+    {
+      "chapter_number": 22,
+      "filename": "chapter_022.json",
+      "segments_count": 2,
+      "title": "Chương 22: 第二十二章"
+    },
+    {
+      "chapter_number": 23,
+      "filename": "chapter_023.json",
+      "segments_count": 1,
+      "title": "Chương 23: 第二十三章"
+    },
+    {
+      "chapter_number": 24,
+      "filename": "chapter_024.json",
+      "segments_count": 1,
+      "title": "Chương 24: 第二十四章"
+    },
+    {
+      "chapter_number": 25,
+      "filename": "chapter_025.json",
+      "segments_count": 2,
+      "title": "Chương 25: 第二十五章"
+    },
+    {
+      "chapter_number": 26,
+      "filename": "chapter_026.json",
+      "segments_count": 1,
+      "title": "Chương 26: 第二十六章"
+    },
+    {
+      "chapter_number": 27,
+      "filename": "chapter_027.json",
+      "segments_count": 1,
+      "title": "Chương 27: 第二十七章"
+    },
+    {
+      "chapter_number": 28,
+      "filename": "chapter_028.json",
+      "segments_count": 2,
+      "title": "Chương 28: 第二十八章"
+    },
+    {
+      "chapter_number": 29,
+      "filename": "chapter_029.json",
+      "segments_count": 2,
+      "title": "Chương 29: 第二十九章"
+    },
+    {
+      "chapter_number": 30,
+      "filename": "chapter_030.json",
+      "segments_count": 1,
+      "title": "Chương 30: 第30章"
+    },
+    {
+      "chapter_number": 31,
+      "filename": "chapter_031.json",
+      "segments_count": 2,
+      "title": "Chương 31: 第31章"
+    },
+    {
+      "chapter_number": 32,
+      "filename": "chapter_032.json",
+      "segments_count": 2,
+      "title": "Chương 32: 第32章"
+    },
+    {
+      "chapter_number": 33,
+      "filename": "chapter_033.json",
+      "segments_count": 1,
+      "title": "Chương 33: 第33章"
+    },
+    {
+      "chapter_number": 34,
+      "filename": "chapter_034.json",
+      "segments_count": 2,
+      "title": "Chương 34: 第34章"
+    },
+    {
+      "chapter_number": 35,
+      "filename": "chapter_035.json",
+      "segments_count": 1,
+      "title": "Chương 35: 第35章"
+    },
+    {
+      "chapter_number": 36,
+      "filename": "chapter_036.json",
+      "segments_count": 2,
+      "title": "Chương 36: 第36章"
+    },
+    {
+      "chapter_number": 37,
+      "filename": "chapter_037.json",
+      "segments_count": 1,
+      "title": "Chương 37: 第37章"
+    },
+    {
+      "chapter_number": 38,
+      "filename": "chapter_038.json",
+      "segments_count": 1,
+      "title": "Chương 38: 第38章"
+    },
+    {
+      "chapter_number": 39,
+      "filename": "chapter_039.json",
+      "segments_count": 2,
+      "title": "Chương 39: 第39章"
+    },
+    {
+      "chapter_number": 40,
+      "filename": "chapter_040.json",
+      "segments_count": 2,
+      "title": "Chương 40: 第40章"
+    },
+    {
+      "chapter_number": 41,
+      "filename": "chapter_041.json",
+      "segments_count": 1,
+      "title": "Chương 41: 第41章"
+    },
+    {
+      "chapter_number": 42,
+      "filename": "chapter_042.json",
+      "segments_count": 2,
+      "title": "Chương 42: 第42章"
+    },
+    {
+      "chapter_number": 43,
+      "filename": "chapter_043.json",
+      "segments_count": 1,
+      "title": "Chương 43: 第43章"
+    },
+    {
+      "chapter_number": 44,
+      "filename": "chapter_044.json",
+      "segments_count": 2,
+      "title": "Chương 44: 第44章"
+    },
+    {
+      "chapter_number": 45,
+      "filename": "chapter_045.json",
+      "segments_count": 2,
+      "title": "Chương 45: 第45章"
+    },
+    {
+      "chapter_number": 46,
+      "filename": "chapter_046.json",
+      "segments_count": 1,
+      "title": "Chương 46: 第46章"
+    },
+    {
+      "chapter_number": 47,
+      "filename": "chapter_047.json",
+      "segments_count": 1,
+      "title": "Chương 47: 第47章"
+    },
+    {
+      "chapter_number": 48,
+      "filename": "chapter_048.json",
+      "segments_count": 2,
+      "title": "Chương 48: 第48章"
+    },
+    {
+      "chapter_number": 49,
+      "filename": "chapter_049.json",
+      "segments_count": 1,
+      "title": "Chương 49: 第49章"
+    },
+    {
+      "chapter_number": 50,
+      "filename": "chapter_050.json",
+      "segments_count": 1,
+      "title": "Chương 50: 第50章"
+    },
+    {
+      "chapter_number": 51,
+      "filename": "chapter_051.json",
+      "segments_count": 2,
+      "title": "Chương 51: 第51章 （本卷完）"
+    },
+    {
+      "chapter_number": 52,
+      "filename": "chapter_052.json",
+      "segments_count": 1,
+      "title": "Chương 52: 第52章"
+    },
+    {
+      "chapter_number": 53,
+      "filename": "chapter_053.json",
+      "segments_count": 2,
+      "title": "Chương 53: 第53章"
+    },
+    {
+      "chapter_number": 54,
+      "filename": "chapter_054.json",
+      "segments_count": 2,
+      "title": "Chương 54: 第54章"
+    },
+    {
+      "chapter_number": 55,
+      "filename": "chapter_055.json",
+      "segments_count": 1,
+      "title": "Chương 55: 第55章"
+    },
+    {
+      "chapter_number": 56,
+      "filename": "chapter_056.json",
+      "segments_count": 2,
+      "title": "Chương 56: 第56章"
+    },
+    {
+      "chapter_number": 57,
+      "filename": "chapter_057.json",
+      "segments_count": 1,
+      "title": "Chương 57: 第57章 水"
+    },
+    {
+      "chapter_number": 58,
+      "filename": "chapter_058.json",
+      "segments_count": 1,
+      "title": "Chương 58: 第58章"
+    },
+    {
+      "chapter_number": 59,
+      "filename": "chapter_059.json",
+      "segments_count": 1,
+      "title": "Chương 59: 第59章"
+    },
+    {
+      "chapter_number": 60,
+      "filename": "chapter_060.json",
+      "segments_count": 1,
+      "title": "Chương 60: 第60章"
+    },
+    {
+      "chapter_number": 61,
+      "filename": "chapter_061.json",
+      "segments_count": 1,
+      "title": "Chương 61: 第61章"
+    },
+    {
+      "chapter_number": 62,
+      "filename": "chapter_062.json",
+      "segments_count": 1,
+      "title": "Chương 62: 第62章"
+    },
+    {
+      "chapter_number": 63,
+      "filename": "chapter_063.json",
+      "segments_count": 1,
+      "title": "Chương 63: 第63章"
+    },
+    {
+      "chapter_number": 64,
+      "filename": "chapter_064.json",
+      "segments_count": 2,
+      "title": "Chương 64: 第64章"
+    },
+    {
+      "chapter_number": 65,
+      "filename": "chapter_065.json",
+      "segments_count": 1,
+      "title": "Chương 65: 第65章"
+    },
+    {
+      "chapter_number": 66,
+      "filename": "chapter_066.json",
+      "segments_count": 2,
+      "title": "Chương 66: 第66章"
+    },
+    {
+      "chapter_number": 67,
+      "filename": "chapter_067.json",
+      "segments_count": 2,
+      "title": "Chương 67: 第67章"
+    },
+    {
+      "chapter_number": 68,
+      "filename": "chapter_068.json",
+      "segments_count": 2,
+      "title": "Chương 68: 第68章"
+    },
+    {
+      "chapter_number": 69,
+      "filename": "chapter_069.json",
+      "segments_count": 1,
+      "title": "Chương 69: 第69章"
+    },
+    {
+      "chapter_number": 70,
+      "filename": "chapter_070.json",
+      "segments_count": 1,
+      "title": "Chương 70: 第70章"
+    },
+    {
+      "chapter_number": 71,
+      "filename": "chapter_071.json",
+      "segments_count": 1,
+      "title": "Chương 71: 第71章"
+    },
+    {
+      "chapter_number": 72,
+      "filename": "chapter_072.json",
+      "segments_count": 2,
+      "title": "Chương 72: 第72章"
+    },
+    {
+      "chapter_number": 73,
+      "filename": "chapter_073.json",
+      "segments_count": 1,
+      "title": "Chương 73: 第73章"
+    },
+    {
+      "chapter_number": 74,
+      "filename": "chapter_074.json",
+      "segments_count": 1,
+      "title": "Chương 74: 第74章"
+    },
+    {
+      "chapter_number": 75,
+      "filename": "chapter_075.json",
+      "segments_count": 2,
+      "title": "Chương 75: 第75章 （本卷完）"
+    },
+    {
+      "chapter_number": 76,
+      "filename": "chapter_076.json",
+      "segments_count": 1,
+      "title": "Chương 76: 第76章"
+    },
+    {
+      "chapter_number": 77,
+      "filename": "chapter_077.json",
+      "segments_count": 2,
+      "title": "Chương 77: 第77章"
+    },
+    {
+      "chapter_number": 78,
+      "filename": "chapter_078.json",
+      "segments_count": 1,
+      "title": "Chương 78: 第78章"
+    },
+    {
+      "chapter_number": 79,
+      "filename": "chapter_079.json",
+      "segments_count": 1,
+      "title": "Chương 79: 第79章"
+    },
+    {
+      "chapter_number": 80,
+      "filename": "chapter_080.json",
+      "segments_count": 1,
+      "title": "Chương 80: 第80章"
+    },
+    {
+      "chapter_number": 81,
+      "filename": "chapter_081.json",
+      "segments_count": 2,
+      "title": "Chương 81: 第81章"
+    },
+    {
+      "chapter_number": 82,
+      "filename": "chapter_082.json",
+      "segments_count": 2,
+      "title": "Chương 82: 第82章"
+    },
+    {
+      "chapter_number": 83,
+      "filename": "chapter_083.json",
+      "segments_count": 1,
+      "title": "Chương 83: 第83章"
+    },
+    {
+      "chapter_number": 84,
+      "filename": "chapter_084.json",
+      "segments_count": 1,
+      "title": "Chương 84: 第84章"
+    },
+    {
+      "chapter_number": 85,
+      "filename": "chapter_085.json",
+      "segments_count": 1,
+      "title": "Chương 85: 第85章"
+    },
+    {
+      "chapter_number": 86,
+      "filename": "chapter_086.json",
+      "segments_count": 1,
+      "title": "Chương 86: 第86章"
+    },
+    {
+      "chapter_number": 87,
+      "filename": "chapter_087.json",
+      "segments_count": 1,
+      "title": "Chương 87: 第87章"
+    },
+    {
+      "chapter_number": 88,
+      "filename": "chapter_088.json",
+      "segments_count": 1,
+      "title": "Chương 88: 第88章"
+    },
+    {
+      "chapter_number": 89,
+      "filename": "chapter_089.json",
+      "segments_count": 1,
+      "title": "Chương 89: 第89章"
+    },
+    {
+      "chapter_number": 90,
+      "filename": "chapter_090.json",
+      "segments_count": 1,
+      "title": "Chương 90: 第90章"
+    },
+    {
+      "chapter_number": 91,
+      "filename": "chapter_091.json",
+      "segments_count": 2,
+      "title": "Chương 91: 第91章"
+    },
+    {
+      "chapter_number": 92,
+      "filename": "chapter_092.json",
+      "segments_count": 1,
+      "title": "Chương 92: 第92章 （续！）"
+    },
+    {
+      "chapter_number": 93,
+      "filename": "chapter_093.json",
+      "segments_count": 1,
+      "title": "Chương 93: 第93章"
+    },
+    {
+      "chapter_number": 94,
+      "filename": "chapter_094.json",
+      "segments_count": 1,
+      "title": "Chương 94: 第94章"
+    },
+    {
+      "chapter_number": 95,
+      "filename": "chapter_095.json",
+      "segments_count": 1,
+      "title": "Chương 95: 第95章"
+    },
+    {
+      "chapter_number": 96,
+      "filename": "chapter_096.json",
+      "segments_count": 2,
+      "title": "Chương 96: 第96章"
+    },
+    {
+      "chapter_number": 97,
+      "filename": "chapter_097.json",
+      "segments_count": 1,
+      "title": "Chương 97: 第97章"
+    },
+    {
+      "chapter_number": 98,
+      "filename": "chapter_098.json",
+      "segments_count": 1,
+      "title": "Chương 98: 第98章"
+    },
+    {
+      "chapter_number": 99,
+      "filename": "chapter_099.json",
+      "segments_count": 1,
+      "title": "Chương 99: 第99章"
+    },
+    {
+      "chapter_number": 100,
+      "filename": "chapter_100.json",
+      "segments_count": 2,
+      "title": "Chương 100: 第100章"
+    }
+  ]
+}

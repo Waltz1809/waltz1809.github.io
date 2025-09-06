@@ -26,8 +26,18 @@
       "title": "C",
       "description": "LoremC",
       "author": "CLão",
-      "status": "Hoàn thành",
-      "chapters": 650,
+      "status": "Đang làm",
+      "chapters": 314,
+      "tags": ["qq", "thích nhìn không"],
+      "lastUpdate": "2025-01-15"
+    },
+    {
+      "id": "D",
+      "title": "D",
+      "description": "LoremC",
+      "author": "DLão",
+      "status": "Đang làm",
+      "chapters": 100,
       "tags": ["qq", "thích nhìn không"],
       "lastUpdate": "2025-01-15"
     }

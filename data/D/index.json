@@ -1,607 +1,1207 @@
 {
-  "source_file": "060925_1332_gmn_corpse_piaotia_context.yaml",
-  "total_chapters": 100,
-  "total_segments": 137,
+  "source_file": "100925_1329_gmn_fire_youth_766_context.yaml",
+  "total_chapters": 200,
+  "total_segments": 200,
   "chapters": [
     {
       "chapter_number": 1,
       "filename": "chapter_001.json",
       "segments_count": 1,
-      "title": "Chương 1: 第一章"
+      "title": "A Slap from a Childhood Sweetheart"
     },
     {
       "chapter_number": 2,
       "filename": "chapter_002.json",
       "segments_count": 1,
-      "title": "Chương 2: 第二章"
+      "title": "Clever of You to Figure It Out"
     },
     {
       "chapter_number": 3,
       "filename": "chapter_003.json",
       "segments_count": 1,
-      "title": "Chương 3: 第三章"
+      "title": "Memory Palace"
     },
     {
       "chapter_number": 4,
       "filename": "chapter_004.json",
-      "segments_count": 2,
-      "title": "Chương 4: 第四章"
+      "segments_count": 1,
+      "title": "Is He Worthy?"
     },
     {
       "chapter_number": 5,
       "filename": "chapter_005.json",
       "segments_count": 1,
-      "title": "Chương 5: 第五章"
+      "title": "The High School Entrance Exam Begins"
     },
     {
       "chapter_number": 6,
       "filename": "chapter_006.json",
       "segments_count": 1,
-      "title": "Chương 6: 第六章"
+      "title": "A Failed Investment"
     },
     {
       "chapter_number": 7,
       "filename": "chapter_007.json",
       "segments_count": 1,
-      "title": "Chương 7: 第七章"
+      "title": "How Did the Exam Go?"
     },
     {
       "chapter_number": 8,
       "filename": "chapter_008.json",
       "segments_count": 1,
-      "title": "Chương 8: 第八章"
+      "title": "Housing Market Dynamics"
     },
     {
       "chapter_number": 9,
       "filename": "chapter_009.json",
       "segments_count": 1,
-      "title": "Chương 9: 第九章"
+      "title": "Which Summer Job Pays 1500 a Day?"
     },
     {
       "chapter_number": 10,
       "filename": "chapter_010.json",
       "segments_count": 1,
-      "title": "Chương 10: 第十章"
+      "title": "I Am a Minor"
     },
     {
       "chapter_number": 11,
       "filename": "chapter_011.json",
       "segments_count": 1,
-      "title": "Chương 11: 第十一章"
+      "title": "Li Luo's Fried Noodles"
     },
     {
       "chapter_number": 12,
       "filename": "chapter_012.json",
-      "segments_count": 2,
-      "title": "Chương 12: 第十二章"
+      "segments_count": 1,
+      "title": "High School Entrance Exam Results Released"
     },
     {
       "chapter_number": 13,
       "filename": "chapter_013.json",
       "segments_count": 1,
-      "title": "Chương 13: 第十三章"
+      "title": "第13章 巨大驚喜"
     },
     {
       "chapter_number": 14,
       "filename": "chapter_014.json",
-      "segments_count": 2,
-      "title": "Chương 14: 第十四章"
+      "segments_count": 1,
+      "title": "第14章 班級成績單"
     },
     {
       "chapter_number": 15,
       "filename": "chapter_015.json",
       "segments_count": 1,
-      "title": "Chương 15: 第十五章"
+      "title": "第15章 裝逼如風,常伴吾身"
     },
     {
       "chapter_number": 16,
       "filename": "chapter_016.json",
-      "segments_count": 2,
-      "title": "Chương 16: 第十六章"
+      "segments_count": 1,
+      "title": "第16章 優秀畢業生"
     },
     {
       "chapter_number": 17,
       "filename": "chapter_017.json",
-      "segments_count": 2,
-      "title": "Chương 17: 第十七章"
+      "segments_count": 1,
+      "title": "第17章 滿分作文"
     },
     {
       "chapter_number": 18,
       "filename": "chapter_018.json",
-      "segments_count": 2,
-      "title": "Chương 18: 第十八章"
+      "segments_count": 1,
+      "title": "第18章 拿回家的獎狀"
     },
     {
       "chapter_number": 19,
       "filename": "chapter_019.json",
       "segments_count": 1,
-      "title": "Chương 19: 第十九章"
+      "title": "第19章 溪姐,喝茶"
     },
     {
       "chapter_number": 20,
       "filename": "chapter_020.json",
-      "segments_count": 2,
-      "title": "Chương 20: 第二十章"
+      "segments_count": 1,
+      "title": "第20章 升學宴"
     },
     {
       "chapter_number": 21,
       "filename": "chapter_021.json",
       "segments_count": 1,
-      "title": "Chương 21: 第二十一章"
+      "title": "第21章 約定錢江大學"
     },
     {
       "chapter_number": 22,
       "filename": "chapter_022.json",
-      "segments_count": 2,
-      "title": "Chương 22: 第二十二章"
+      "segments_count": 1,
+      "title": "第22章 應志誠回家"
     },
     {
       "chapter_number": 23,
       "filename": "chapter_023.json",
       "segments_count": 1,
-      "title": "Chương 23: 第二十三章"
+      "title": "第23章 改觀"
     },
     {
       "chapter_number": 24,
       "filename": "chapter_024.json",
       "segments_count": 1,
-      "title": "Chương 24: 第二十四章"
+      "title": "第24章 送雨傘"
     },
     {
       "chapter_number": 25,
       "filename": "chapter_025.json",
-      "segments_count": 2,
-      "title": "Chương 25: 第二十五章"
+      "segments_count": 1,
+      "title": "第25章 真拿你沒辦法"
     },
     {
       "chapter_number": 26,
       "filename": "chapter_026.json",
       "segments_count": 1,
-      "title": "Chương 26: 第二十六章"
+      "title": "第26章 那些年"
     },
     {
       "chapter_number": 27,
       "filename": "chapter_027.json",
       "segments_count": 1,
-      "title": "Chương 27: 第二十七章"
+      "title": "第27章 應禪溪的行李"
     },
     {
       "chapter_number": 28,
       "filename": "chapter_028.json",
-      "segments_count": 2,
-      "title": "Chương 28: 第二十八章"
+      "segments_count": 1,
+      "title": "第28章 兩女見面"
     },
     {
       "chapter_number": 29,
       "filename": "chapter_029.json",
-      "segments_count": 2,
-      "title": "Chương 29: 第二十九章"
+      "segments_count": 1,
+      "title": "第29章 應禪溪喊我買菜"
     },
     {
       "chapter_number": 30,
       "filename": "chapter_030.json",
       "segments_count": 1,
-      "title": "Chương 30: 第30章"
+      "title": "第30章 暴露"
     },
     {
       "chapter_number": 31,
       "filename": "chapter_031.json",
-      "segments_count": 2,
-      "title": "Chương 31: 第31章"
+      "segments_count": 1,
+      "title": "第31章 彩禮?"
     },
     {
       "chapter_number": 32,
       "filename": "chapter_032.json",
-      "segments_count": 2,
-      "title": "Chương 32: 第32章"
+      "segments_count": 1,
+      "title": "第32章 大佬"
     },
     {
       "chapter_number": 33,
       "filename": "chapter_033.json",
       "segments_count": 1,
-      "title": "Chương 33: 第33章"
+      "title": "第33章 電腦密碼"
     },
     {
       "chapter_number": 34,
       "filename": "chapter_034.json",
-      "segments_count": 2,
-      "title": "Chương 34: 第34章"
+      "segments_count": 1,
+      "title": "第34章 徐有漁的疑惑"
     },
     {
       "chapter_number": 35,
       "filename": "chapter_035.json",
       "segments_count": 1,
-      "title": "Chương 35: 第35章"
+      "title": "第35章 好看嗎?"
     },
     {
       "chapter_number": 36,
       "filename": "chapter_036.json",
-      "segments_count": 2,
-      "title": "Chương 36: 第36章"
+      "segments_count": 1,
+      "title": "第36章 新書上架"
     },
     {
       "chapter_number": 37,
       "filename": "chapter_037.json",
       "segments_count": 1,
-      "title": "Chương 37: 第37章"
+      "title": "第37章 人終有一死"
     },
     {
       "chapter_number": 38,
       "filename": "chapter_038.json",
       "segments_count": 1,
-      "title": "Chương 38: 第38章"
+      "title": "第38章 少女的小心思"
     },
     {
       "chapter_number": 39,
       "filename": "chapter_039.json",
-      "segments_count": 2,
-      "title": "Chương 39: 第39章"
+      "segments_count": 1,
+      "title": "第39章 開學報到"
     },
     {
       "chapter_number": 40,
       "filename": "chapter_040.json",
-      "segments_count": 2,
-      "title": "Chương 40: 第40章"
+      "segments_count": 1,
+      "title": "第40章 顏竹笙"
     },
     {
       "chapter_number": 41,
       "filename": "chapter_041.json",
       "segments_count": 1,
-      "title": "Chương 41: 第41章"
+      "title": "第41章 自我介紹"
     },
     {
       "chapter_number": 42,
       "filename": "chapter_042.json",
-      "segments_count": 2,
-      "title": "Chương 42: 第42章"
+      "segments_count": 1,
+      "title": "第42章 當選"
     },
     {
       "chapter_number": 43,
       "filename": "chapter_043.json",
       "segments_count": 1,
-      "title": "Chương 43: 第43章"
+      "title": "第43章 第一頓午餐"
     },
     {
       "chapter_number": 44,
       "filename": "chapter_044.json",
-      "segments_count": 2,
-      "title": "Chương 44: 第44章"
+      "segments_count": 1,
+      "title": "第44章 李珞是表弟"
     },
     {
       "chapter_number": 45,
       "filename": "chapter_045.json",
-      "segments_count": 2,
-      "title": "Chương 45: 第45章"
+      "segments_count": 1,
+      "title": "第45章 班長的職責"
     },
     {
       "chapter_number": 46,
       "filename": "chapter_046.json",
       "segments_count": 1,
-      "title": "Chương 46: 第46章"
+      "title": "第46章 花秀秀的小野心"
     },
     {
       "chapter_number": 47,
       "filename": "chapter_047.json",
       "segments_count": 1,
-      "title": "Chương 47: 第47章"
+      "title": "第47章 放學等我"
     },
     {
       "chapter_number": 48,
       "filename": "chapter_048.json",
-      "segments_count": 2,
-      "title": "Chương 48: 第48章"
+      "segments_count": 1,
+      "title": "第48章 苦等投喂的學姐"
     },
     {
       "chapter_number": 49,
       "filename": "chapter_049.json",
       "segments_count": 1,
-      "title": "Chương 49: 第49章"
+      "title": "第49章 存稿都用不完"
     },
     {
       "chapter_number": 50,
       "filename": "chapter_050.json",
       "segments_count": 1,
-      "title": "Chương 50: 第50章"
+      "title": "第50章 賺點小錢"
     },
     {
       "chapter_number": 51,
       "filename": "chapter_051.json",
-      "segments_count": 2,
-      "title": "Chương 51: 第51章 （本卷完）"
+      "segments_count": 1,
+      "title": "第51章 人多力量大"
     },
     {
       "chapter_number": 52,
       "filename": "chapter_052.json",
       "segments_count": 1,
-      "title": "Chương 52: 第52章"
+      "title": "第52章 軍訓"
     },
     {
       "chapter_number": 53,
       "filename": "chapter_053.json",
-      "segments_count": 2,
-      "title": "Chương 53: 第53章"
+      "segments_count": 1,
+      "title": "第53章 送小布丁"
     },
     {
       "chapter_number": 54,
       "filename": "chapter_054.json",
-      "segments_count": 2,
-      "title": "Chương 54: 第54章"
+      "segments_count": 1,
+      "title": "第54章 好班長是如何練成的"
     },
     {
       "chapter_number": 55,
       "filename": "chapter_055.json",
       "segments_count": 1,
-      "title": "Chương 55: 第55章"
+      "title": "第55章 你表妹人很好"
     },
     {
       "chapter_number": 56,
       "filename": "chapter_056.json",
-      "segments_count": 2,
-      "title": "Chương 56: 第56章"
+      "segments_count": 1,
+      "title": "第56章 補充一下糖分"
     },
     {
       "chapter_number": 57,
       "filename": "chapter_057.json",
       "segments_count": 1,
-      "title": "Chương 57: 第57章 水"
+      "title": "第57章 請客吃飯"
     },
     {
       "chapter_number": 58,
       "filename": "chapter_058.json",
       "segments_count": 1,
-      "title": "Chương 58: 第58章"
+      "title": "第58章 操場K歌"
     },
     {
       "chapter_number": 59,
       "filename": "chapter_059.json",
       "segments_count": 1,
-      "title": "Chương 59: 第59章"
+      "title": "第59章 搶走你的吉他"
     },
     {
       "chapter_number": 60,
       "filename": "chapter_060.json",
       "segments_count": 1,
-      "title": "Chương 60: 第60章"
+      "title": "第60章 等你下課"
     },
     {
       "chapter_number": 61,
       "filename": "chapter_061.json",
       "segments_count": 1,
-      "title": "Chương 61: 第61章"
+      "title": "第61章 絕對音感"
     },
     {
       "chapter_number": 62,
       "filename": "chapter_062.json",
       "segments_count": 1,
-      "title": "Chương 62: 第62章"
+      "title": "第62章 經典送水"
     },
     {
       "chapter_number": 63,
       "filename": "chapter_063.json",
       "segments_count": 1,
-      "title": "Chương 63: 第63章"
+      "title": "第63章 軍訓結束"
     },
     {
       "chapter_number": 64,
       "filename": "chapter_064.json",
-      "segments_count": 2,
-      "title": "Chương 64: 第64章"
+      "segments_count": 1,
+      "title": "第64章 白嫖顏竹笙"
     },
     {
       "chapter_number": 65,
       "filename": "chapter_065.json",
       "segments_count": 1,
-      "title": "Chương 65: 第65章"
+      "title": "第65章 士別三日"
     },
     {
       "chapter_number": 66,
       "filename": "chapter_066.json",
-      "segments_count": 2,
-      "title": "Chương 66: 第66章"
+      "segments_count": 1,
+      "title": "第66章 開學考的意義"
     },
     {
       "chapter_number": 67,
       "filename": "chapter_067.json",
-      "segments_count": 2,
-      "title": "Chương 67: 第67章"
+      "segments_count": 1,
+      "title": "第67章 四人成行"
     },
     {
       "chapter_number": 68,
       "filename": "chapter_068.json",
-      "segments_count": 2,
-      "title": "Chương 68: 第68章"
+      "segments_count": 1,
+      "title": "第68章 抱歉,我有喜歡的人了"
     },
     {
       "chapter_number": 69,
       "filename": "chapter_069.json",
       "segments_count": 1,
-      "title": "Chương 69: 第69章"
+      "title": "第69章 缺一場刻骨銘心的愛情"
     },
     {
       "chapter_number": 70,
       "filename": "chapter_070.json",
       "segments_count": 1,
-      "title": "Chương 70: 第70章"
+      "title": "第70章 想得美"
     },
     {
       "chapter_number": 71,
       "filename": "chapter_071.json",
       "segments_count": 1,
-      "title": "Chương 71: 第71章"
+      "title": "第71章 群星環繞"
     },
     {
       "chapter_number": 72,
       "filename": "chapter_072.json",
-      "segments_count": 2,
-      "title": "Chương 72: 第72章"
+      "segments_count": 1,
+      "title": "第72章 變態"
     },
     {
       "chapter_number": 73,
       "filename": "chapter_073.json",
       "segments_count": 1,
-      "title": "Chương 73: 第73章"
+      "title": "第73章 徐有漁的親自邀請"
     },
     {
       "chapter_number": 74,
       "filename": "chapter_074.json",
       "segments_count": 1,
-      "title": "Chương 74: 第74章"
+      "title": "第74章 可以做我男朋友嗎?"
     },
     {
       "chapter_number": 75,
       "filename": "chapter_075.json",
-      "segments_count": 2,
-      "title": "Chương 75: 第75章 （本卷完）"
+      "segments_count": 1,
+      "title": "第75章 共享耳機"
     },
     {
       "chapter_number": 76,
       "filename": "chapter_076.json",
       "segments_count": 1,
-      "title": "Chương 76: 第76章"
+      "title": "第76章 年輪發布"
     },
     {
       "chapter_number": 77,
       "filename": "chapter_077.json",
-      "segments_count": 2,
-      "title": "Chương 77: 第77章"
+      "segments_count": 1,
+      "title": "第77章 歌詞真意"
     },
     {
       "chapter_number": 78,
       "filename": "chapter_078.json",
       "segments_count": 1,
-      "title": "Chương 78: 第78章"
+      "title": "第78章 真正的班長"
     },
     {
       "chapter_number": 79,
       "filename": "chapter_079.json",
       "segments_count": 1,
-      "title": "Chương 79: 第79章"
+      "title": "第79章 文學社的筆友"
     },
     {
       "chapter_number": 80,
       "filename": "chapter_080.json",
       "segments_count": 1,
-      "title": "Chương 80: 第80章"
+      "title": "第80章 信封戰爭"
     },
     {
       "chapter_number": 81,
       "filename": "chapter_081.json",
-      "segments_count": 2,
-      "title": "Chương 81: 第81章"
+      "segments_count": 1,
+      "title": "第81章 一首歌的時間"
     },
     {
       "chapter_number": 82,
       "filename": "chapter_082.json",
-      "segments_count": 2,
-      "title": "Chương 82: 第82章"
+      "segments_count": 1,
+      "title": "第82章 錄歌"
     },
     {
       "chapter_number": 83,
       "filename": "chapter_083.json",
       "segments_count": 1,
-      "title": "Chương 83: 第83章"
+      "title": "第83章 你的同桌班長叫什么?"
     },
     {
       "chapter_number": 84,
       "filename": "chapter_084.json",
       "segments_count": 1,
-      "title": "Chương 84: 第84章"
+      "title": "第84章 展信"
     },
     {
       "chapter_number": 85,
       "filename": "chapter_085.json",
       "segments_count": 1,
-      "title": "Chương 85: 第85章"
+      "title": "第85章 制服青梅"
     },
     {
       "chapter_number": 86,
       "filename": "chapter_086.json",
       "segments_count": 1,
-      "title": "Chương 86: 第86章"
+      "title": "第86章 顏竹笙的發現"
     },
     {
       "chapter_number": 87,
       "filename": "chapter_087.json",
       "segments_count": 1,
-      "title": "Chương 87: 第87章"
+      "title": "第87章 你笨"
     },
     {
       "chapter_number": 88,
       "filename": "chapter_088.json",
       "segments_count": 1,
-      "title": "Chương 88: 第88章"
+      "title": "第88章 顏竹笙來電"
     },
     {
       "chapter_number": 89,
       "filename": "chapter_089.json",
       "segments_count": 1,
-      "title": "Chương 89: 第89章"
+      "title": "第89章 約會"
     },
     {
       "chapter_number": 90,
       "filename": "chapter_090.json",
       "segments_count": 1,
-      "title": "Chương 90: 第90章"
+      "title": "第90章 我想你了"
     },
     {
       "chapter_number": 91,
       "filename": "chapter_091.json",
-      "segments_count": 2,
-      "title": "Chương 91: 第91章"
+      "segments_count": 1,
+      "title": "第91章 大伯駕到"
     },
     {
       "chapter_number": 92,
       "filename": "chapter_092.json",
       "segments_count": 1,
-      "title": "Chương 92: 第92章 （续！）"
+      "title": "第92章 五千塊的稿費"
     },
     {
       "chapter_number": 93,
       "filename": "chapter_093.json",
       "segments_count": 1,
-      "title": "Chương 93: 第93章"
+      "title": "第93章 \"偶遇\"青梅"
     },
     {
       "chapter_number": 94,
       "filename": "chapter_094.json",
       "segments_count": 1,
-      "title": "Chương 94: 第94章"
+      "title": "第94章 三人行"
     },
     {
       "chapter_number": 95,
       "filename": "chapter_095.json",
       "segments_count": 1,
-      "title": "Chương 95: 第95章"
+      "title": "第95章 真實的差距"
     },
     {
       "chapter_number": 96,
       "filename": "chapter_096.json",
-      "segments_count": 2,
-      "title": "Chương 96: 第96章"
+      "segments_count": 1,
+      "title": "第96章 好兄弟是這樣的"
     },
     {
       "chapter_number": 97,
       "filename": "chapter_097.json",
       "segments_count": 1,
-      "title": "Chương 97: 第97章"
+      "title": "第97章 我媽媽想找你吃飯"
     },
     {
       "chapter_number": 98,
       "filename": "chapter_098.json",
       "segments_count": 1,
-      "title": "Chương 98: 第98章"
+      "title": "第98章 李珞你們人呢?"
     },
     {
       "chapter_number": 99,
       "filename": "chapter_099.json",
       "segments_count": 1,
-      "title": "Chương 99: 第99章"
+      "title": "第99章 還疼嗎"
     },
     {
       "chapter_number": 100,
       "filename": "chapter_100.json",
-      "segments_count": 2,
-      "title": "Chương 100: 第100章"
+      "segments_count": 1,
+      "title": "第100章 應禪溪喜歡玩偶"
+    },
+    {
+      "chapter_number": 101,
+      "filename": "chapter_101.json",
+      "segments_count": 1,
+      "title": "第101章 李珞你給我站住"
+    },
+    {
+      "chapter_number": 102,
+      "filename": "chapter_102.json",
+      "segments_count": 1,
+      "title": "第102章 好朋友"
+    },
+    {
+      "chapter_number": 103,
+      "filename": "chapter_103.json",
+      "segments_count": 1,
+      "title": "第103章 你身上有她的香水味"
+    },
+    {
+      "chapter_number": 104,
+      "filename": "chapter_104.json",
+      "segments_count": 1,
+      "title": "第104章 喜歡"
+    },
+    {
+      "chapter_number": 105,
+      "filename": "chapter_105.json",
+      "segments_count": 1,
+      "title": "第105章 我在等你"
+    },
+    {
+      "chapter_number": 106,
+      "filename": "chapter_106.json",
+      "segments_count": 1,
+      "title": "第106章 溪溪歸我了"
+    },
+    {
+      "chapter_number": 107,
+      "filename": "chapter_107.json",
+      "segments_count": 1,
+      "title": "第107章 徐有漁的盟主"
+    },
+    {
+      "chapter_number": 108,
+      "filename": "chapter_108.json",
+      "segments_count": 1,
+      "title": "第108章 勇闖男生領土"
+    },
+    {
+      "chapter_number": 109,
+      "filename": "chapter_109.json",
+      "segments_count": 1,
+      "title": "第109章 親親舒服嗎?"
+    },
+    {
+      "chapter_number": 110,
+      "filename": "chapter_110.json",
+      "segments_count": 1,
+      "title": "第110章 二人世界"
+    },
+    {
+      "chapter_number": 111,
+      "filename": "chapter_111.json",
+      "segments_count": 1,
+      "title": "第111章 她的頭發"
+    },
+    {
+      "chapter_number": 112,
+      "filename": "chapter_112.json",
+      "segments_count": 1,
+      "title": "第112章 摸摸腹肌"
+    },
+    {
+      "chapter_number": 113,
+      "filename": "chapter_113.json",
+      "segments_count": 1,
+      "title": "第113章 你的聲音怎么有點喘?"
+    },
+    {
+      "chapter_number": 114,
+      "filename": "chapter_114.json",
+      "segments_count": 1,
+      "title": "第114章 十年老粉"
+    },
+    {
+      "chapter_number": 115,
+      "filename": "chapter_115.json",
+      "segments_count": 1,
+      "title": "第115章 全班第一"
+    },
+    {
+      "chapter_number": 116,
+      "filename": "chapter_116.json",
+      "segments_count": 1,
+      "title": "第116章 逆斬天驕"
+    },
+    {
+      "chapter_number": 117,
+      "filename": "chapter_117.json",
+      "segments_count": 1,
+      "title": "第117章 揚名"
+    },
+    {
+      "chapter_number": 118,
+      "filename": "chapter_118.json",
+      "segments_count": 1,
+      "title": "第118章 搖滾社"
+    },
+    {
+      "chapter_number": 119,
+      "filename": "chapter_119.json",
+      "segments_count": 1,
+      "title": "第119章 這樣就不緊張了"
+    },
+    {
+      "chapter_number": 120,
+      "filename": "chapter_120.json",
+      "segments_count": 1,
+      "title": "第120章 美妙的事故"
+    },
+    {
+      "chapter_number": 121,
+      "filename": "chapter_121.json",
+      "segments_count": 1,
+      "title": "第121章 徐有漁之父"
+    },
+    {
+      "chapter_number": 122,
+      "filename": "chapter_122.json",
+      "segments_count": 1,
+      "title": "第122章 用你的魔法打敗你"
+    },
+    {
+      "chapter_number": 123,
+      "filename": "chapter_123.json",
+      "segments_count": 1,
+      "title": "第123章 青梅之約"
+    },
+    {
+      "chapter_number": 124,
+      "filename": "chapter_124.json",
+      "segments_count": 1,
+      "title": "第124章 MV導演應禪溪"
+    },
+    {
+      "chapter_number": 125,
+      "filename": "chapter_125.json",
+      "segments_count": 1,
+      "title": "第125章 聽說你在談戀愛?"
+    },
+    {
+      "chapter_number": 126,
+      "filename": "chapter_126.json",
+      "segments_count": 1,
+      "title": "第126章 晨跑約定"
+    },
+    {
+      "chapter_number": 127,
+      "filename": "chapter_127.json",
+      "segments_count": 1,
+      "title": "第127章 你喜歡我?"
+    },
+    {
+      "chapter_number": 128,
+      "filename": "chapter_128.json",
+      "segments_count": 1,
+      "title": "第128章 十指相扣"
+    },
+    {
+      "chapter_number": 129,
+      "filename": "chapter_129.json",
+      "segments_count": 1,
+      "title": "第129章 做飯阿姨又不用做飯了"
+    },
+    {
+      "chapter_number": 130,
+      "filename": "chapter_130.json",
+      "segments_count": 1,
+      "title": "第130章 床上美人"
+    },
+    {
+      "chapter_number": 131,
+      "filename": "chapter_131.json",
+      "segments_count": 1,
+      "title": "第131章 雨露均沾"
+    },
+    {
+      "chapter_number": 132,
+      "filename": "chapter_132.json",
+      "segments_count": 1,
+      "title": "第132章 李珞你好短"
+    },
+    {
+      "chapter_number": 133,
+      "filename": "chapter_133.json",
+      "segments_count": 1,
+      "title": "第133章 如有雷同,純屬巧合"
+    },
+    {
+      "chapter_number": 134,
+      "filename": "chapter_134.json",
+      "segments_count": 1,
+      "title": "第134章 顏竹笙火力全開"
+    },
+    {
+      "chapter_number": 135,
+      "filename": "chapter_135.json",
+      "segments_count": 1,
+      "title": "第135章 當著溪溪的面開大"
+    },
+    {
+      "chapter_number": 136,
+      "filename": "chapter_136.json",
+      "segments_count": 1,
+      "title": "第136章 你要吹吹看嗎?"
+    },
+    {
+      "chapter_number": 137,
+      "filename": "chapter_137.json",
+      "segments_count": 1,
+      "title": "第137章 溪溪的擔憂"
+    },
+    {
+      "chapter_number": 138,
+      "filename": "chapter_138.json",
+      "segments_count": 1,
+      "title": "第138章 獻給所有人的歌"
+    },
+    {
+      "chapter_number": 139,
+      "filename": "chapter_139.json",
+      "segments_count": 1,
+      "title": "第139章 唱給一個人的歌"
+    },
+    {
+      "chapter_number": 140,
+      "filename": "chapter_140.json",
+      "segments_count": 1,
+      "title": "第140章 舔狗精神"
+    },
+    {
+      "chapter_number": 141,
+      "filename": "chapter_141.json",
+      "segments_count": 1,
+      "title": "第141章 溪溪的紅包"
+    },
+    {
+      "chapter_number": 142,
+      "filename": "chapter_142.json",
+      "segments_count": 1,
+      "title": "第142章 別擋路"
+    },
+    {
+      "chapter_number": 143,
+      "filename": "chapter_143.json",
+      "segments_count": 1,
+      "title": "第143章 梅開二度"
+    },
+    {
+      "chapter_number": 144,
+      "filename": "chapter_144.json",
+      "segments_count": 1,
+      "title": "第144章 你的水,我的水"
+    },
+    {
+      "chapter_number": 145,
+      "filename": "chapter_145.json",
+      "segments_count": 1,
+      "title": "第145章 把溪溪背回家"
+    },
+    {
+      "chapter_number": 146,
+      "filename": "chapter_146.json",
+      "segments_count": 1,
+      "title": "第146章 人形拐杖比較好用"
+    },
+    {
+      "chapter_number": 147,
+      "filename": "chapter_147.json",
+      "segments_count": 1,
+      "title": "第147章 查房"
+    },
+    {
+      "chapter_number": 148,
+      "filename": "chapter_148.json",
+      "segments_count": 1,
+      "title": "第148章 未來女婿"
+    },
+    {
+      "chapter_number": 149,
+      "filename": "chapter_149.json",
+      "segments_count": 1,
+      "title": "第149章 瑤池初上線,重燃現原形"
+    },
+    {
+      "chapter_number": 150,
+      "filename": "chapter_150.json",
+      "segments_count": 1,
+      "title": "第150章 翻紅的征兆"
+    },
+    {
+      "chapter_number": 151,
+      "filename": "chapter_151.json",
+      "segments_count": 1,
+      "title": "第151章 喜歡"
+    },
+    {
+      "chapter_number": 152,
+      "filename": "chapter_152.json",
+      "segments_count": 1,
+      "title": "第152章 你、你不要進來啦"
+    },
+    {
+      "chapter_number": 153,
+      "filename": "chapter_153.json",
+      "segments_count": 1,
+      "title": "第153章 生日快樂"
+    },
+    {
+      "chapter_number": 154,
+      "filename": "chapter_154.json",
+      "segments_count": 1,
+      "title": "第154章 神奇的蝴蝶效應"
+    },
+    {
+      "chapter_number": 155,
+      "filename": "chapter_155.json",
+      "segments_count": 1,
+      "title": "第155章 我好,你壞"
+    },
+    {
+      "chapter_number": 156,
+      "filename": "chapter_156.json",
+      "segments_count": 1,
+      "title": "第156章 顏竹笙的好奇"
+    },
+    {
+      "chapter_number": 157,
+      "filename": "chapter_157.json",
+      "segments_count": 1,
+      "title": "第157章 為你寫的歌"
+    },
+    {
+      "chapter_number": 158,
+      "filename": "chapter_158.json",
+      "segments_count": 1,
+      "title": "第158章 笑盈盈的應禪溪"
+    },
+    {
+      "chapter_number": 159,
+      "filename": "chapter_159.json",
+      "segments_count": 1,
+      "title": "第159章 汗流浹背了"
+    },
+    {
+      "chapter_number": 160,
+      "filename": "chapter_160.json",
+      "segments_count": 1,
+      "title": "第160章 偶遇應志誠"
+    },
+    {
+      "chapter_number": 161,
+      "filename": "chapter_161.json",
+      "segments_count": 1,
+      "title": "第161章 包夾三明治"
+    },
+    {
+      "chapter_number": 162,
+      "filename": "chapter_162.json",
+      "segments_count": 1,
+      "title": "第162章 三個人一起不行嗎?"
+    },
+    {
+      "chapter_number": 163,
+      "filename": "chapter_163.json",
+      "segments_count": 1,
+      "title": "第163章 會死的"
+    },
+    {
+      "chapter_number": 164,
+      "filename": "chapter_164.json",
+      "segments_count": 1,
+      "title": "第164章 把李珞借我用用?"
+    },
+    {
+      "chapter_number": 165,
+      "filename": "chapter_165.json",
+      "segments_count": 1,
+      "title": "第165章 李珞,你欺負我"
+    },
+    {
+      "chapter_number": 166,
+      "filename": "chapter_166.json",
+      "segments_count": 1,
+      "title": "第166章 透視眼"
+    },
+    {
+      "chapter_number": 167,
+      "filename": "chapter_167.json",
+      "segments_count": 1,
+      "title": "第167章 誒,真乖"
+    },
+    {
+      "chapter_number": 168,
+      "filename": "chapter_168.json",
+      "segments_count": 1,
+      "title": "第168章 晚上回家你等著"
+    },
+    {
+      "chapter_number": 169,
+      "filename": "chapter_169.json",
+      "segments_count": 1,
+      "title": "第169章 應禪溪的特等獎"
+    },
+    {
+      "chapter_number": 170,
+      "filename": "chapter_170.json",
+      "segments_count": 1,
+      "title": "第170章 到底是誰在贏?"
+    },
+    {
+      "chapter_number": 171,
+      "filename": "chapter_171.json",
+      "segments_count": 1,
+      "title": "第171章 露一手"
+    },
+    {
+      "chapter_number": 172,
+      "filename": "chapter_172.json",
+      "segments_count": 1,
+      "title": "第172章 求求你了"
+    },
+    {
+      "chapter_number": 173,
+      "filename": "chapter_173.json",
+      "segments_count": 1,
+      "title": "第173章 就當是取材了"
+    },
+    {
+      "chapter_number": 174,
+      "filename": "chapter_174.json",
+      "segments_count": 1,
+      "title": "第174章 欠收拾了"
+    },
+    {
+      "chapter_number": 175,
+      "filename": "chapter_175.json",
+      "segments_count": 1,
+      "title": "第175章 脖子暖手"
+    },
+    {
+      "chapter_number": 176,
+      "filename": "chapter_176.json",
+      "segments_count": 1,
+      "title": "第176章 愛情的味道"
+    },
+    {
+      "chapter_number": 177,
+      "filename": "chapter_177.json",
+      "segments_count": 1,
+      "title": "第177章 顏竹笙的獎勵"
+    },
+    {
+      "chapter_number": 178,
+      "filename": "chapter_178.json",
+      "segments_count": 1,
+      "title": "第178章 元旦倒計時"
+    },
+    {
+      "chapter_number": 179,
+      "filename": "chapter_179.json",
+      "segments_count": 1,
+      "title": "第179章 又是洗手"
+    },
+    {
+      "chapter_number": 180,
+      "filename": "chapter_180.json",
+      "segments_count": 1,
+      "title": "第180章 誰是小丑?"
+    },
+    {
+      "chapter_number": 181,
+      "filename": "chapter_181.json",
+      "segments_count": 1,
+      "title": "第181章 夜深了,做點別的事情吧"
+    },
+    {
+      "chapter_number": 182,
+      "filename": "chapter_182.json",
+      "segments_count": 1,
+      "title": "第182章 同床"
+    },
+    {
+      "chapter_number": 183,
+      "filename": "chapter_183.json",
+      "segments_count": 1,
+      "title": "第183章 雨露均沾"
+    },
+    {
+      "chapter_number": 184,
+      "filename": "chapter_184.json",
+      "segments_count": 1,
+      "title": "第184章 偷吃"
+    },
+    {
+      "chapter_number": 185,
+      "filename": "chapter_185.json",
+      "segments_count": 1,
+      "title": "第185章 失戀"
+    },
+    {
+      "chapter_number": 186,
+      "filename": "chapter_186.json",
+      "segments_count": 1,
+      "title": "第186章 元旦聚餐"
+    },
+    {
+      "chapter_number": 187,
+      "filename": "chapter_187.json",
+      "segments_count": 1,
+      "title": "第187章 我真不是東西"
+    },
+    {
+      "chapter_number": 188,
+      "filename": "chapter_188.json",
+      "segments_count": 1,
+      "title": "第188章 鋼琴室的二人世界"
+    },
+    {
+      "chapter_number": 189,
+      "filename": "chapter_189.json",
+      "segments_count": 1,
+      "title": "第189章 躲貓貓"
+    },
+    {
+      "chapter_number": 190,
+      "filename": "chapter_190.json",
+      "segments_count": 1,
+      "title": "第190章 貼身"
+    },
+    {
+      "chapter_number": 191,
+      "filename": "chapter_191.json",
+      "segments_count": 1,
+      "title": "第191章 又挨揍了"
+    },
+    {
+      "chapter_number": 192,
+      "filename": "chapter_192.json",
+      "segments_count": 1,
+      "title": "第192章 上臺領獎座談會"
+    },
+    {
+      "chapter_number": 193,
+      "filename": "chapter_193.json",
+      "segments_count": 1,
+      "title": "第193章 當托兒"
+    },
+    {
+      "chapter_number": 194,
+      "filename": "chapter_194.json",
+      "segments_count": 1,
+      "title": "第194章 好兄弟一輩子"
+    },
+    {
+      "chapter_number": 195,
+      "filename": "chapter_195.json",
+      "segments_count": 1,
+      "title": "第195章 都是為了取材"
+    },
+    {
+      "chapter_number": 196,
+      "filename": "chapter_196.json",
+      "segments_count": 1,
+      "title": "第196章 都是她們給我買的"
+    },
+    {
+      "chapter_number": 197,
+      "filename": "chapter_197.json",
+      "segments_count": 1,
+      "title": "第197章 叔叔阿姨好"
+    },
+    {
+      "chapter_number": 198,
+      "filename": "chapter_198.json",
+      "segments_count": 1,
+      "title": "第198章 林秀紅親手織的圍巾"
+    },
+    {
+      "chapter_number": 199,
+      "filename": "chapter_199.json",
+      "segments_count": 1,
+      "title": "第199章 顏竹笙我生氣了"
+    },
+    {
+      "chapter_number": 200,
+      "filename": "chapter_200.json",
+      "segments_count": 1,
+      "title": "第200章 寒假的安排"
     }
   ]
 }

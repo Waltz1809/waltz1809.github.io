@@ -2,43 +2,83 @@
   "stories": [
     {
       "id": "A",
-      "title": "A",
-      "description": "Lorem",
-      "author": "a",
+      "title": "Ly Hôn",
+      "description": "Đang chuẩn bị thi đại học thì có hệ thống từ năm 38 tuổi gửi nhầm về.",
+      "author": "ALão",
       "status": "Đang cập nhật - 627+ chương",
       "chapters": 627,
       "cover": "",
-      "tags": ["Romance", "Drama", "Modern"],
+      "tags": ["Romance", "Comedy", "Modern", "School Life"],
       "lastUpdate": "2025-08-27"
     },
     {
       "id": "B",
-      "title": "B",
-      "description": "LoremB",
+      "title": "Divorced Counterattack System",
+      "description": "Like the title says, a system that automatically counterattacks when you get divorced.",
       "author": "BLão",
       "status": "Hoàn thành",
-      "chapters": 650,
-      "tags": ["qq", "thích nhìn không"],
+      "chapters": 20,
+      "tags": ["Romance", "Comedy", "Modern", "School Life"],
       "lastUpdate": "2025-01-15"
     },
     {
       "id": "C",
-      "title": "C",
-      "description": "LoremC",
+      "title": "Bùng Cháy Thanh Xuân",
+      "description": "Trùng sinh về năm lớp 9, 14 tuổi. Từ đó mở ra một cuộc sống mới, nhưng sau đó là câu chuyện yêu đương với 3 cô gái",
       "author": "CLão",
       "status": "Đang làm",
-      "chapters": 314,
-      "tags": ["qq", "thích nhìn không"],
+      "chapters": 200,
+      "tags": ["Ecchi", "Modern", "Comedy", "Romance", "School Life"],
       "lastUpdate": "2025-01-15"
     },
     {
       "id": "D",
-      "title": "D",
-      "description": "LoremC",
+      "title": "Rekindle Green Years",
+      "description": "This is the reincarned story of the green years.",
+      "author": "DLão",
+      "status": "Đang làm",
+      "chapters": 200,
+      "tags": ["Ecchi", "Modern", "Comedy", "Romance", "School Life"],
+      "lastUpdate": "2025-01-15"
+    },
+    {
+      "id": "E",
+      "title": "Trùng Khởi",
+      "description": "Trần Quý Lương trùng sinh làm giàu, mệt quá",
+      "author": "DLão",
+      "status": "Đang làm",
+      "chapters": 314,
+      "tags": ["Modern"],
+      "lastUpdate": "2025-01-15"
+    },
+    {
+      "id": "F",
+      "title": "Trùng Khởi - Eng",
+      "description": "Chen Guiliang",
+      "author": "DLão",
+      "status": "Đang làm",
+      "chapters": 314,
+      "tags": ["Modern"],
+      "lastUpdate": "2025-01-15"
+    },
+    {
+      "id": "G",
+      "title": "Siêu Năng",
+      "description": "LoremF",
+      "author": "DLão",
+      "status": "Đang làm",
+      "chapters": 650,
+      "tags": ["Romance", "Supernatural", "Comedy", "School Life"],
+      "lastUpdate": "2025-01-15"
+    },
+    {
+      "id": "H",
+      "title": "Xác",
+      "description": "LoremG",
       "author": "DLão",
       "status": "Đang làm",
       "chapters": 100,
-      "tags": ["qq", "thích nhìn không"],
+      "tags": ["Supernatural", "Horror"],
       "lastUpdate": "2025-01-15"
     }
   ]

@@ -1,0 +1,1891 @@
+{
+  "source_file": "300825_1306_gmn_remake_0315_context.yaml",
+  "total_chapters": 314,
+  "total_segments": 314,
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "filename": "chapter_001.json",
+      "segments_count": 1,
+      "title": "【This Question is So Hard, I Can't Do It】"
+    },
+    {
+      "chapter_number": 2,
+      "filename": "chapter_002.json",
+      "segments_count": 1,
+      "title": "Chương 2: Sách hay giúp bạn trưởng thành"
+    },
+    {
+      "chapter_number": 3,
+      "filename": "chapter_003.json",
+      "segments_count": 1,
+      "title": "Chương 3: 0003 【Lắc Đầu Bay Tóc】"
+    },
+    {
+      "chapter_number": 4,
+      "filename": "chapter_004.json",
+      "segments_count": 1,
+      "title": "Chương 4: 0004 [Cuộc thi Viết Sáng Tạo Mới?]"
+    },
+    {
+      "chapter_number": 5,
+      "filename": "chapter_005.json",
+      "segments_count": 1,
+      "title": "Chương 5: 0005【Hịch văn và Cyberpunk】"
+    },
+    {
+      "chapter_number": 6,
+      "filename": "chapter_006.json",
+      "segments_count": 1,
+      "title": "Chương 6: 0006 【Át bích. Bỏ qua】"
+    },
+    {
+      "chapter_number": 7,
+      "filename": "chapter_007.json",
+      "segments_count": 1,
+      "title": "Chương 7: 0007【Bạn Cùng Bàn Mới】"
+    },
+    {
+      "chapter_number": 8,
+      "filename": "chapter_008.json",
+      "segments_count": 1,
+      "title": "Chương 8: 0008 [Tăng thêm tiền]"
+    },
+    {
+      "chapter_number": 9,
+      "filename": "chapter_009.json",
+      "segments_count": 1,
+      "title": "Chương 9: 0009 【Bạn tin vào tình yêu không?】"
+    },
+    {
+      "chapter_number": 10,
+      "filename": "chapter_010.json",
+      "segments_count": 1,
+      "title": "Chương 10: 0010【Phạt Đứng? Không Ai Được Thiếu】"
+    },
+    {
+      "chapter_number": 11,
+      "filename": "chapter_011.json",
+      "segments_count": 1,
+      "title": "Chương 11: 0011【Anh Trương Vỹ, em tìm thấy anh rồi】"
+    },
+    {
+      "chapter_number": 12,
+      "filename": "chapter_012.json",
+      "segments_count": 1,
+      "title": "Chương 12: 0012 [Tiểu thư hát tuồng]"
+    },
+    {
+      "chapter_number": 13,
+      "filename": "chapter_013.json",
+      "segments_count": 1,
+      "title": "Chương 13: 0013【Cùng bạn Biên trốn học】"
+    },
+    {
+      "chapter_number": 14,
+      "filename": "chapter_014.json",
+      "segments_count": 1,
+      "title": "Chương 14: 0014【Khởi hành thôi, lên đường thôi】"
+    },
+    {
+      "chapter_number": 15,
+      "filename": "chapter_015.json",
+      "segments_count": 1,
+      "title": "Chương 15: 0015【Hồi cấp hai tôi từng chém người thật】"
+    },
+    {
+      "chapter_number": 16,
+      "filename": "chapter_016.json",
+      "segments_count": 1,
+      "title": "Chương 16: 0016 【Phú bà không thiếu tiền】"
+    },
+    {
+      "chapter_number": 17,
+      "filename": "chapter_017.json",
+      "segments_count": 1,
+      "title": "Chương 17: 0017【Làm cách nào để kiếm tiền?】"
+    },
+    {
+      "chapter_number": 18,
+      "filename": "chapter_018.json",
+      "segments_count": 1,
+      "title": "Chương 18: 0018【Mã Nguồn Huyền Thoại Chưa Bị Rò Rỉ?】"
+    },
+    {
+      "chapter_number": 19,
+      "filename": "chapter_019.json",
+      "segments_count": 1,
+      "title": "Chương 19: Đánh bài không nhất thiết phải có tứ quý thủ công"
+    },
+    {
+      "chapter_number": 20,
+      "filename": "chapter_020.json",
+      "segments_count": 1,
+      "title": "Chương 20: Trung Tâm Cai Nghiện Internet"
+    },
+    {
+      "chapter_number": 21,
+      "filename": "chapter_021.json",
+      "segments_count": 1,
+      "title": "Chương 21: Thử vận may, xe đạp biến xe máy."
+    },
+    {
+      "chapter_number": 22,
+      "filename": "chapter_022.json",
+      "segments_count": 1,
+      "title": "Chương 22: 0022 [Vở kịch hay mới chỉ bắt đầu]"
+    },
+    {
+      "chapter_number": 23,
+      "filename": "chapter_023.json",
+      "segments_count": 1,
+      "title": "Chương 23: 0023【Phụ nữ chỉ cản trở tốc độ khởi nghiệp của tôi】"
+    },
+    {
+      "chapter_number": 24,
+      "filename": "chapter_024.json",
+      "segments_count": 1,
+      "title": "Chương 24: 0024【Chúng Tôi Mở Server Lậu, Không Bán Đồ】"
+    },
+    {
+      "chapter_number": 25,
+      "filename": "chapter_025.json",
+      "segments_count": 1,
+      "title": "Chương 25: 0025 [Anh Em Đều Trúng Bẫy]"
+    },
+    {
+      "chapter_number": 26,
+      "filename": "chapter_026.json",
+      "segments_count": 1,
+      "title": "Chương 26: 0026 【Nhân Danh Cha, Hiển Thánh】"
+    },
+    {
+      "chapter_number": 27,
+      "filename": "chapter_027.json",
+      "segments_count": 1,
+      "title": "Chương 27: 0027 [Nương Nương]"
+    },
+    {
+      "chapter_number": 28,
+      "filename": "chapter_028.json",
+      "segments_count": 1,
+      "title": "Chương 28: 0028 【Tìm vật tín của Tần Thủy Hoàng】"
+    },
+    {
+      "chapter_number": 29,
+      "filename": "chapter_029.json",
+      "segments_count": 1,
+      "title": "Chương 29: 0029"
+    },
+    {
+      "chapter_number": 30,
+      "filename": "chapter_030.json",
+      "segments_count": 1,
+      "title": "Chương 30: 0030【Đại hình Arubaya hầu hạ】"
+    },
+    {
+      "chapter_number": 31,
+      "filename": "chapter_031.json",
+      "segments_count": 1,
+      "title": "Chương 31: 0031"
+    },
+    {
+      "chapter_number": 32,
+      "filename": "chapter_032.json",
+      "segments_count": 1,
+      "title": "Chương 32: Học muội đến tặng 小灵通"
+    },
+    {
+      "chapter_number": 33,
+      "filename": "chapter_033.json",
+      "segments_count": 1,
+      "title": "Chương 33: Dì Tao rất vui"
+    },
+    {
+      "chapter_number": 34,
+      "filename": "chapter_034.json",
+      "segments_count": 1,
+      "title": "Chương 34: 0034【Bài quảng cáo soft-sell lại viral?】"
+    },
+    {
+      "chapter_number": 35,
+      "filename": "chapter_035.json",
+      "segments_count": 1,
+      "title": "Chương 35: 0035【Cái nhìn từ Thịnh Đại】"
+    },
+    {
+      "chapter_number": 36,
+      "filename": "chapter_036.json",
+      "segments_count": 1,
+      "title": "Chương 36: 0036【Mình Đúng Là Soái Ca】"
+    },
+    {
+      "chapter_number": 37,
+      "filename": "chapter_037.json",
+      "segments_count": 1,
+      "title": "Chương 37: 0037【Trà Sữa Cũng Đầy Vẻ Tiểu Tư Sản】"
+    },
+    {
+      "chapter_number": 38,
+      "filename": "chapter_038.json",
+      "segments_count": 1,
+      "title": "Chương 38: 0038 [Huyền Thoại Vực Sâu, Sắp Ra Mắt]"
+    },
+    {
+      "chapter_number": 39,
+      "filename": "chapter_039.json",
+      "segments_count": 1,
+      "title": "Chương 39: 0039"
+    },
+    {
+      "chapter_number": 40,
+      "filename": "chapter_040.json",
+      "segments_count": 1,
+      "title": "Chương 40: 0040"
+    },
+    {
+      "chapter_number": 41,
+      "filename": "chapter_041.json",
+      "segments_count": 1,
+      "title": "Chương 41: 0041【Hãy tự tin nói ra hoài bão của bạn】"
+    },
+    {
+      "chapter_number": 42,
+      "filename": "chapter_042.json",
+      "segments_count": 1,
+      "title": "Chương 42: 0042 [Không Thiếu Tiền]"
+    },
+    {
+      "chapter_number": 43,
+      "filename": "chapter_043.json",
+      "segments_count": 1,
+      "title": "Chương 43: Doanh thu ba vạn ngày đầu"
+    },
+    {
+      "chapter_number": 44,
+      "filename": "chapter_044.json",
+      "segments_count": 1,
+      "title": "Chương 44: Kích nhẹ một cái, đại gia lại nạp tiền"
+    },
+    {
+      "chapter_number": 45,
+      "filename": "chapter_045.json",
+      "segments_count": 1,
+      "title": "Chương 45: 0045 [Tiêu diệt Nǎo Bái Jīn]"
+    },
+    {
+      "chapter_number": 46,
+      "filename": "chapter_046.json",
+      "segments_count": 1,
+      "title": "Chương 46: 0046【Tật Ngoài Da, Không Giá Trị】"
+    },
+    {
+      "chapter_number": 47,
+      "filename": "chapter_047.json",
+      "segments_count": 1,
+      "title": "Chương 47: 0047 【Chia Lợi Nhuận Bốn Vạn Hơn Trong Nửa Tháng】"
+    },
+    {
+      "chapter_number": 48,
+      "filename": "chapter_048.json",
+      "segments_count": 1,
+      "title": "Chương 48: Thông báo vòng chung kết sơ khảo Cuộc thi New Concept đã đến"
+    },
+    {
+      "chapter_number": 49,
+      "filename": "chapter_049.json",
+      "segments_count": 1,
+      "title": "Chương 49: 0049 【Đẩy mạnh Trần Quý Lương】"
+    },
+    {
+      "chapter_number": 50,
+      "filename": "chapter_050.json",
+      "segments_count": 1,
+      "title": "Chương 50: 0050 [Bạn bè QQ của tôi khắp nơi]"
+    },
+    {
+      "chapter_number": 51,
+      "filename": "chapter_051.json",
+      "segments_count": 1,
+      "title": "Chương 51: Bốn nữ sinh, năm nhóm trò chuyện"
+    },
+    {
+      "chapter_number": 52,
+      "filename": "chapter_052.json",
+      "segments_count": 1,
+      "title": "Chương 52: Táo khó tặng"
+    },
+    {
+      "chapter_number": 53,
+      "filename": "chapter_053.json",
+      "segments_count": 1,
+      "title": "Chương 53: Con người và mọi việc đã thay đổi"
+    },
+    {
+      "chapter_number": 54,
+      "filename": "chapter_054.json",
+      "segments_count": 1,
+      "title": "Chương 54: 0054 [Mỗi người một chú mèo nhỏ]"
+    },
+    {
+      "chapter_number": 55,
+      "filename": "chapter_055.json",
+      "segments_count": 1,
+      "title": "Chương 55: Khởi Hành Đến Ma Đô"
+    },
+    {
+      "chapter_number": 56,
+      "filename": "chapter_056.json",
+      "segments_count": 1,
+      "title": "Chương 56: 0056【Yu Hua, Đứng Lại】"
+    },
+    {
+      "chapter_number": 57,
+      "filename": "chapter_057.json",
+      "segments_count": 1,
+      "title": "Chương 57: 0057 【Chung kết New Concept đã bắt đầu】"
+    },
+    {
+      "chapter_number": 58,
+      "filename": "chapter_058.json",
+      "segments_count": 1,
+      "title": "Chương 58: 0058【Danh Văn Xuất, Danh Hiệu Tranh Giành】"
+    },
+    {
+      "chapter_number": 59,
+      "filename": "chapter_059.json",
+      "segments_count": 1,
+      "title": "Chương 59: 0059【Tuyển Tập Văn Mẫu Cũng Có Hàng Nhái】"
+    },
+    {
+      "chapter_number": 60,
+      "filename": "chapter_060.json",
+      "segments_count": 1,
+      "title": "Chương 60: 0060 Các Trường Danh Giá Công Khai Tranh Giành Nhân Tài"
+    },
+    {
+      "chapter_number": 61,
+      "filename": "chapter_061.json",
+      "segments_count": 1,
+      "title": "Chương 61: 0061【Truyền thông bùng nổ】"
+    },
+    {
+      "chapter_number": 62,
+      "filename": "chapter_062.json",
+      "segments_count": 1,
+      "title": "Chương 62: 0062【Ngồi chung bàn với các nhà văn】"
+    },
+    {
+      "chapter_number": 63,
+      "filename": "chapter_063.json",
+      "segments_count": 1,
+      "title": "Chương 63: 0063【Thất Bộ Thành Thơ? Biểu Diễn Trước Mọi Người】"
+    },
+    {
+      "chapter_number": 64,
+      "filename": "chapter_064.json",
+      "segments_count": 1,
+      "title": "Chương 64: Trần Quý Lương Nổi Tiếng Trên Mạng"
+    },
+    {
+      "chapter_number": 65,
+      "filename": "chapter_065.json",
+      "segments_count": 1,
+      "title": "Chương 65: Trai Đẹp Nhất Mọi Diễn Đàn"
+    },
+    {
+      "chapter_number": 66,
+      "filename": "chapter_066.json",
+      "segments_count": 1,
+      "title": "Chương 66: 0066 [Cô Biên Quan Nguyệt, trường chúng tôi rất coi trọng con trai cô]"
+    },
+    {
+      "chapter_number": 67,
+      "filename": "chapter_067.json",
+      "segments_count": 1,
+      "title": "Chương 67: 0067 【Trưởng phòng đào tạo Trần Quý Lương học hành tốt, luôn hiểu chuyện và vâng lời】"
+    },
+    {
+      "chapter_number": 68,
+      "filename": "chapter_068.json",
+      "segments_count": 1,
+      "title": "Chương 68: 0068【Khám phá bất ngờ của phóng viên Trần】"
+    },
+    {
+      "chapter_number": 69,
+      "filename": "chapter_069.json",
+      "segments_count": 1,
+      "title": "Chương 69: Về nhà ăn Tết"
+    },
+    {
+      "chapter_number": 70,
+      "filename": "chapter_070.json",
+      "segments_count": 1,
+      "title": "Chương 70: Thăm Họ Hàng"
+    },
+    {
+      "chapter_number": 71,
+      "filename": "chapter_071.json",
+      "segments_count": 1,
+      "title": "Chương 71: Học Tỷ, Cẩn Thận Cháu Tôi Bị Phụ Nữ Xấu Để Mắt"
+    },
+    {
+      "chapter_number": 72,
+      "filename": "chapter_072.json",
+      "segments_count": 1,
+      "title": "Chương 72: Báo chí đưa tin, toàn Xuyên đều biết tiếng"
+    },
+    {
+      "chapter_number": 73,
+      "filename": "chapter_073.json",
+      "segments_count": 1,
+      "title": "Chương 73: 0073 [Tâm Bão Dư Luận, Đầu Sóng Ngọn Gió]"
+    },
+    {
+      "chapter_number": 74,
+      "filename": "chapter_074.json",
+      "segments_count": 1,
+      "title": "Chương 74: Tôi Đến Để Dạy Các Bạn Một Bài Học"
+    },
+    {
+      "chapter_number": 75,
+      "filename": "chapter_075.json",
+      "segments_count": 1,
+      "title": "Chương 75: 0075 [Mục tiêu nhỏ: Một trăm triệu trước đã]"
+    },
+    {
+      "chapter_number": 76,
+      "filename": "chapter_076.json",
+      "segments_count": 1,
+      "title": "Chương 76: 0076 [Bắc Đại cũng tạm được]"
+    },
+    {
+      "chapter_number": 77,
+      "filename": "chapter_077.json",
+      "segments_count": 1,
+      "title": "Chương 77: 0077【Ngay cả ông bà trong câu lạc bộ cờ cũng biết Trần Quý Lương】"
+    },
+    {
+      "chapter_number": 78,
+      "filename": "chapter_078.json",
+      "segments_count": 1,
+      "title": "Chương 78: 0078【Ba người bạn】"
+    },
+    {
+      "chapter_number": 79,
+      "filename": "chapter_079.json",
+      "segments_count": 1,
+      "title": "Chương 79: Nhật Ký Tốt Nghiệp? Mạng Nội Bộ Trường Học"
+    },
+    {
+      "chapter_number": 80,
+      "filename": "chapter_080.json",
+      "segments_count": 1,
+      "title": "Chương 80: 0080 [Đếm ngược thi Đại học]"
+    },
+    {
+      "chapter_number": 81,
+      "filename": "chapter_081.json",
+      "segments_count": 1,
+      "title": "Chương 81: Bắt Đầu Kỳ Thi Đại Học"
+    },
+    {
+      "chapter_number": 82,
+      "filename": "chapter_082.json",
+      "segments_count": 1,
+      "title": "Chương 82: 0082【Vĩnh Biệt Thời Trung Học】"
+    },
+    {
+      "chapter_number": 83,
+      "filename": "chapter_083.json",
+      "segments_count": 1,
+      "title": "Chương 83: 0083【Nguyên Bồi lớp là cái quái gì?】"
+    },
+    {
+      "chapter_number": 84,
+      "filename": "chapter_084.json",
+      "segments_count": 1,
+      "title": "Chương 84: 0084【Có vẻ không đáng tin cậy】"
+    },
+    {
+      "chapter_number": 85,
+      "filename": "chapter_085.json",
+      "segments_count": 1,
+      "title": "Chương 85: 0085【Mã Đề Nhanh Gió Xuân Đắc Ý】"
+    },
+    {
+      "chapter_number": 86,
+      "filename": "chapter_086.json",
+      "segments_count": 1,
+      "title": "Chương 86: 0086【Thiếu nữ đa cảm】"
+    },
+    {
+      "chapter_number": 87,
+      "filename": "chapter_087.json",
+      "segments_count": 1,
+      "title": "Chương 87: 0087 【Hoàng Đô, Tao Đến Rồi】"
+    },
+    {
+      "chapter_number": 88,
+      "filename": "chapter_088.json",
+      "segments_count": 1,
+      "title": "Chương 88: 0088【Tôi chọn 404】"
+    },
+    {
+      "chapter_number": 89,
+      "filename": "chapter_089.json",
+      "segments_count": 1,
+      "title": "Chương 89: 0089 【Tự do đến thái quá】"
+    },
+    {
+      "chapter_number": 90,
+      "filename": "chapter_090.json",
+      "segments_count": 1,
+      "title": "Chương 90: Các bạn đi học, tôi mở công ty"
+    },
+    {
+      "chapter_number": 91,
+      "filename": "chapter_091.json",
+      "segments_count": 1,
+      "title": "Chương 91: 0091【Thời Thế Hợp Lực】"
+    },
+    {
+      "chapter_number": 92,
+      "filename": "chapter_092.json",
+      "segments_count": 1,
+      "title": "Chương 92: Đều là nhân viên của tôi"
+    },
+    {
+      "chapter_number": 93,
+      "filename": "chapter_093.json",
+      "segments_count": 1,
+      "title": "Chương 93: 0093 [Hư không tinh thần gián đoạn]"
+    },
+    {
+      "chapter_number": 94,
+      "filename": "chapter_094.json",
+      "segments_count": 1,
+      "title": "Chương 94: Còn báo cáo dự án ấp nở?"
+    },
+    {
+      "chapter_number": 95,
+      "filename": "chapter_095.json",
+      "segments_count": 1,
+      "title": "Chương 95: 0095【Nữ Hiệp Ngao】"
+    },
+    {
+      "chapter_number": 96,
+      "filename": "chapter_096.json",
+      "segments_count": 1,
+      "title": "Chương 96: Họp mặt cựu sinh viên"
+    },
+    {
+      "chapter_number": 97,
+      "filename": "chapter_097.json",
+      "segments_count": 1,
+      "title": "Chương 97: 0097"
+    },
+    {
+      "chapter_number": 98,
+      "filename": "chapter_098.json",
+      "segments_count": 1,
+      "title": "Chương 98: 0098【Cách thể hiện của thiếu nữ Hí kịch】"
+    },
+    {
+      "chapter_number": 99,
+      "filename": "chapter_099.json",
+      "segments_count": 1,
+      "title": "Chương 99: Tranh Giành Nhà Xuất Bản"
+    },
+    {
+      "chapter_number": 100,
+      "filename": "chapter_100.json",
+      "segments_count": 1,
+      "title": "Chương 100: 【Con đường hoang dã vãi】"
+    },
+    {
+      "chapter_number": 101,
+      "filename": "chapter_101.json",
+      "segments_count": 1,
+      "title": "Chương 101: 0101"
+    },
+    {
+      "chapter_number": 102,
+      "filename": "chapter_102.json",
+      "segments_count": 1,
+      "title": "Chương 102: Tư Bản Gia Nhìn Đường Đèn"
+    },
+    {
+      "chapter_number": 103,
+      "filename": "chapter_103.json",
+      "segments_count": 1,
+      "title": "Chương 103: 0103 【Truyền bá láo toét trong khuôn viên trường】"
+    },
+    {
+      "chapter_number": 104,
+      "filename": "chapter_104.json",
+      "segments_count": 1,
+      "title": "Chương 104: Tên Trộm Lớn Thầm Lặng"
+    },
+    {
+      "chapter_number": 105,
+      "filename": "chapter_105.json",
+      "segments_count": 1,
+      "title": "Chương 105: 0105 [Trường học trực tuyến sắp thử nghiệm]"
+    },
+    {
+      "chapter_number": 106,
+      "filename": "chapter_106.json",
+      "segments_count": 1,
+      "title": "Chương 106: Sinh viên năm nhất khởi nghiệp và thơ lãng mạn của anh ấy"
+    },
+    {
+      "chapter_number": 107,
+      "filename": "chapter_107.json",
+      "segments_count": 1,
+      "title": "Chương 107: 0107【Khởi Nghiệp Thật Khó Khăn】"
+    },
+    {
+      "chapter_number": 108,
+      "filename": "chapter_108.json",
+      "segments_count": 1,
+      "title": "Chương 108: Bạn Của Tình Địch, Bạn Có Mua Tam Quốc Sát Không?"
+    },
+    {
+      "chapter_number": 109,
+      "filename": "chapter_109.json",
+      "segments_count": 1,
+      "title": "Chương 109: Đùa thằng khờ"
+    },
+    {
+      "chapter_number": 110,
+      "filename": "chapter_110.json",
+      "segments_count": 1,
+      "title": "Chương 110: 0110"
+    },
+    {
+      "chapter_number": 111,
+      "filename": "chapter_111.json",
+      "segments_count": 1,
+      "title": "Chương 111: 0111【Số người dùng Xiaonei.com vượt 8000】"
+    },
+    {
+      "chapter_number": 112,
+      "filename": "chapter_112.json",
+      "segments_count": 1,
+      "title": "Chương 112: 0112 [Tuổi trẻ khởi nghiệp đầy nhiệt huyết]"
+    },
+    {
+      "chapter_number": 113,
+      "filename": "chapter_113.json",
+      "segments_count": 1,
+      "title": "Chương 113: 0113"
+    },
+    {
+      "chapter_number": 114,
+      "filename": "chapter_114.json",
+      "segments_count": 1,
+      "title": "Chương 114: 0114 [Thực ra đây là một thử nghiệm xã hội văn hóa trẻ cận văn hóa 8X]"
+    },
+    {
+      "chapter_number": 115,
+      "filename": "chapter_115.json",
+      "segments_count": 1,
+      "title": "Chương 115: Công Ty Dọn Nhà, Tuyển Dụng Nhân Viên"
+    },
+    {
+      "chapter_number": 116,
+      "filename": "chapter_116.json",
+      "segments_count": 1,
+      "title": "Chương 116: Lộ Tổng Không Chỉ Có Mối Quan Hệ Rộng, Còn Rất Đa Tài"
+    },
+    {
+      "chapter_number": 117,
+      "filename": "chapter_117.json",
+      "segments_count": 1,
+      "title": "Chương 117: Giáo sư Bắc Đại cũng chơi Tam Quốc Sát?"
+    },
+    {
+      "chapter_number": 118,
+      "filename": "chapter_118.json",
+      "segments_count": 1,
+      "title": "Chương 118: Tạ đê tiện côn tới rồi"
+    },
+    {
+      "chapter_number": 119,
+      "filename": "chapter_119.json",
+      "segments_count": 1,
+      "title": "Chương 119: Các Nhân Viên Mới Của Công Ty"
+    },
+    {
+      "chapter_number": 120,
+      "filename": "chapter_120.json",
+      "segments_count": 1,
+      "title": "Chương 120: 0120 [Trận chiến danh tiếng của Tạ Dương tại công ty]"
+    },
+    {
+      "chapter_number": 121,
+      "filename": "chapter_121.json",
+      "segments_count": 1,
+      "title": "Chương 121: 0121 [Giáng Sinh Lãng Mạn]"
+    },
+    {
+      "chapter_number": 122,
+      "filename": "chapter_122.json",
+      "segments_count": 1,
+      "title": "Chương 122: 0122"
+    },
+    {
+      "chapter_number": 123,
+      "filename": "chapter_123.json",
+      "segments_count": 1,
+      "title": "Chương 123: 0123 【Hệ thống Gói Gió ra mắt】"
+    },
+    {
+      "chapter_number": 124,
+      "filename": "chapter_124.json",
+      "segments_count": 1,
+      "title": "Chương 124: Ông Trần bị cư dân mạng thú vui hành hạ"
+    },
+    {
+      "chapter_number": 125,
+      "filename": "chapter_125.json",
+      "segments_count": 1,
+      "title": "Chương 125: Số 0125"
+    },
+    {
+      "chapter_number": 126,
+      "filename": "chapter_126.json",
+      "segments_count": 1,
+      "title": "Chương 126"
+    },
+    {
+      "chapter_number": 127,
+      "filename": "chapter_127.json",
+      "segments_count": 1,
+      "title": "Chương 127: 0127 [Đối Thủ Mới: 5Q Campus Network]"
+    },
+    {
+      "chapter_number": 128,
+      "filename": "chapter_128.json",
+      "segments_count": 1,
+      "title": "Chương 128: Họp lớp và người vắng mặt được mọi người nhắc đến"
+    },
+    {
+      "chapter_number": 129,
+      "filename": "chapter_129.json",
+      "segments_count": 1,
+      "title": "Chương 129: Ghi hình chương trình thì cứ việc đấu võ mồm."
+    },
+    {
+      "chapter_number": 130,
+      "filename": "chapter_130.json",
+      "segments_count": 1,
+      "title": "Chương 130: 0130 [Đưa Tam Quốc Sát vào cửa hàng bán nội y trên Taobao]"
+    },
+    {
+      "chapter_number": 131,
+      "filename": "chapter_131.json",
+      "segments_count": 1,
+      "title": "Chương 131: 0131 [Ngay cả nhà văn nổi tiếng cũng có mọt sách Internet cũ]"
+    },
+    {
+      "chapter_number": 132,
+      "filename": "chapter_132.json",
+      "segments_count": 1,
+      "title": "Chương 132: Trần Quý Lương khuyên các cụ đọc sách nhiều hơn"
+    },
+    {
+      "chapter_number": 133,
+      "filename": "chapter_133.json",
+      "segments_count": 1,
+      "title": "Chương 133: 0133【Phát sóng Cuộc Đối Thoại trên CCTV】"
+    },
+    {
+      "chapter_number": 134,
+      "filename": "chapter_134.json",
+      "segments_count": 1,
+      "title": "Chương 134: Lừa người chơi nạp tiền mới là chân lí."
+    },
+    {
+      "chapter_number": 135,
+      "filename": "chapter_135.json",
+      "segments_count": 1,
+      "title": "Chương 135: 0135"
+    },
+    {
+      "chapter_number": 136,
+      "filename": "chapter_136.json",
+      "segments_count": 1,
+      "title": "Chương 136: Hỏa lực chi viện liên tục"
+    },
+    {
+      "chapter_number": 137,
+      "filename": "chapter_137.json",
+      "segments_count": 1,
+      "title": "Chương 137: Game và đứng hát trên Xiaonei, sao cậu thắng nổi tôi?"
+    },
+    {
+      "chapter_number": 138,
+      "filename": "chapter_138.json",
+      "segments_count": 1,
+      "title": "Chương 138: 0138 【Không hề trốn tránh công việc】"
+    },
+    {
+      "chapter_number": 139,
+      "filename": "chapter_139.json",
+      "segments_count": 1,
+      "title": "Chương 139: Thiếu Nữ Gió Ngâm, Chuông Phượng Từ Xa"
+    },
+    {
+      "chapter_number": 140,
+      "filename": "chapter_140.json",
+      "segments_count": 1,
+      "title": "Chương 140: 0140"
+    },
+    {
+      "chapter_number": 141,
+      "filename": "chapter_141.json",
+      "segments_count": 1,
+      "title": "Chương 141: Tay không bắt cướp"
+    },
+    {
+      "chapter_number": 142,
+      "filename": "chapter_142.json",
+      "segments_count": 1,
+      "title": "Chương 142: Mỗi ngày vẽ ra viễn cảnh và khích lệ nhân viên"
+    },
+    {
+      "chapter_number": 143,
+      "filename": "chapter_143.json",
+      "segments_count": 1,
+      "title": "Chương 143: Trần tổng chưa ra tay, Tạ Xấu Xí đã đập chết kẻ thù."
+    },
+    {
+      "chapter_number": 144,
+      "filename": "chapter_144.json",
+      "segments_count": 1,
+      "title": "Chương 144: 0144"
+    },
+    {
+      "chapter_number": 145,
+      "filename": "chapter_145.json",
+      "segments_count": 1,
+      "title": "Chương 145: Nhiệt độ quá cao, máy chủ sập"
+    },
+    {
+      "chapter_number": 146,
+      "filename": "chapter_146.json",
+      "segments_count": 1,
+      "title": "Chương 146: 0146【Thành công và sự chú ý của tư bản】"
+    },
+    {
+      "chapter_number": 147,
+      "filename": "chapter_147.json",
+      "segments_count": 1,
+      "title": "Chương 147: 0147"
+    },
+    {
+      "chapter_number": 148,
+      "filename": "chapter_148.json",
+      "segments_count": 1,
+      "title": "Chương 148: Cuối cùng, Quỹ Đầu tư Mạo hiểm đã Đến"
+    },
+    {
+      "chapter_number": 149,
+      "filename": "chapter_149.json",
+      "segments_count": 1,
+      "title": "Chương 149: 0149 【Tôi có rất nhiều kế hoạch】"
+    },
+    {
+      "chapter_number": 150,
+      "filename": "chapter_150.json",
+      "segments_count": 1,
+      "title": "Chương 150"
+    },
+    {
+      "chapter_number": 151,
+      "filename": "chapter_151.json",
+      "segments_count": 1,
+      "title": "Chương 151: Lan truyền mạnh mẽ, nền tảng Youke Huyu ra mắt"
+    },
+    {
+      "chapter_number": 152,
+      "filename": "chapter_152.json",
+      "segments_count": 1,
+      "title": "Chương 152: 0152【Tinh thần Internet là chia sẻ】"
+    },
+    {
+      "chapter_number": 153,
+      "filename": "chapter_153.json",
+      "segments_count": 1,
+      "title": "Chương 153: 0153【Lấy nhuận bút đầu tư một món】"
+    },
+    {
+      "chapter_number": 154,
+      "filename": "chapter_154.json",
+      "segments_count": 1,
+      "title": "Chương 154: 0154【Định giá 25 triệu đô la Mỹ】"
+    },
+    {
+      "chapter_number": 155,
+      "filename": "chapter_155.json",
+      "segments_count": 1,
+      "title": "Chương 155: Quà sinh nhật 19 tuổi tặng chính mình"
+    },
+    {
+      "chapter_number": 156,
+      "filename": "chapter_156.json",
+      "segments_count": 1,
+      "title": "Chương 156: 0156 【Người đời không nhận ra gỗ Lăng Vân】"
+    },
+    {
+      "chapter_number": 157,
+      "filename": "chapter_157.json",
+      "segments_count": 1,
+      "title": "Chương 157: Lý Quân và Trần Quý Lương là anh em"
+    },
+    {
+      "chapter_number": 158,
+      "filename": "chapter_158.json",
+      "segments_count": 1,
+      "title": "Chương 158: 0158【Gia đình cũng cần sắp xếp】"
+    },
+    {
+      "chapter_number": 159,
+      "filename": "chapter_159.json",
+      "segments_count": 1,
+      "title": "Chương 159: 0159【Bao người đã đổi thay vì em】"
+    },
+    {
+      "chapter_number": 160,
+      "filename": "chapter_160.json",
+      "segments_count": 1,
+      "title": "Chương 160: 0160 【Anh Trần Nâng Cấp Xe】"
+    },
+    {
+      "chapter_number": 161,
+      "filename": "chapter_161.json",
+      "segments_count": 1,
+      "title": "Chương 161: 0161【Hiện Tượng Super Girl】"
+    },
+    {
+      "chapter_number": 162,
+      "filename": "chapter_162.json",
+      "segments_count": 1,
+      "title": "Chương 162: Đi con đường của Tencent, để Tencent không còn đường đi"
+    },
+    {
+      "chapter_number": 163,
+      "filename": "chapter_163.json",
+      "segments_count": 1,
+      "title": "Chương 163: Quảng cáo và trò chơi miễn phí"
+    },
+    {
+      "chapter_number": 164,
+      "filename": "chapter_164.json",
+      "segments_count": 1,
+      "title": "Chương 164: Lên Tudou.com mà xem"
+    },
+    {
+      "chapter_number": 165,
+      "filename": "chapter_165.json",
+      "segments_count": 1,
+      "title": "Chương 165: 0165【Điều khoản Khoai tây】"
+    },
+    {
+      "chapter_number": 166,
+      "filename": "chapter_166.json",
+      "segments_count": 1,
+      "title": "Sao không báo tôi sớm?"
+    },
+    {
+      "chapter_number": 167,
+      "filename": "chapter_167.json",
+      "segments_count": 1,
+      "title": "Chương 167: Diễn đàn nhà văn"
+    },
+    {
+      "chapter_number": 168,
+      "filename": "chapter_168.json",
+      "segments_count": 1,
+      "title": "Chương 168: 0168【Đại hiệp Trần từ giã văn đàn】"
+    },
+    {
+      "chapter_number": 169,
+      "filename": "chapter_169.json",
+      "segments_count": 1,
+      "title": "Chương 169: Cha Trở Nên Sành Điệu"
+    },
+    {
+      "chapter_number": 170,
+      "filename": "chapter_170.json",
+      "segments_count": 1,
+      "title": "Chương 170: 0170 【Bạn bè cũ muôn nẻo đường đời】"
+    },
+    {
+      "chapter_number": 171,
+      "filename": "chapter_171.json",
+      "segments_count": 1,
+      "title": "Chương 171: 0171"
+    },
+    {
+      "chapter_number": 172,
+      "filename": "chapter_172.json",
+      "segments_count": 1,
+      "title": "Chương 172: Khiến dì Tuyết khóc rồi"
+    },
+    {
+      "chapter_number": 173,
+      "filename": "chapter_173.json",
+      "segments_count": 1,
+      "title": "Chương 173: Weibo Sơ Khai Sắp Ra Mắt"
+    },
+    {
+      "chapter_number": 174,
+      "filename": "chapter_174.json",
+      "segments_count": 1,
+      "title": "Chương 174: Những hành vi khó hiểu của con người"
+    },
+    {
+      "chapter_number": 175,
+      "filename": "chapter_175.json",
+      "segments_count": 1,
+      "title": "Chương 175: 0175【Cãi không lại thì chối bai bẻng】"
+    },
+    {
+      "chapter_number": 176,
+      "filename": "chapter_176.json",
+      "segments_count": 1,
+      "title": "Chương 176: Công Ty Hàn Quốc Đại Lý Game Tam Quốc Sát"
+    },
+    {
+      "chapter_number": 177,
+      "filename": "chapter_177.json",
+      "segments_count": 1,
+      "title": "Chương 177: Tam Quốc Sát Vượt Biên"
+    },
+    {
+      "chapter_number": 178,
+      "filename": "chapter_178.json",
+      "segments_count": 1,
+      "title": "Chương 178: Nữ Sinh Manga Bị Tẩy Chay Hội Đồng"
+    },
+    {
+      "chapter_number": 179,
+      "filename": "chapter_179.json",
+      "segments_count": 1,
+      "title": "Chương 179: Tổng giám đốc Trần là đại sứ hình ảnh tuyển sinh lớp Nguyên Bồi"
+    },
+    {
+      "chapter_number": 180,
+      "filename": "chapter_180.json",
+      "segments_count": 1,
+      "title": "Chương 180: Có phụ nữ thích Tạ Thiếu Bổng rồi"
+    },
+    {
+      "chapter_number": 181,
+      "filename": "chapter_181.json",
+      "segments_count": 1,
+      "title": "Chương 181: Đại diện siêu rẻ"
+    },
+    {
+      "chapter_number": 182,
+      "filename": "chapter_182.json",
+      "segments_count": 1,
+      "title": "Chương 182: 0182 【Chuyên Gia Làm Nội Dung Chuyên Nghiệp】"
+    },
+    {
+      "chapter_number": 183,
+      "filename": "chapter_183.json",
+      "segments_count": 1,
+      "title": "Chương 183: Mời tiểu thuyết đại thần làm game"
+    },
+    {
+      "chapter_number": 184,
+      "filename": "chapter_184.json",
+      "segments_count": 1,
+      "title": "Chương 184: Mời người cũng cần chiến lược"
+    },
+    {
+      "chapter_number": 185,
+      "filename": "chapter_185.json",
+      "segments_count": 1,
+      "title": "Chương 185: 0185 【Lý Ngạo Chân Nhận Chức】"
+    },
+    {
+      "chapter_number": 186,
+      "filename": "chapter_186.json",
+      "segments_count": 1,
+      "title": "Chương 186: 0186【Cạnh tranh ngành gay gắt】"
+    },
+    {
+      "chapter_number": 187,
+      "filename": "chapter_187.json",
+      "segments_count": 1,
+      "title": "Chương 187: Tam Quốc Sát Lọt Top 10 Bảng Xếp Hạng Tháng"
+    },
+    {
+      "chapter_number": 188,
+      "filename": "chapter_188.json",
+      "segments_count": 1,
+      "title": "Chương 188: 0188【Lục Thần Tướng, Vị Thần Chân Duy Nhất】"
+    },
+    {
+      "chapter_number": 189,
+      "filename": "chapter_189.json",
+      "segments_count": 1,
+      "title": "Chương 189: Đại Chiến Sắp Nổ Ra"
+    },
+    {
+      "chapter_number": 190,
+      "filename": "chapter_190.json",
+      "segments_count": 1,
+      "title": "Chương 190"
+    },
+    {
+      "chapter_number": 191,
+      "filename": "chapter_191.json",
+      "segments_count": 1,
+      "title": "Chương 191: 0191 [Buộc Huyền Thoại miễn phí]"
+    },
+    {
+      "chapter_number": 192,
+      "filename": "chapter_192.json",
+      "segments_count": 1,
+      "title": "Chương 192: Sự hào phóng của người chơi đại gia"
+    },
+    {
+      "chapter_number": 193,
+      "filename": "chapter_193.json",
+      "segments_count": 1,
+      "title": "Chương 193: 0193 【Kiếm tiền nhanh hơn cướp】"
+    },
+    {
+      "chapter_number": 194,
+      "filename": "chapter_194.json",
+      "segments_count": 1,
+      "title": "Chương 194: Bước đầu của Weibo"
+    },
+    {
+      "chapter_number": 195,
+      "filename": "chapter_195.json",
+      "segments_count": 1,
+      "title": "Chương 195: Tình Thế Đang Mở Ra"
+    },
+    {
+      "chapter_number": 196,
+      "filename": "chapter_196.json",
+      "segments_count": 1,
+      "title": "Chương 196: Phỏng vấn Tuần san Internet"
+    },
+    {
+      "chapter_number": 197,
+      "filename": "chapter_197.json",
+      "segments_count": 1,
+      "title": "Chương 197: 0197【Đại Hiệp Trần đứng bên rìa bục trao giải như kẻ hèn】"
+    },
+    {
+      "chapter_number": 198,
+      "filename": "chapter_198.json",
+      "segments_count": 1,
+      "title": "Chương 198: 0198【Xào Nấu Khái Niệm Weibo】"
+    },
+    {
+      "chapter_number": 199,
+      "filename": "chapter_199.json",
+      "segments_count": 1,
+      "title": "Chương 199: Bánh Màn Thầu – Án Mạng Kinh Hoàng"
+    },
+    {
+      "chapter_number": 200,
+      "filename": "chapter_200.json",
+      "segments_count": 1,
+      "title": "Chương 200: 0200【Sáng sớm đi nhặt phân】"
+    },
+    {
+      "chapter_number": 201,
+      "filename": "chapter_201.json",
+      "segments_count": 1,
+      "title": "Chương 201: 0201【Tổng giám đốc Trần đang thi cuối kỳ】"
+    },
+    {
+      "chapter_number": 202,
+      "filename": "chapter_202.json",
+      "segments_count": 1,
+      "title": "Chương 202: Tam Quốc Sát Tiếp Tục Vươn Biển"
+    },
+    {
+      "chapter_number": 203,
+      "filename": "chapter_203.json",
+      "segments_count": 1,
+      "title": "Chương 203: Cảnh Tượng Tuyệt Vời Tại Hiện Trường"
+    },
+    {
+      "chapter_number": 204,
+      "filename": "chapter_204.json",
+      "segments_count": 1,
+      "title": "Chương 204: 0204 [Ca khúc độc quyền Tam Quốc Sát]"
+    },
+    {
+      "chapter_number": 205,
+      "filename": "chapter_205.json",
+      "segments_count": 1,
+      "title": "Chương 205: ByteDance hiện giá bao nhiêu?"
+    },
+    {
+      "chapter_number": 206,
+      "filename": "chapter_206.json",
+      "segments_count": 1,
+      "title": "Chương 206: 0206 [Chắc chắn không dưới 1 tỷ USD]"
+    },
+    {
+      "chapter_number": 207,
+      "filename": "chapter_207.json",
+      "segments_count": 1,
+      "title": "Chương 207: 0207【Thời Đại Đầu Tư Điên Rồ】"
+    },
+    {
+      "chapter_number": 208,
+      "filename": "chapter_208.json",
+      "segments_count": 1,
+      "title": "Chương 208: 0208 【Nguồn lực đa dạng quanh ta】"
+    },
+    {
+      "chapter_number": 209,
+      "filename": "chapter_209.json",
+      "segments_count": 1,
+      "title": "Chương 209: 0209【Lâm Đại Ngọc nhập trạch】"
+    },
+    {
+      "chapter_number": 210,
+      "filename": "chapter_210.json",
+      "segments_count": 1,
+      "title": "Chương 210: 0210【Phong mỗ nhân đến Du khoa?】"
+    },
+    {
+      "chapter_number": 211,
+      "filename": "chapter_211.json",
+      "segments_count": 1,
+      "title": "Chương 211: Tranh Giành Của Han và Baek"
+    },
+    {
+      "chapter_number": 212,
+      "filename": "chapter_212.json",
+      "segments_count": 1,
+      "title": "Chương 212: 0212"
+    },
+    {
+      "chapter_number": 213,
+      "filename": "chapter_213.json",
+      "segments_count": 1,
+      "title": "Chương 213: 0213 【Danh nhân Trung Quốc và Tìm kiếm thông tin cá nhân】"
+    },
+    {
+      "chapter_number": 214,
+      "filename": "chapter_214.json",
+      "segments_count": 1,
+      "title": "Chương 214: 0214【Nhiều người nổi tiếng đến uống rượu】"
+    },
+    {
+      "chapter_number": 215,
+      "filename": "chapter_215.json",
+      "segments_count": 1,
+      "title": "Chương 215: Thái độ cứng rắn của Trần Quý Lương"
+    },
+    {
+      "chapter_number": 216,
+      "filename": "chapter_216.json",
+      "segments_count": 1,
+      "title": "Chương 216: 0216 【Chán rồi, tôi phải đi học đây】"
+    },
+    {
+      "chapter_number": 217,
+      "filename": "chapter_217.json",
+      "segments_count": 1,
+      "title": "Chương 217: Thần tượng trẻ"
+    },
+    {
+      "chapter_number": 218,
+      "filename": "chapter_218.json",
+      "segments_count": 1,
+      "title": "Chương 218: 0218【Trần Đại Hiệp cũng có thể lên Ý Lâm】"
+    },
+    {
+      "chapter_number": 219,
+      "filename": "chapter_219.json",
+      "segments_count": 1,
+      "title": "Chương 219: Diễn đàn Khởi nghiệp Cựu sinh viên Đại học Bắc Kinh"
+    },
+    {
+      "chapter_number": 220,
+      "filename": "chapter_220.json",
+      "segments_count": 1,
+      "title": "Chương 220: Khi nào GDP của Trung Quốc sẽ đứng thứ hai?"
+    },
+    {
+      "chapter_number": 221,
+      "filename": "chapter_221.json",
+      "segments_count": 1,
+      "title": "Chương 221: Người nổi tiếng nói năng phải cẩn trọng"
+    },
+    {
+      "chapter_number": 222,
+      "filename": "chapter_222.json",
+      "segments_count": 1,
+      "title": "Chương 222: Rừng lớn thì chim gì cũng có"
+    },
+    {
+      "chapter_number": 223,
+      "filename": "chapter_223.json",
+      "segments_count": 1,
+      "title": "Chương 223: 0223【Wiki】"
+    },
+    {
+      "chapter_number": 224,
+      "filename": "chapter_224.json",
+      "segments_count": 1,
+      "title": "Chương 224: 0225【Toàn là người quen cũ】"
+    },
+    {
+      "chapter_number": 225,
+      "filename": "chapter_225.json",
+      "segments_count": 1,
+      "title": "Chương 225: 0226【Nữ hán tử ra tay, khác biệt phi thường】"
+    },
+    {
+      "chapter_number": 226,
+      "filename": "chapter_226.json",
+      "segments_count": 1,
+      "title": "Chương 226: Vụ án nhỏ."
+    },
+    {
+      "chapter_number": 227,
+      "filename": "chapter_227.json",
+      "segments_count": 1,
+      "title": "Chương 227: 0228【Khách Hàng Là Thượng Đế】"
+    },
+    {
+      "chapter_number": 228,
+      "filename": "chapter_228.json",
+      "segments_count": 1,
+      "title": "Chương 228: 0229【Chợ mai mối đã xuất hiện từ hồi đó】"
+    },
+    {
+      "chapter_number": 229,
+      "filename": "chapter_229.json",
+      "segments_count": 1,
+      "title": "Chương 229: 0230 Trường Quay Hòn Đá Nổi Giận"
+    },
+    {
+      "chapter_number": 230,
+      "filename": "chapter_230.json",
+      "segments_count": 1,
+      "title": "Chương 230: 0231 [Có tiền thật sự có thể làm mưa làm gió]"
+    },
+    {
+      "chapter_number": 231,
+      "filename": "chapter_231.json",
+      "segments_count": 1,
+      "title": "Chương 231: 0232【Kèm theo một phiên dịch đồng thời cũng được】"
+    },
+    {
+      "chapter_number": 232,
+      "filename": "chapter_232.json",
+      "segments_count": 1,
+      "title": "Chương 232: 0233 [Sau Hai Mươi Năm, Giá Trị Của Kẻ Gõ Bàn Phím]"
+    },
+    {
+      "chapter_number": 233,
+      "filename": "chapter_233.json",
+      "segments_count": 1,
+      "title": "Chương 233: 0234【Gió Nổi Rồi bị phạt 100.000 NDT?】"
+    },
+    {
+      "chapter_number": 234,
+      "filename": "chapter_234.json",
+      "segments_count": 1,
+      "title": "Chương 234: 0235【Bố cục kinh doanh thế nào?】"
+    },
+    {
+      "chapter_number": 235,
+      "filename": "chapter_235.json",
+      "segments_count": 1,
+      "title": "Chương 235: 0236【Mục đích vẫn là kiếm tiền từ nhạc chuông】"
+    },
+    {
+      "chapter_number": 236,
+      "filename": "chapter_236.json",
+      "segments_count": 1,
+      "title": "Chương 236: 0238【Đào Tuyết Muốn Đến Kinh Thành Du Lịch Tốt Nghiệp】"
+    },
+    {
+      "chapter_number": 237,
+      "filename": "chapter_237.json",
+      "segments_count": 1,
+      "title": "Chương 237: 0239 [Cô bé trưởng thành hơn một chút]"
+    },
+    {
+      "chapter_number": 238,
+      "filename": "chapter_238.json",
+      "segments_count": 1,
+      "title": "Chương 238: 0240 [Vừa đủ điểm chuẩn, có thể đăng ký ngành top đầu cả nước?]"
+    },
+    {
+      "chapter_number": 239,
+      "filename": "chapter_239.json",
+      "segments_count": 1,
+      "title": "Chương 239: 0241【Tiêu chuẩn của các ông lớn Internet】"
+    },
+    {
+      "chapter_number": 240,
+      "filename": "chapter_240.json",
+      "segments_count": 1,
+      "title": "Chương 240: Thiên Vương Lưu Gia Nhập Hải Nội Net"
+    },
+    {
+      "chapter_number": 241,
+      "filename": "chapter_241.json",
+      "segments_count": 1,
+      "title": "Chương 241: 0243 [Lễ Tốt Nghiệp của Tổng Giám Đốc Quách và Tổng Giám Đốc Ngao]"
+    },
+    {
+      "chapter_number": 242,
+      "filename": "chapter_242.json",
+      "segments_count": 1,
+      "title": "Chương 242: Tháp Bảy Tầng"
+    },
+    {
+      "chapter_number": 243,
+      "filename": "chapter_243.json",
+      "segments_count": 1,
+      "title": "Chương 243: 0245【Quyết đấu giữa kẻ thấp kém và tư bản】"
+    },
+    {
+      "chapter_number": 244,
+      "filename": "chapter_244.json",
+      "segments_count": 1,
+      "title": "Chương 244: Showgirl và game thủ hàng đầu"
+    },
+    {
+      "chapter_number": 245,
+      "filename": "chapter_245.json",
+      "segments_count": 1,
+      "title": "Chương 245: 0247【YoKee cùng lúc phát triển ba game?】"
+    },
+    {
+      "chapter_number": 246,
+      "filename": "chapter_246.json",
+      "segments_count": 1,
+      "title": "Chương 246: 0248【Tam Quốc Sát Được Chọn Làm Đề Án Game Dân Tộc】"
+    },
+    {
+      "chapter_number": 247,
+      "filename": "chapter_247.json",
+      "segments_count": 1,
+      "title": "Chương 247: 0249 【Nhà đầu tư thiên thần thực thụ】"
+    },
+    {
+      "chapter_number": 248,
+      "filename": "chapter_248.json",
+      "segments_count": 1,
+      "title": "Chương 248: 0250 [Các Trường Cao Đẳng Trung Quốc Tập Trung Một Nơi]"
+    },
+    {
+      "chapter_number": 249,
+      "filename": "chapter_249.json",
+      "segments_count": 1,
+      "title": "Chương 249: 0251【Xác nhận lên bản tin thời sự VTV】"
+    },
+    {
+      "chapter_number": 250,
+      "filename": "chapter_250.json",
+      "segments_count": 1,
+      "title": "Chương 250: 0252 【Quách Phong Tử, Tạ Tao Bổng mấy người đều mua nhà rồi】"
+    },
+    {
+      "chapter_number": 251,
+      "filename": "chapter_251.json",
+      "segments_count": 1,
+      "title": "Chương 251: 0253【Tranh cãi truyền thông từ 26 giây】"
+    },
+    {
+      "chapter_number": 252,
+      "filename": "chapter_252.json",
+      "segments_count": 1,
+      "title": "Chương 252: Tam Quốc Sát Đạt 500 Nghìn Người Chơi Cùng Lúc"
+    },
+    {
+      "chapter_number": 253,
+      "filename": "chapter_253.json",
+      "segments_count": 1,
+      "title": "Chương 253: 0255【Đứng thứ 3 thị trường game online TQ hiện tại?】"
+    },
+    {
+      "chapter_number": 254,
+      "filename": "chapter_254.json",
+      "segments_count": 1,
+      "title": "Chương 254: 0256 – Bất ngờ tại buổi ký tặng"
+    },
+    {
+      "chapter_number": 255,
+      "filename": "chapter_255.json",
+      "segments_count": 1,
+      "title": "Chương 255: 0257 【Tặng mỗi bà một bộ Tam Quốc Sát】"
+    },
+    {
+      "chapter_number": 256,
+      "filename": "chapter_256.json",
+      "segments_count": 1,
+      "title": "Chương 256: 0258【Chương trình nổi tiếng chém gió linh tinh】"
+    },
+    {
+      "chapter_number": 257,
+      "filename": "chapter_257.json",
+      "segments_count": 1,
+      "title": "Chương 257: 0259【Thanh mai trúc mã thường không địch lại trời định】"
+    },
+    {
+      "chapter_number": 258,
+      "filename": "chapter_258.json",
+      "segments_count": 1,
+      "title": "Chương 258: 0260 Cuộc sống tinh thần của tài xế Hứa"
+    },
+    {
+      "chapter_number": 259,
+      "filename": "chapter_259.json",
+      "segments_count": 1,
+      "title": "Chương 259: 0261 [Hơn Mười Triệu Người Dùng Calin.vn]"
+    },
+    {
+      "chapter_number": 260,
+      "filename": "chapter_260.json",
+      "segments_count": 1,
+      "title": "Chương 260: 0262 [Trò chơi mới đáng mong đợi]"
+    },
+    {
+      "chapter_number": 261,
+      "filename": "chapter_261.json",
+      "segments_count": 1,
+      "title": "Chương 261: Trần tỷ phú và thành công học"
+    },
+    {
+      "chapter_number": 262,
+      "filename": "chapter_262.json",
+      "segments_count": 1,
+      "title": "Chương 262: 0264 Khóa học đặc biệt của Đại học Bắc Kinh"
+    },
+    {
+      "chapter_number": 263,
+      "filename": "chapter_263.json",
+      "segments_count": 1,
+      "title": "Chương 263: 0265 【Thân phận mới của Trần Quý Lương: Đồng hành khoa học và trò chuyện】"
+    },
+    {
+      "chapter_number": 264,
+      "filename": "chapter_264.json",
+      "segments_count": 1,
+      "title": "Chương 264: 0266【Hội thảo về Hệ thống Đăng ký Tên Thật trên Blog】"
+    },
+    {
+      "chapter_number": 265,
+      "filename": "chapter_265.json",
+      "segments_count": 1,
+      "title": "Chương 265: 0267【Mồm mép Trần cãi chày bắn như điên】"
+    },
+    {
+      "chapter_number": 266,
+      "filename": "chapter_266.json",
+      "segments_count": 1,
+      "title": "Chương 266: 0268"
+    },
+    {
+      "chapter_number": 267,
+      "filename": "chapter_267.json",
+      "segments_count": 1,
+      "title": "Chương 267: 0269【Sohu cũng tham gia】"
+    },
+    {
+      "chapter_number": 268,
+      "filename": "chapter_268.json",
+      "segments_count": 1,
+      "title": "Chương 268: 0270【Sự kiện lan rộng】"
+    },
+    {
+      "chapter_number": 269,
+      "filename": "chapter_269.json",
+      "segments_count": 1,
+      "title": "Chương 269: 0271"
+    },
+    {
+      "chapter_number": 270,
+      "filename": "chapter_270.json",
+      "segments_count": 1,
+      "title": "Chương 270: Chị Biên và em Đào lại gặp nhau"
+    },
+    {
+      "chapter_number": 271,
+      "filename": "chapter_271.json",
+      "segments_count": 1,
+      "title": "Chương 271: 0273 [Kẻ thua cuộc hoàn toàn]"
+    },
+    {
+      "chapter_number": 272,
+      "filename": "chapter_272.json",
+      "segments_count": 1,
+      "title": "Chương 272: 0274【Chọc sếp lớn vui vẻ】"
+    },
+    {
+      "chapter_number": 273,
+      "filename": "chapter_273.json",
+      "segments_count": 1,
+      "title": "Chương 273: 0275 [Ông Trần Trình Diễn]"
+    },
+    {
+      "chapter_number": 274,
+      "filename": "chapter_274.json",
+      "segments_count": 1,
+      "title": "Chương 274: 0276 [Văn phòng Yuying Caotang]"
+    },
+    {
+      "chapter_number": 275,
+      "filename": "chapter_275.json",
+      "segments_count": 1,
+      "title": "Chương 275: 0277【Cả ôm cả ấp】"
+    },
+    {
+      "chapter_number": 276,
+      "filename": "chapter_276.json",
+      "segments_count": 1,
+      "title": "Chương 276: Trần Quý Lương Mua Nhà"
+    },
+    {
+      "chapter_number": 277,
+      "filename": "chapter_277.json",
+      "segments_count": 1,
+      "title": "Chương 277: 0279 【Đại Ngũ Mao đến Hải Nội Võng】"
+    },
+    {
+      "chapter_number": 278,
+      "filename": "chapter_278.json",
+      "segments_count": 1,
+      "title": "Chương 278: 0280 [Người phụ trách niêm yết]"
+    },
+    {
+      "chapter_number": 279,
+      "filename": "chapter_279.json",
+      "segments_count": 1,
+      "title": "Chương 279: Lời bộc bạch về bạch kim"
+    },
+    {
+      "chapter_number": 280,
+      "filename": "chapter_280.json",
+      "segments_count": 1,
+      "title": "Chương 280: Ông chủ thực sự có tầm nhìn."
+    },
+    {
+      "chapter_number": 281,
+      "filename": "chapter_281.json",
+      "segments_count": 1,
+      "title": "Chương 281: Hỉ sự liên miên"
+    },
+    {
+      "chapter_number": 282,
+      "filename": "chapter_282.json",
+      "segments_count": 1,
+      "title": "Chương 282: 0283【Quyết định của Biên Quan Nguyệt】"
+    },
+    {
+      "chapter_number": 283,
+      "filename": "chapter_283.json",
+      "segments_count": 1,
+      "title": "Chương 283: Tình huynh đệ là chân ái (0284)"
+    },
+    {
+      "chapter_number": 284,
+      "filename": "chapter_284.json",
+      "segments_count": 1,
+      "title": "Chương 284: 0285【Panda Burning Incense, bạn đã nghe nói chưa?】"
+    },
+    {
+      "chapter_number": 285,
+      "filename": "chapter_285.json",
+      "segments_count": 1,
+      "title": "Chương 285: 0286 【Thanh Niên Ưu Tú】"
+    },
+    {
+      "chapter_number": 286,
+      "filename": "chapter_286.json",
+      "segments_count": 1,
+      "title": "Chương 286: 0287 [Plants vs. Zombies Sắp Ra Mắt]"
+    },
+    {
+      "chapter_number": 287,
+      "filename": "chapter_287.json",
+      "segments_count": 1,
+      "title": "Chương 287: 0288【Game offline cũng kiếm được tiền?】"
+    },
+    {
+      "chapter_number": 288,
+      "filename": "chapter_288.json",
+      "segments_count": 1,
+      "title": "Chương 288: 0289 [Niềm hi vọng cho game đơn của Trung Quốc]"
+    },
+    {
+      "chapter_number": 289,
+      "filename": "chapter_289.json",
+      "segments_count": 1,
+      "title": "Chương 289: 0290【Dẫn nhân viên đi tập bắn súng】"
+    },
+    {
+      "chapter_number": 290,
+      "filename": "chapter_290.json",
+      "segments_count": 1,
+      "title": "Chương 290: Hàn Quốc muốn bôi nhọ Tương Lai Kỷ Nguyên"
+    },
+    {
+      "chapter_number": 291,
+      "filename": "chapter_291.json",
+      "segments_count": 1,
+      "title": "Chương 291: 0293【Đầu tư cổ phần vào công ty game di động】"
+    },
+    {
+      "chapter_number": 292,
+      "filename": "chapter_292.json",
+      "segments_count": 1,
+      "title": "Chương 292: 0294"
+    },
+    {
+      "chapter_number": 293,
+      "filename": "chapter_293.json",
+      "segments_count": 1,
+      "title": "Chương 293: Ngôi nhà mới của gia đình"
+    },
+    {
+      "chapter_number": 294,
+      "filename": "chapter_294.json",
+      "segments_count": 1,
+      "title": "Chương 294: 0296"
+    },
+    {
+      "chapter_number": 295,
+      "filename": "chapter_295.json",
+      "segments_count": 1,
+      "title": "Chương 295: Người Đông, Cút!"
+    },
+    {
+      "chapter_number": 296,
+      "filename": "chapter_296.json",
+      "segments_count": 1,
+      "title": "Chương 296: 0298【Hàn Quốc bắt đầu bôi nhọ Game Science】"
+    },
+    {
+      "chapter_number": 297,
+      "filename": "chapter_297.json",
+      "segments_count": 1,
+      "title": "Chương 297: Đại ca kiếm hoa hồng khi làm việc"
+    },
+    {
+      "chapter_number": 298,
+      "filename": "chapter_298.json",
+      "segments_count": 1,
+      "title": "Chương 298: 0300【Dư Luận Đảo Chiều】"
+    },
+    {
+      "chapter_number": 299,
+      "filename": "chapter_299.json",
+      "segments_count": 1,
+      "title": "Chương 299: 0301 [Bốn mươi năm sau sẽ ra sao?]"
+    },
+    {
+      "chapter_number": 300,
+      "filename": "chapter_300.json",
+      "segments_count": 1,
+      "title": "Chương 300: 0302 【Ai cũng là cao thủ】"
+    },
+    {
+      "chapter_number": 301,
+      "filename": "chapter_301.json",
+      "segments_count": 1,
+      "title": "Chương 301: 0303"
+    },
+    {
+      "chapter_number": 302,
+      "filename": "chapter_302.json",
+      "segments_count": 1,
+      "title": "Chương 302: Hải Nội Net Phát Triển Nhanh Chóng"
+    },
+    {
+      "chapter_number": 303,
+      "filename": "chapter_303.json",
+      "segments_count": 1,
+      "title": "Chương 303: 0305 [Món quà cuối cùng cũng đến]"
+    },
+    {
+      "chapter_number": 304,
+      "filename": "chapter_304.json",
+      "segments_count": 1,
+      "title": "Chương 304: 0306 [Sơn Thôn Lão Thi là phim hài]"
+    },
+    {
+      "chapter_number": 305,
+      "filename": "chapter_305.json",
+      "segments_count": 1,
+      "title": "Chương 305: 0307【Thẩm định trước niêm yết】"
+    },
+    {
+      "chapter_number": 306,
+      "filename": "chapter_306.json",
+      "segments_count": 1,
+      "title": "Chương 306: Mọi người đều đang cố gắng"
+    },
+    {
+      "chapter_number": 307,
+      "filename": "chapter_307.json",
+      "segments_count": 1,
+      "title": "Chương 307: 0309 [Tương lai thực sự của Xiaonei.com]"
+    },
+    {
+      "chapter_number": 308,
+      "filename": "chapter_308.json",
+      "segments_count": 1,
+      "title": "Chương 308: 0310【Game di động quốc dân】"
+    },
+    {
+      "chapter_number": 309,
+      "filename": "chapter_309.json",
+      "segments_count": 1,
+      "title": "Chương 309: Dùng thị trường ra lệnh ban giám khảo"
+    },
+    {
+      "chapter_number": 310,
+      "filename": "chapter_310.json",
+      "segments_count": 1,
+      "title": "Chương 310: 0312"
+    },
+    {
+      "chapter_number": 311,
+      "filename": "chapter_311.json",
+      "segments_count": 1,
+      "title": "Chương 311: 0313 [Kế hoạch 18 vĩ đại]"
+    },
+    {
+      "chapter_number": 312,
+      "filename": "chapter_312.json",
+      "segments_count": 1,
+      "title": "Chương 312: 0314 【Luôn có mỹ nữ mới mỗi năm】"
+    },
+    {
+      "chapter_number": 313,
+      "filename": "chapter_313.json",
+      "segments_count": 1,
+      "title": "Chương 313: 0315 [Cả nhóm cùng phục kích Trần Quý Lương]"
+    },
+    {
+      "chapter_number": 314,
+      "filename": "chapter_314.json",
+      "segments_count": 1,
+      "title": "Chương 314: 0330 【Đại Ngưu Ngay Bên Cạnh】"
+    }
+  ]
+}

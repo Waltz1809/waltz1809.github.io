@@ -1,0 +1,427 @@
+{
+  "source_file": "131025_1646_gmn_master_70_context.yaml",
+  "total_chapters": 70,
+  "total_segments": 70,
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "filename": "chapter_001.json",
+      "segments_count": 1,
+      "title": "Chương 1: 第1章 「你就是我的master嗎？」"
+    },
+    {
+      "chapter_number": 2,
+      "filename": "chapter_002.json",
+      "segments_count": 1,
+      "title": "Chương 2: 第2章 這畫像是你嗎？"
+    },
+    {
+      "chapter_number": 3,
+      "filename": "chapter_003.json",
+      "segments_count": 1,
+      "title": "Chương 3: 第3章 EX……咖喱棒！"
+    },
+    {
+      "chapter_number": 4,
+      "filename": "chapter_004.json",
+      "segments_count": 1,
+      "title": "Chương 4: 第4章 一氣化三西"
+    },
+    {
+      "chapter_number": 5,
+      "filename": "chapter_005.json",
+      "segments_count": 1,
+      "title": "Chương 5: 第5章 一個月幾百銅幣，玩什麼命啊"
+    },
+    {
+      "chapter_number": 6,
+      "filename": "chapter_006.json",
+      "segments_count": 1,
+      "title": "Chương 6: 第6章 純情精靈與魔物娘大姐姐"
+    },
+    {
+      "chapter_number": 7,
+      "filename": "chapter_007.json",
+      "segments_count": 1,
+      "title": "Chương 7: 第7章 你也不想……"
+    },
+    {
+      "chapter_number": 8,
+      "filename": "chapter_008.json",
+      "segments_count": 1,
+      "title": "Chương 8: 第8章 五六十歲正是闖的年紀"
+    },
+    {
+      "chapter_number": 9,
+      "filename": "chapter_009.json",
+      "segments_count": 1,
+      "title": "Chương 9: 第9章 首映告捷！"
+    },
+    {
+      "chapter_number": 10,
+      "filename": "chapter_010.json",
+      "segments_count": 1,
+      "title": "Chương 10: 第10章 搬運工也很辛苦的好吧？"
+    },
+    {
+      "chapter_number": 11,
+      "filename": "chapter_011.json",
+      "segments_count": 1,
+      "title": "Chương 11: 第11章 那我問你，你是男的女的？"
+    },
+    {
+      "chapter_number": 12,
+      "filename": "chapter_012.json",
+      "segments_count": 1,
+      "title": "Chương 12: 第12章 可惡的紅魔龍，把故事拍的那麼好做什麼"
+    },
+    {
+      "chapter_number": 13,
+      "filename": "chapter_013.json",
+      "segments_count": 1,
+      "title": "Chương 13: 第13章 幻想造物·概念雛形"
+    },
+    {
+      "chapter_number": 14,
+      "filename": "chapter_014.json",
+      "segments_count": 1,
+      "title": "Chương 14: 第14章 拿上你的錢，把我的門票留下！"
+    },
+    {
+      "chapter_number": 15,
+      "filename": "chapter_015.json",
+      "segments_count": 1,
+      "title": "Chương 15: 第15章 熱潮洶湧"
+    },
+    {
+      "chapter_number": 16,
+      "filename": "chapter_016.json",
+      "segments_count": 1,
+      "title": "Chương 16: 第16章 《異種族風俗娘評鑑指南》"
+    },
+    {
+      "chapter_number": 17,
+      "filename": "chapter_017.json",
+      "segments_count": 1,
+      "title": "Chương 17: 第17章 《聖杯》漫畫，堂堂連載！"
+    },
+    {
+      "chapter_number": 18,
+      "filename": "chapter_018.json",
+      "segments_count": 1,
+      "title": "Chương 18: 第18章 她給的實在是太多了"
+    },
+    {
+      "chapter_number": 19,
+      "filename": "chapter_019.json",
+      "segments_count": 1,
+      "title": "Chương 19: 第19章 異世界萬代的設想"
+    },
+    {
+      "chapter_number": 20,
+      "filename": "chapter_020.json",
+      "segments_count": 1,
+      "title": "Chương 20: 第20章 不利於團結的話不要說"
+    },
+    {
+      "chapter_number": 21,
+      "filename": "chapter_021.json",
+      "segments_count": 1,
+      "title": "Chương 21: 第21章 引蛇出洞"
+    },
+    {
+      "chapter_number": 22,
+      "filename": "chapter_022.json",
+      "segments_count": 1,
+      "title": "Chương 22: Empty"
+    },
+    {
+      "chapter_number": 23,
+      "filename": "chapter_023.json",
+      "segments_count": 1,
+      "title": "Chương 23: 第23章 故人"
+    },
+    {
+      "chapter_number": 24,
+      "filename": "chapter_024.json",
+      "segments_count": 1,
+      "title": "Chương 24: 第24章 摩爾迦娜"
+    },
+    {
+      "chapter_number": 25,
+      "filename": "chapter_025.json",
+      "segments_count": 1,
+      "title": "Chương 25: 第25章 作為業餘魔法師，會點空間法術很合理吧？"
+    },
+    {
+      "chapter_number": 26,
+      "filename": "chapter_026.json",
+      "segments_count": 1,
+      "title": "Chương 26: 第26章 v我50，帶你重建卡美洛"
+    },
+    {
+      "chapter_number": 27,
+      "filename": "chapter_027.json",
+      "segments_count": 1,
+      "title": "Chương 27: 第27章 路演計劃，與新電影的構思！"
+    },
+    {
+      "chapter_number": 28,
+      "filename": "chapter_028.json",
+      "segments_count": 1,
+      "title": "Chương 28: 第28章 新英靈：伊斯坎德拉！"
+    },
+    {
+      "chapter_number": 29,
+      "filename": "chapter_029.json",
+      "segments_count": 1,
+      "title": "Chương 29: 第29章 既然要追求刺激，那就……"
+    },
+    {
+      "chapter_number": 30,
+      "filename": "chapter_030.json",
+      "segments_count": 1,
+      "title": "Chương 30: 第30章 「路演」開始"
+    },
+    {
+      "chapter_number": 31,
+      "filename": "chapter_031.json",
+      "segments_count": 1,
+      "title": "Chương 31: 第31章 米諾斯發難！"
+    },
+    {
+      "chapter_number": 32,
+      "filename": "chapter_032.json",
+      "segments_count": 1,
+      "title": "Chương 32: 第32章 刺殺與宣告！"
+    },
+    {
+      "chapter_number": 33,
+      "filename": "chapter_033.json",
+      "segments_count": 1,
+      "title": "Chương 33: 第33章 王對王！《Fate/Zero》現場預告！"
+    },
+    {
+      "chapter_number": 34,
+      "filename": "chapter_034.json",
+      "segments_count": 1,
+      "title": "Chương 34: 第34章 勝利與誓約之劍，深層具現！"
+    },
+    {
+      "chapter_number": 35,
+      "filename": "chapter_035.json",
+      "segments_count": 1,
+      "title": "Chương 35: 第35章 塔恩·米諾斯的用法"
+    },
+    {
+      "chapter_number": 36,
+      "filename": "chapter_036.json",
+      "segments_count": 1,
+      "title": "Chương 36: 第36章 不是哥們，你怎麼變成女的了？"
+    },
+    {
+      "chapter_number": 37,
+      "filename": "chapter_037.json",
+      "segments_count": 1,
+      "title": "Chương 37: 第37章 需要一個比「出生」更有攻擊性的詞語"
+    },
+    {
+      "chapter_number": 38,
+      "filename": "chapter_038.json",
+      "segments_count": 1,
+      "title": "Chương 38: 第38章 還是你這小艾，最令我歡喜"
+    },
+    {
+      "chapter_number": 39,
+      "filename": "chapter_039.json",
+      "segments_count": 1,
+      "title": "Chương 39: 第39章 西澤爾小姐托我給您帶句話"
+    },
+    {
+      "chapter_number": 40,
+      "filename": "chapter_040.json",
+      "segments_count": 1,
+      "title": "Chương 40: 第40章 面試與招新"
+    },
+    {
+      "chapter_number": 41,
+      "filename": "chapter_041.json",
+      "segments_count": 1,
+      "title": "Chương 41: 第41章 最後一個人選"
+    },
+    {
+      "chapter_number": 42,
+      "filename": "chapter_042.json",
+      "segments_count": 1,
+      "title": "Chương 42: 第42章 多伊姆，我是來談條件的"
+    },
+    {
+      "chapter_number": 43,
+      "filename": "chapter_043.json",
+      "segments_count": 1,
+      "title": "Chương 43: 第43章 全員就位，《Fz》啟動！"
+    },
+    {
+      "chapter_number": 44,
+      "filename": "chapter_044.json",
+      "segments_count": 1,
+      "title": "Chương 44: 第44章 各方陣營的人選"
+    },
+    {
+      "chapter_number": 45,
+      "filename": "chapter_045.json",
+      "segments_count": 1,
+      "title": "Chương 45: 第45章 「王之軍勢」的具現方案"
+    },
+    {
+      "chapter_number": 46,
+      "filename": "chapter_046.json",
+      "segments_count": 1,
+      "title": "Chương 46: 第46章 摩爾姐，可以跟我拍一輩子電影嗎？"
+    },
+    {
+      "chapter_number": 47,
+      "filename": "chapter_047.json",
+      "segments_count": 1,
+      "title": "Chương 47: 第47章 最後一日"
+    },
+    {
+      "chapter_number": 48,
+      "filename": "chapter_048.json",
+      "segments_count": 1,
+      "title": "Chương 48: 第48章 收尾與預熱！"
+    },
+    {
+      "chapter_number": 49,
+      "filename": "chapter_049.json",
+      "segments_count": 1,
+      "title": "Chương 49: 第49章 新的風暴開始醞釀！"
+    },
+    {
+      "chapter_number": 50,
+      "filename": "chapter_050.json",
+      "segments_count": 1,
+      "title": "Chương 50: 第50章 剪輯完成！"
+    },
+    {
+      "chapter_number": 51,
+      "filename": "chapter_051.json",
+      "segments_count": 1,
+      "title": "Chương 51: 第51章 續約與攤牌"
+    },
+    {
+      "chapter_number": 52,
+      "filename": "chapter_052.json",
+      "segments_count": 1,
+      "title": "Chương 52: 第52章 導演，我想拍電影！"
+    },
+    {
+      "chapter_number": 53,
+      "filename": "chapter_053.json",
+      "segments_count": 1,
+      "title": "Chương 53: 第53章 臥槽，米諾斯家族怎麼這麼壞啊"
+    },
+    {
+      "chapter_number": 54,
+      "filename": "chapter_054.json",
+      "segments_count": 1,
+      "title": "Chương 54: 第54章 昂揚的交鋒，與悲壯的輓歌"
+    },
+    {
+      "chapter_number": 55,
+      "filename": "chapter_055.json",
+      "segments_count": 1,
+      "title": "Chương 55: 第55章 首映之後"
+    },
+    {
+      "chapter_number": 56,
+      "filename": "chapter_056.json",
+      "segments_count": 1,
+      "title": "Chương 56: 第56章 粉絲見面會"
+    },
+    {
+      "chapter_number": 57,
+      "filename": "chapter_057.json",
+      "segments_count": 1,
+      "title": "Chương 57: 第57章「神明的恩賜」"
+    },
+    {
+      "chapter_number": 58,
+      "filename": "chapter_058.json",
+      "segments_count": 1,
+      "title": "Chương 58: 第58章 我們給貝爾主編塞了多少錢？"
+    },
+    {
+      "chapter_number": 59,
+      "filename": "chapter_059.json",
+      "segments_count": 1,
+      "title": "Chương 59: 第59章 來自帝都的剽竊者"
+    },
+    {
+      "chapter_number": 60,
+      "filename": "chapter_060.json",
+      "segments_count": 1,
+      "title": "Chương 60: 第60章 莊園舞會"
+    },
+    {
+      "chapter_number": 61,
+      "filename": "chapter_061.json",
+      "segments_count": 1,
+      "title": "Chương 61: 第61章 可以共舞一曲嗎？"
+    },
+    {
+      "chapter_number": 62,
+      "filename": "chapter_062.json",
+      "segments_count": 1,
+      "title": "Chương 62: 第62章 新劇本的改編事宜"
+    },
+    {
+      "chapter_number": 63,
+      "filename": "chapter_063.json",
+      "segments_count": 1,
+      "title": "Chương 63: 第63章 摩爾姐，你也不想……"
+    },
+    {
+      "chapter_number": 64,
+      "filename": "chapter_064.json",
+      "segments_count": 1,
+      "title": "Chương 64: 第64章 西澤爾的應對，與德莉莎的援助"
+    },
+    {
+      "chapter_number": 65,
+      "filename": "chapter_065.json",
+      "segments_count": 1,
+      "title": "Chương 65: 第65章 阿瓦隆，深度具現！"
+    },
+    {
+      "chapter_number": 66,
+      "filename": "chapter_066.json",
+      "segments_count": 1,
+      "title": "Chương 66: 第66章 你是龍，也好"
+    },
+    {
+      "chapter_number": 67,
+      "filename": "chapter_067.json",
+      "segments_count": 1,
+      "title": "Chương 67: 第67章 《斬·赤》開拍！"
+    },
+    {
+      "chapter_number": 68,
+      "filename": "chapter_068.json",
+      "segments_count": 1,
+      "title": "Chương 68: 第68章 你，去把《Fate》續集拍出來！"
+    },
+    {
+      "chapter_number": 69,
+      "filename": "chapter_069.json",
+      "segments_count": 1,
+      "title": "Chương 69: 第69章 「床戲」"
+    },
+    {
+      "chapter_number": 70,
+      "filename": "chapter_070.json",
+      "segments_count": 1,
+      "title": "Chương 70: 第70章 摩爾迦娜的約戰"
+    }
+  ]
+}
